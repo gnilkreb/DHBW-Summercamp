@@ -10,6 +10,7 @@
         @include('includes/styles')
     </head>
     <body>
+        <h1>Hello World!</h1>
         @include('includes/scripts')
     </body>
 </html>
