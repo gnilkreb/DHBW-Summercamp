@@ -1,0 +1,123 @@
+.bootstrap-switch {
+  border: 0;
+}
+
+.logoobject {
+  width: 50%;
+}
+
+.centered-logo {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+}
+
+.landing-container {
+  margin-top: 50px;
+}
+
+.sc-panel {
+  text-align: center;
+  color: #eee;
+}
+
+.content {
+  background-image: url('../img/png/content_pattern.png');
+  background-size: 100%;
+  background-repeat: repeat-y;
+  padding: 3px;
+  padding-top: 10px;
+}
+
+.content-top-border {
+  background-image: url('../img/png/content_topborder.png');
+  background-size: 100%;
+  min-height: 3px;
+  background-repeat: no-repeat;
+}
+
+.content-bottom-border {
+  background-image: url('../img/png/content_bottomborder.png');
+  background-size: 100%;
+  min-height: 3px;
+  background-repeat: no-repeat;
+}
+
+.content-menu {
+  
+}
+
+.sc-start-image {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .logoobject {
+    width: 30%;
+  }
+
+  .landing-container {
+    margin-top: 100px;
+  }
+
+  .content-top-border {
+    min-height: 8px;
+  }
+
+  .content-bottom-border {
+    min-height: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logoobject {
+    width: 25%;
+  }
+
+  .landing-container {
+    margin-top: 175px;
+  }
+
+  .content-top-border {
+    min-height: 10px;
+  }
+
+  .content-bottom-border {
+    min-height: 10px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .logoobject {
+    width: 25%;
+  }
+
+  .landing-container {
+    margin-top: 200px;
+  }
+
+  .content-top-border {
+    min-height: 13px;
+  }
+
+  .content-bottom-border {
+    min-height: 13px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .logoobject {
+    width: 20%;
+  }
+
+  .landing-container {
+    margin-top: 250px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .landing-container {
+    margin-top: 320px;
+  }
+}
