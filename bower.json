@@ -1,0 +1,19 @@
+{
+  "name": "dhbw-summercamp",
+  "description": "",
+  "main": "",
+  "license": "none",
+  "homepage": "https://github.com/marc1404/DHBW-Summercamp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "authors": [
+    "Philipp Schemel",
+    "Marc Vornetran"
+  ]
+}
