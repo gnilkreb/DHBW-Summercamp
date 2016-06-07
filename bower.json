@@ -15,5 +15,9 @@
   "authors": [
     "Philipp Schemel",
     "Marc Vornetran"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6"
+  }
 }
