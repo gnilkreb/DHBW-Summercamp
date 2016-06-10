@@ -16,10 +16,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->integer('age');
+            $table->integer('age')->unsigned();
             $table->boolean('gender');
-            $table->integer('team_id')->unsigned();
-            $table->boolean('admin');
+            $table->integer('team_id')->unsigned()->nullable();
+            $table->boolean('admin')->default(false);
             $table->timestamps();
 
             $table->foreign('team_id')->references('id')->on('teams');
