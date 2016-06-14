@@ -11,7 +11,7 @@
 
                 <br>
 
-                @if(Auth::check())
+                @if(Auth::guard('admin')->check())
                     <h3>Navigation</h3>
 
                     <ul class="nav nav-pills nav-stacked">

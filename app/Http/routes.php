@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin'], function () {
     ];
 
     foreach ($pages as $page => $pageName) {
-        Route::get($page, ['middleware' => 'auth', function () use ($pages, $page) {
+        Route::get($page, ['middleware' => 'auth:admin', function () use ($pages, $page) {
             return view('admin.' . $page, ['pages' => $pages]);
         }]);
     }
