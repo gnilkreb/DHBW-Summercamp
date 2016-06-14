@@ -5,7 +5,7 @@
 @section('auth-content')
     <form style="margin: 25px;">
         <div class="form-group">
-            <label for="user">Wer bist du?</label>
+            <label class="control-label" for="user">Wer bist du?</label>
             <select id="user" name="user" class="form-control">
                 @foreach($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name() }}</option>
