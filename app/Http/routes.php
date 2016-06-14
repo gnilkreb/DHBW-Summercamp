@@ -16,6 +16,8 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
+Route::post('/register', 'UserController@register');
+
 Route::group(['prefix' => 'admin'], function () {
     $pages = [
         'dashboard' => 'Dashboard',
