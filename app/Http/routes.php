@@ -8,9 +8,7 @@ Route::get('/categories', function () {
     return view('categories');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/login', 'UserController@login');
 
 Route::get('/register', function () {
     return view('auth.register');

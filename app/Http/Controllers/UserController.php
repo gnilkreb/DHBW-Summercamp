@@ -18,5 +18,10 @@ class UserController extends Controller
 
         return redirect('categories');
     }
+
+    public function login()
+    {
+        return view('auth.login', ['users' => User::all()]);
+    }
     
 }
