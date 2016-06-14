@@ -15,3 +15,20 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    $pages = [
+        'login' => false,
+        'dashboard' => 'Dashboard',
+        'users' => 'Benutzer',
+        'levels' => 'Levels',
+        'teams' => 'Teams',
+        'statistics' => 'Statistik'
+    ];
+
+    foreach ($pages as $page => $pageName) {
+        Route::get($page, function () use ($pages, $page) {
+            return view('admin.' . $page, ['pages' => $pages]);
+        });
+    }
+});

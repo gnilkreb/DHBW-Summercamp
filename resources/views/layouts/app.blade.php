@@ -1,21 +1,13 @@
-<!doctype html>
-<html lang="de">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master)
 
-        <title>@yield('title')</title>
-
-        @include('includes/styles')
-    </head>
-    <body>
+@section('body')
+    <body class="app-font">
         <div class="bg bg-heaven"></div>
         <div class="bg bg-clouds"></div>
         <div class="bg bg-landscape"></div>
 
-        @yield('body')
+        @yield('content')
 
-        @include('includes/scripts')
+        @include('includes.scripts')
     </body>
-</html>
+@endsection

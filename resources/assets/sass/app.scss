@@ -1,4 +1,5 @@
 @import 'background';
+@import 'admin';
 
 html, body {
   width: 100%;
@@ -8,6 +9,9 @@ html, body {
 body {
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.app-font {
   font-family: 'Nunito', sans-serif;
 }
 
