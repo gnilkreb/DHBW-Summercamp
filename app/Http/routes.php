@@ -18,7 +18,6 @@ Route::get('/register', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     $pages = [
-        'login' => false,
         'dashboard' => 'Dashboard',
         'users' => 'Benutzer',
         'levels' => 'Levels',
@@ -26,9 +25,13 @@ Route::group(['prefix' => 'admin'], function () {
         'statistics' => 'Statistik'
     ];
 
+    Route::get('login', function() {
+        return view('admin.login');
+    });
+    
     foreach ($pages as $page => $pageName) {
-        Route::get($page, function () use ($pages, $page) {
+        Route::get($page, ['middleware' => 'auth', function () use ($pages, $page) {
             return view('admin.' . $page, ['pages' => $pages]);
-        });
+        }]);
     }
 });
