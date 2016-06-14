@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('body')
+@section('content')
     <div class="centered-logo">
         <object class="logoobject" data="img/svg/logo.svg" type="image/svg+xml"></object>
     </div>
