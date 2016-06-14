@@ -5,13 +5,14 @@
 @section('auth-content')
     <form style="margin: 25px;">
         <div class="form-group">
-            <label for="first_name">Vorname</label>
-            <input type="text" class="form-control" id="first_name" placeholder="Vorname">
+            <label for="user">Wer bist du?</label>
+            <select id="user" name="user" class="form-control">
+                @foreach($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->name() }}</option>
+                @endforeach
+            </select>
         </div>
-        <div class="form-group">
-            <label for="last_name">Nachname</label>
-            <input type="text" class="form-control" id="last_name" placeholder="Nachname">
-        </div>
+
         <div class="form-group">
             <div class="row">
                 <div class="col-xs-6" style="text-align: left;">
