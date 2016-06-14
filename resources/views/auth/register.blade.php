@@ -26,8 +26,11 @@
 
         <div class="form-group {{ $errors->has('gender') ? 'has-error' : '' }}">
             <label for="gender">Geschlecht</label>
-            <br>
-            <input id="gender" name="gender" type="checkbox" data-on-text="Weiblich" data-off-text="Männlich" checked>
+            <select id="gender" name="gender" class="form-control">
+                <option></option>
+                <option value="1">Weiblich</option>
+                <option value="0">Männlich</option>
+            </select>
             <span class="help-block">{{ $errors->first('gender') }}</span>
         </div>
 

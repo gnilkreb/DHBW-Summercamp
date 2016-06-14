@@ -26,4 +26,4 @@ $(document).ready(function () {
     });
 });
 
-$("[name='gender']").bootstrapSwitch();
+$('[data-bootstrap-switch]').bootstrapSwitch();
