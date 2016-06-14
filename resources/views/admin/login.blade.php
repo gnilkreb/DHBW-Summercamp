@@ -9,7 +9,7 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label for="user">Benutzer</label>
+                    <label class="control-label" for="user">Benutzer</label>
                     <select id="user" name="user" class="form-control">
                         @foreach($users as $user)
                             <option value="{{ $user->id }}">{{ $user->name() }}</option>
@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                    <label for="password">Passwort</label>
+                    <label class="control-label" for="password">Passwort</label>
                     <input id="password" type="password" name="password" class="form-control" placeholder="Passwort" required>
                     <span class="help-block">{{ $errors->first('password') }}</span>
                 </div>

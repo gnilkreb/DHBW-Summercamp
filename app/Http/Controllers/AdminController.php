@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminLoginRequest;
 use App\User;
 use Auth;
 use App\Http\Requests;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -17,7 +17,7 @@ class AdminController extends Controller
         return view('admin.login', ['pages' => [], 'users' => $users]);
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(AdminLoginRequest $request)
     {
         $userId = $request->user;
         $password = $request->password;
@@ -25,6 +25,8 @@ class AdminController extends Controller
         if (Auth::attempt(['id' => $userId, 'password' => $password, 'admin' => 1])) {
             return redirect()->intended('admin.dashboard');
         }
+
+        return redirect()->back()->withErrors(['password' => 'Falsches Passwort']);
     }
 
 }
