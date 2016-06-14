@@ -25,10 +25,12 @@ Route::group(['prefix' => 'admin'], function () {
         'statistics' => 'Statistik'
     ];
 
-    Route::get('login', function() {
-        return view('admin.login');
+    Route::get('login', function () use ($pages) {
+        return view('admin.login', ['pages' => $pages]);
     });
-    
+
+    Route::post('login', 'AdminController@authenticate');
+
     foreach ($pages as $page => $pageName) {
         Route::get($page, ['middleware' => 'auth', function () use ($pages, $page) {
             return view('admin.' . $page, ['pages' => $pages]);

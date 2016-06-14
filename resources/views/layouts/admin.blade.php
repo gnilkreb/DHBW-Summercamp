@@ -7,19 +7,23 @@
 
             <!-- Left Column -->
             <div class="col-xs-3">
-                <img src="/img/png/dhbw.png">
+                <img class="img-responsive" src="/img/png/dhbw.png">
 
-                <h3>Navigation</h3>
+                <br>
 
-                <ul class="nav nav-pills nav-stacked">
-                    @foreach($pages as $page => $pageName)
-                        <li class="{{ (Route::getCurrentRoute()->getPath() === 'admin/' . $page ? 'active' : '') }}">
-                            <a href="{{ $page }}">{{ $pageName }}</a>
-                        </li>
-                    @endforeach
-                </ul>
+                @if(Auth::check())
+                    <h3>Navigation</h3>
 
-                <hr>
+                    <ul class="nav nav-pills nav-stacked">
+                        @foreach($pages as $page => $pageName)
+                            <li class="{{ (Route::getCurrentRoute()->getPath() === 'admin/' . $page ? 'active' : '') }}">
+                                <a href="{{ $page }}">{{ $pageName }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+
+                    <hr>
+                @endif
 
                 <ul class="nav nav-pills nav-stacked">
                     <li>
