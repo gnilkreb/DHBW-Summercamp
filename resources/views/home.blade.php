@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Willkommen')
+
 @section('content')
     <div class="centered-logo">
         <object class="logoobject" data="img/svg/logo.svg" type="image/svg+xml"></object>
@@ -14,10 +16,10 @@
             <div class="row">
                 <div class="col-xs-12 content content-menu">
                     <div class="row">
-                        <a href="login.html"><img src="img/png/menu_login.png" width="200px" class="hvr-grow"/></a>
+                        <a href="login"><img src="img/png/menu_login.png" width="200px" class="hvr-grow"/></a>
                     </div>
                     <div class="row">
-                        <a href="register.html"><img src="img/png/menu_register.png" width="200px"
+                        <a href="register"><img src="img/png/menu_register.png" width="200px"
                                                      class="hvr-grow"/></a>
                     </div>
                 </div>
