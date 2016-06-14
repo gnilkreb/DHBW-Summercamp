@@ -2,29 +2,32 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
 class UserRegisterRequest extends Request
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            //
+            'first_name' => 'required|min:3|max:20',
+            'last_name' => 'required|min:3|max:20',
+            'age' => 'required|numeric|min:1|max:99',
+            'gender' => 'required|boolean'
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'first_name' => 'Vorname',
+            'last_name' => 'Nachname',
+            'age' => 'Alter',
+            'gender' => 'Geschlecht'
+        ];
+    }
+
 }
