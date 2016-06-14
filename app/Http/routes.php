@@ -9,6 +9,7 @@ Route::get('/categories', function () {
 });
 
 Route::get('/login', 'UserController@login');
+Route::post('/login', 'UserController@authenticate');
 
 Route::get('/register', function () {
     return view('auth.register');

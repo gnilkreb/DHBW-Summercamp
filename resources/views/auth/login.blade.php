@@ -3,10 +3,13 @@
 @section('title', 'Anmelden')
 
 @section('auth-content')
-    <form style="margin: 25px;">
+    <form style="margin: 25px;" method="POST" action="login">
+        {{ csrf_field() }}
+
         <div class="form-group">
-            <label class="control-label" for="user">Wer bist du?</label>
-            <select id="user" name="user" class="form-control">
+            <label class="control-label" for="user_id">Wer bist du?</label>
+            <select id="user_id" name="user_id" class="form-control" required>
+                <option></option>
                 @foreach($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name() }}</option>
                 @endforeach
