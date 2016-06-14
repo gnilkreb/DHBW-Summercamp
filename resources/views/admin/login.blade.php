@@ -10,12 +10,17 @@
 
                 <div class="form-group">
                     <label for="user">Benutzer</label>
-                    <select id="user" name="user" class="form-control"></select>
+                    <select id="user" name="user" class="form-control">
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name() }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                     <label for="password">Passwort</label>
-                    <input id="password" type="password" name="password" class="form-control" placeholder="Passwort">
+                    <input id="password" type="password" name="password" class="form-control" placeholder="Passwort" required>
+                    <span class="help-block">{{ $errors->first('password') }}</span>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Anmelden</button>

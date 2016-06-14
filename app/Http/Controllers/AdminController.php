@@ -14,7 +14,7 @@ class AdminController extends Controller
     {
         $users = User::where('admin', true)->get();
 
-        return view('admin.login', ['users' => $users]);
+        return view('admin.login', ['pages' => [], 'users' => $users]);
     }
 
     public function authenticate(Request $request)
