@@ -12,3 +12,10 @@
 ## Scripts
 - `npm run dev`
 - `npm run prod`
+
+## Admin User
+1. Neuen Benutzer registrieren
+2. Datenbank Tabelle `users` in GUI öffnen
+3. Passwort Hash auf [bcrypt Online Seite](https://www.dailycred.com/article/bcrypt-calculator) generieren
+4. Hash in `password` Spalte eintragen
+5. `is_admin` auf `1` setzen
