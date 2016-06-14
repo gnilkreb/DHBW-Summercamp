@@ -10,8 +10,8 @@
 7. `gulp`
 
 ## Scripts
-- `npm run dev`
-- `npm run prod`
+- `npm run dev` - Development Build
+- `npm run prod` - Production Build
 
 ## Admin User
 1. Neuen Benutzer registrieren
