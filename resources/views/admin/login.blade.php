@@ -9,10 +9,10 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label class="control-label" for="user">Benutzer</label>
-                    <select id="user" name="user" class="form-control">
-                        @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name() }}</option>
+                    <label class="control-label" for="admin_id">Admin</label>
+                    <select id="admin_id" name="admin_id" class="form-control">
+                        @foreach($admins as $admin)
+                            <option value="{{ $admin->id }}">{{ $user->name }}</option>
                         @endforeach
                     </select>
                 </div>

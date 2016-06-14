@@ -13,6 +13,7 @@ class AdminLoginRequest extends Request
     public function rules()
     {
         return [
+            'admin_id' => 'required|numeric',
             'password' => 'required'
         ];
     }
