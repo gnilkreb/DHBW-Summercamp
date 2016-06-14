@@ -19,9 +19,10 @@ class AdminController extends Controller
 
     public function authenticate(Request $request)
     {
-        $input = $request->all();
+        $userId = $request->user;
+        $password = $request->password;
 
-        if (Auth::attempt(['first_name' => '', 'last_name' => '', 'password' => '', 'admin' => true])) {
+        if (Auth::attempt(['id' => $userId, 'password' => $password, 'admin' => 1])) {
             return redirect()->intended('admin.dashboard');
         }
     }
