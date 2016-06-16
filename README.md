@@ -14,8 +14,7 @@
 - `npm run prod` - Production Build
 
 ## Admin User
-1. Neuen Benutzer registrieren
-2. Datenbank Tabelle `users` in GUI öffnen
+1. Datenbank Tabelle `admins` in GUI öffnen
+2. Neuen Eintrag erstellen
 3. Passwort Hash auf [bcrypt Online Seite](https://www.dailycred.com/article/bcrypt-calculator) generieren
 4. Hash in `password` Spalte eintragen
-5. `is_admin` auf `1` setzen

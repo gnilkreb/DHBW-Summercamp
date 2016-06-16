@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Http\Requests\AdminLoginRequest;
-use App\User;
 use Auth;
 use App\Http\Requests;
 
@@ -12,17 +12,17 @@ class AdminController extends Controller
 
     public function login()
     {
-        $users = User::where('admin', true)->get();
+        $admins = Admin::all();
 
-        return view('admin.login', ['pages' => [], 'users' => $users]);
+        return view('admin.login', ['pages' => [], 'admins' => $admins]);
     }
 
     public function authenticate(AdminLoginRequest $request)
     {
-        $userId = $request->user;
+        $adminId = $request->admin_id;
         $password = $request->password;
 
-        if (Auth::attempt(['id' => $userId, 'password' => $password, 'admin' => 1])) {
+        if (Auth::guard('admin')->attempt(['id' => $adminId, 'password' => $password])) {
             return redirect()->intended('admin.dashboard');
         }
 
