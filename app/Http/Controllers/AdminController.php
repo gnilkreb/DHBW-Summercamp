@@ -9,6 +9,22 @@ use App\Http\Requests;
 
 class AdminController extends Controller
 {
+    
+    static $pages = [
+        'dashboard' => 'Dashboard',
+        'users' => 'Benutzer',
+        'levels' => 'Levels',
+        'teams' => 'Teams',
+        'statistics' => 'Statistik'
+    ];
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin', ['except' => [
+            'login',
+            'authenticate',
+        ]]);
+    }
 
     public function login()
     {
@@ -27,6 +43,39 @@ class AdminController extends Controller
         }
 
         return redirect()->back()->withErrors(['password' => 'Falsches Passwort']);
+    }
+
+    public function dashboard()
+    {
+        return $this->adminView('dashboard');
+    }
+
+    public function users()
+    {
+        return $this->adminView('users');
+    }
+
+    public function levels()
+    {
+        return $this->adminView('levels');
+    }
+
+    public function teams()
+    {
+        return $this->adminView('teams');
+    }
+
+    public function statistics()
+    {
+        return $this->adminView('statistics');
+    }
+
+    private function adminView($page, $customData = [])
+    {
+        
+        $data = ['pages' => AdminController::$pages] + $customData;
+
+        return view('admin.' . $page, $data);
     }
 
 }

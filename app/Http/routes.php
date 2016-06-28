@@ -1,6 +1,8 @@
 <?php
 
 /* Frontend Routes */
+use App\Http\Controllers\AdminController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -32,18 +34,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('login', 'AdminController@authenticate');
     /* Admin Auth Routes */
 
-    $pages = [
-        'dashboard' => 'Dashboard',
-        'users' => 'Benutzer',
-        'levels' => 'Levels',
-        'teams' => 'Teams',
-        'statistics' => 'Statistik'
-    ];
+    $pages = AdminController::$pages;
 
     foreach ($pages as $page => $pageName) {
-        Route::get($page, ['middleware' => 'auth:admin', function () use ($pages, $page) {
-            return view('admin.' . $page, ['pages' => $pages]);
-        }]);
+        Route::get($page, 'AdminController@' . $page);
     }
 });
 /* Admin Routes */
