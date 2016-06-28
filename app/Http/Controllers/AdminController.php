@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Http\Requests\AdminLoginRequest;
+use App\User;
 use Auth;
 use App\Http\Requests;
 
@@ -52,7 +53,9 @@ class AdminController extends Controller
 
     public function users()
     {
-        return $this->adminView('users');
+        $users = User::all();
+
+        return $this->adminView('users', ['users' => $users]);
     }
 
     public function levels()
