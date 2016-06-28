@@ -11,6 +11,13 @@ class User extends Model implements Authenticatable
 
     protected $fillable = ['first_name', 'last_name', 'age', 'gender'];
 
+    public function __construct($exists = true)
+    {
+        parent::__construct();
+        
+        $this->exists = $exists;
+    }
+
     public function name()
     {
         return $this->first_name . ' ' . $this->last_name;

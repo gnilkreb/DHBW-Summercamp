@@ -3,6 +3,13 @@
 @section('title', 'Benutzer')
 
 @section('content')
+    <a href="user" class="btn btn-default">
+        <i class="fa fa-plus"></i>
+        Neuer Benutzer
+    </a>
+
+    <hr>
+
     <table class="table">
         <thead>
             <tr>
@@ -17,7 +24,9 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{ $user->id }}</td>
-                    <td>{{ $user->first_name . ' ' . $user->last_name }}</td>
+                    <td>
+                        <a href="user/{{ $user->id }}">{{ $user->name() }}</a>
+                    </td>
                     <td>{{ $user->age }}</td>
                     <td>
                         <i class="fa fa-{{ $user->genderIcon() }}"></i>

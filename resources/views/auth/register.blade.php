@@ -20,7 +20,7 @@
 
         <div class="form-group {{ $errors->has('age') ? 'has-error' : '' }}">
             <label for="age">Alter</label>
-            <input id="age" name="age" type="number" class="form-control" placeholder="Alter" required>
+            <input id="age" name="age" type="number" class="form-control" placeholder="Alter" required min="1" max="99">
             <span class="help-block">{{ $errors->first('age') }}</span>
         </div>
 

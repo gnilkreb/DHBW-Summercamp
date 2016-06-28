@@ -34,6 +34,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('login', 'AdminController@authenticate');
     /* Admin Auth Routes */
 
+    Route::get('user/{id?}', 'AdminController@user');
+    Route::post('user', 'AdminController@saveUser');
+
     $pages = AdminController::$pages;
 
     foreach ($pages as $page => $pageName) {

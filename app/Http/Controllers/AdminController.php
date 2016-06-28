@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Http\Requests\AdminLoginRequest;
+use App\Http\Requests\UserRegisterRequest;
 use App\User;
 use Auth;
 use App\Http\Requests;
 
 class AdminController extends Controller
 {
-    
+
     static $pages = [
         'dashboard' => 'Dashboard',
         'users' => 'Benutzer',
@@ -58,6 +59,22 @@ class AdminController extends Controller
         return $this->adminView('users', ['users' => $users]);
     }
 
+    public function user($id = null)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            $user = new User(false);
+        }
+
+        return $this->adminView('user', ['user' => $user]);
+    }
+
+    public function saveUser(UserRegisterRequest $request)
+    {
+
+    }
+
     public function levels()
     {
         return $this->adminView('levels');
@@ -75,7 +92,7 @@ class AdminController extends Controller
 
     private function adminView($page, $customData = [])
     {
-        
+
         $data = ['pages' => AdminController::$pages] + $customData;
 
         return view('admin.' . $page, $data);
