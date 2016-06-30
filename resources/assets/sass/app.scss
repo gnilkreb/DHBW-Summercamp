@@ -47,17 +47,31 @@ body {
   padding-top: 10px;
 }
 
-.content-top-border {
-  background-image: url('/img/png/content_topborder.png');
+.content-top-border-6 {
+  background-image: url('../img/png/content_topborder.png');
   background-size: 100%;
   min-height: 3px;
   background-repeat: no-repeat;
 }
 
-.content-bottom-border {
-  background-image: url('/img/png/content_bottomborder.png');
+.content-top-border-12 {
+  background-image: url('../img/png/content_topborder.png');
+  background-size: 100%;
+  min-height: 5px;
+  background-repeat: no-repeat;
+}
+
+.content-bottom-border-6 {
+  background-image: url('../img/png/content_bottomborder.png');
   background-size: 100%;
   min-height: 3px;
+  background-repeat: no-repeat;
+}
+
+.content-bottom-border-12 {
+  background-image: url('../img/png/content_bottomborder.png');
+  background-size: 100%;
+  min-height: 5px;
   background-repeat: no-repeat;
 }
 
@@ -69,6 +83,14 @@ body {
   margin-bottom: 15px;
 }
 
+.star-column {
+  margin-bottom: 50px;
+}
+
+.star {
+  max-height: 100px;
+}
+
 @media (min-width: 768px) {
   .logoobject {
     width: 30%;
@@ -78,12 +100,20 @@ body {
     margin-top: 100px;
   }
 
-  .content-top-border {
+  .content-top-border-6 {
     min-height: 8px;
   }
 
-  .content-bottom-border {
+  .content-top-border-12 {
+    min-height: 18px;
+  }
+
+  .content-bottom-border-6 {
     min-height: 8px;
+  }
+
+  .content-bottom-border-12 {
+    min-height: 18px;
   }
 }
 
@@ -96,12 +126,20 @@ body {
     margin-top: 175px;
   }
 
-  .content-top-border {
+  .content-top-border-6 {
     min-height: 10px;
   }
 
-  .content-bottom-border {
+  .content-top-border-12 {
+    min-height: 25px;
+  }
+
+  .content-bottom-border-6 {
     min-height: 10px;
+  }
+
+  .content-bottom-border-12 {
+    min-height: 25px;
   }
 }
 
@@ -114,12 +152,20 @@ body {
     margin-top: 200px;
   }
 
-  .content-top-border {
+  .content-top-border-6 {
     min-height: 13px;
   }
 
-  .content-bottom-border {
+  .content-top-border-12 {
+    min-height: 31px;
+  }
+
+  .content-bottom-border-6 {
     min-height: 13px;
+  }
+
+  .content-bottom-border-12 {
+    min-height: 35px;
   }
 }
 
