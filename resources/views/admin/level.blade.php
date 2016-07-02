@@ -29,7 +29,7 @@
                     <label for="category_id">Kategorie</label>
                     <select id="category_id" name="category_id" class="form-control">
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ $level->category_id === $category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" {{ $level->category_id === $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                     <span class="help-block">{{ $errors->first('category_id') }}</span>
