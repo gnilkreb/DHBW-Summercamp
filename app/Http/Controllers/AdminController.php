@@ -6,6 +6,7 @@ use App\Admin;
 use App\Category;
 use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\CreateLevelRequest;
+use App\Http\Requests\SetCategoryActiveRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Level;
 use App\Team;
@@ -84,7 +85,7 @@ class AdminController extends Controller
         $user->fill($request->all());
         $user->save();
 
-        return $this->users();
+        return redirect('/admin/users');
     }
 
     public function levels()
@@ -116,7 +117,18 @@ class AdminController extends Controller
         $level->fill($request->all());
         $level->save();
 
-        return $this->levels();
+        return redirect('/admin/levels');
+    }
+
+    public function setCategoryActive(Request $request)
+    {
+        $id = $request->route('id');
+        $category = Category::findOrFail($id);
+        $category->active = ($request->get('active') === 'true' ? true : false);
+
+        $category->save();
+
+        return response()->json(true);
     }
 
     public function teams()

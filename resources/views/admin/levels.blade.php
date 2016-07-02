@@ -63,7 +63,7 @@
 
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" {{ $category->active ? 'checked' : '' }}>
+                        <input type="checkbox" {{ $category->active ? 'checked' : '' }} data-set-category-active="{{ $category->id }}">
                         Aktiv
                     </label>
                 </div>
