@@ -19,6 +19,10 @@
             <form method="POST" action="/admin/level">
                 {{ csrf_field() }}
 
+                @if(!$new)
+                    <input id="id" name="id" type="hidden" value="{{ $level->id }}">
+                @endif
+
                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                     <label class="control-label" for="title">Titel</label>
                     <input id="title" name="title" type="text" class="form-control" placeholder="Titel" required value="{{ $level->first_name }}">

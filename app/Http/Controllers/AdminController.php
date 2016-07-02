@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Category;
 use App\Http\Requests\AdminLoginRequest;
+use App\Http\Requests\CreateLevelRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Level;
 use App\User;
@@ -98,9 +99,11 @@ class AdminController extends Controller
         return $this->adminView('level', ['level' => $level, 'new' => $new, 'categories' => $categories]);
     }
 
-    public function saveLevel()
+    public function saveLevel(CreateLevelRequest $request)
     {
-        
+        Level::firstOrCreate($request->except('_token'));
+
+        return redirect('/admin/levels');
     }
 
     public function teams()
