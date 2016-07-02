@@ -8,9 +8,11 @@ use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\CreateLevelRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Level;
+use App\Team;
 use App\User;
 use Auth;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -67,15 +69,33 @@ class AdminController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            $user = new User(false);
+            $user = new User();
         }
 
         return $this->adminView('user', ['user' => $user]);
     }
 
-    public function saveUser(UserRegisterRequest $request)
+    public function storeUser(UserRegisterRequest $request)
     {
+        if(!$request->editing) {
+            $user = new User();
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->age = $request->age;
+            $user->gender = $request->gender;
+            $user->save();
+        }
+        $this->updateUser($request);
+        return $this->users();
+    }
 
+    public function updateUser(UserRegisterRequest $request) {
+        $user = User::findOrfail($request->id);
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->age = $request->age;
+        $user->gender = $request->gender;
+        $user->save();
     }
 
     public function levels()
@@ -109,7 +129,31 @@ class AdminController extends Controller
 
     public function teams()
     {
-        return $this->adminView('teams');
+        return $this->adminView('teams', ['teams' => Team::all()]);
+    }
+
+    public function createTeam() {
+        return $this->adminView('team.create');
+    }
+
+    public function storeTeam(Request $request) {
+        $team = new Team();
+        $team->name = $request->name;
+        $team->save();
+
+        return $this->adminView('teams', ['teams' => Team::all()]);
+    }
+
+    public function editTeam($id) {
+        return $this->adminView('team.edit', ['team' => Team::findOrFail($id)]);
+    }
+
+    public function updateTeam(Request $request, $id) {
+        $team = Team::findOrFail($id);
+        $team->name = $request->name;
+        $team->save();
+
+        return $this->adminView('teams', ['teams' => Team::all()]);
     }
 
     public function statistics()
@@ -119,7 +163,6 @@ class AdminController extends Controller
 
     private function adminView($page, $customData = [])
     {
-
         $data = ['pages' => AdminController::$pages] + $customData;
 
         return view('admin.' . $page, $data);

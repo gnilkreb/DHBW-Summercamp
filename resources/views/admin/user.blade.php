@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-xs-12 col-sm-6">
-            <form method="POST" action="user">
+            <form method="POST" action="/admin/user">
                 {{ csrf_field() }}
 
                 <div class="form-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
@@ -46,6 +46,10 @@
                     </select>
                     <span class="help-block">{{ $errors->first('gender') }}</span>
                 </div>
+                @if($user->exists)
+                    <input type="hidden" name="editing" value="true"/>
+                    <input type="hidden" name="id" value="{{ $user->id }}"/>
+                @endif
 
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-check"></i>
