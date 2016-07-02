@@ -79,9 +79,9 @@ class AdminController extends Controller
             $user->age = $request->age;
             $user->gender = $request->gender;
             $user->save();
-            return $this->users();
         }
         $this->updateUser($request);
+        return $this->users();
     }
 
     public function updateUser(UserRegisterRequest $request) {
@@ -91,7 +91,6 @@ class AdminController extends Controller
         $user->age = $request->age;
         $user->gender = $request->gender;
         $user->save();
-        return $this->users();
     }
 
     public function levels()
