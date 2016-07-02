@@ -13,6 +13,7 @@ class RemoveYoutubeAndFileColumn extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
+            $table->dropForeign('tasks_file_id_foreign');
             $table->dropColumn('youtube_url');
             $table->dropColumn('file_id');
         });
