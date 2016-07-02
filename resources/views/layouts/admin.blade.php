@@ -17,7 +17,7 @@
                     <ul class="nav nav-pills nav-stacked">
                         @foreach($pages as $page => $pageName)
                             <li class="{{ (Route::getCurrentRoute()->getPath() === 'admin/' . $page ? 'active' : '') }}">
-                                <a href="{{ $page }}">{{ $pageName }}</a>
+                                <a href="/admin/{{ $page }}">{{ $pageName }}</a>
                             </li>
                         @endforeach
                     </ul>
