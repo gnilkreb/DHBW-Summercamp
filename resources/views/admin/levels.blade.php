@@ -3,5 +3,10 @@
 @section('title', 'Levels')
 
 @section('content')
-    Levels
+    <a href="/admin/level" class="btn btn-default">
+        <i class="fa fa-plus"></i>
+        Neues Level
+    </a>
+
+    <hr>
 @endsection

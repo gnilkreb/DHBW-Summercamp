@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Category;
 use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Level;
@@ -81,6 +82,25 @@ class AdminController extends Controller
         $levels = Level::all();
 
         return $this->adminView('levels', ['levels' => $levels]);
+    }
+
+    public function level($id = null)
+    {
+        $level = new Level();
+        $new = true;
+        $categories = Category::all();
+
+        if($id !== null) {
+            $level = Level::findOrFail($id);
+            $new = false;
+        }
+
+        return $this->adminView('level', ['level' => $level, 'new' => $new, 'categories' => $categories]);
+    }
+
+    public function saveLevel()
+    {
+        
     }
 
     public function teams()

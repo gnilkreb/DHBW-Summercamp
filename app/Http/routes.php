@@ -37,6 +37,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('user/{id?}', 'AdminController@user');
     Route::post('user', 'AdminController@saveUser');
 
+    Route::get('level/{id?}', 'AdminController@level');
+    Route::post('level', 'AdminController@saveLevel');
+
     $pages = AdminController::$pages;
 
     foreach ($pages as $page => $pageName) {
