@@ -9,14 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model implements Authenticatable
 {
 
-    protected $fillable = ['first_name', 'last_name', 'age', 'gender'];
+    protected $fillable = ['first_name', 'last_name', 'age', 'gender', 'team_id', 'admin'];
 
-    public function __construct($exists = true)
+    /*public function __construct($exists = true)
     {
         parent::__construct();
         
         $this->exists = $exists;
-    }
+    }*/
 
     public function name()
     {
