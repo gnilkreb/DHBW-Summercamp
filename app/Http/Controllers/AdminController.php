@@ -72,7 +72,20 @@ class AdminController extends Controller
 
     public function storeUser(UserRegisterRequest $request)
     {
-        $user = new User();
+        if(!$request->editing) {
+            $user = new User();
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->age = $request->age;
+            $user->gender = $request->gender;
+            $user->save();
+            return $this->users();
+        }
+        $this->updateUser($request);
+    }
+
+    public function updateUser(UserRegisterRequest $request) {
+        $user = User::findOrfail($request->id);
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->age = $request->age;
