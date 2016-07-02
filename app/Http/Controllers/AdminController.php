@@ -64,15 +64,21 @@ class AdminController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            $user = new User(false);
+            $user = new User();
         }
 
         return $this->adminView('user', ['user' => $user]);
     }
 
-    public function saveUser(UserRegisterRequest $request)
+    public function storeUser(UserRegisterRequest $request)
     {
-
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->age = $request->age;
+        $user->gender = $request->gender;
+        $user->save();
+        return $this->users();
     }
 
     public function levels()
@@ -92,7 +98,6 @@ class AdminController extends Controller
 
     private function adminView($page, $customData = [])
     {
-
         $data = ['pages' => AdminController::$pages] + $customData;
 
         return view('admin.' . $page, $data);

@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
     /* Admin Auth Routes */
 
     Route::get('user/{id?}', 'AdminController@user');
-    Route::post('user', 'AdminController@saveUser');
+    Route::post('user', 'AdminController@storeUser');
 
     $pages = AdminController::$pages;
 
