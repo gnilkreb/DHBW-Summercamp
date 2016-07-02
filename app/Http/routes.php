@@ -37,6 +37,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('user/{id?}', 'AdminController@user');
     Route::post('user', 'AdminController@storeUser');
 
+    Route::get('team/create', 'AdminController@createTeam');
+    Route::post('team/create', 'AdminController@storeTeam');
+    Route::get('team/{id}', 'AdminController@editTeam');
+    Route::post('team/{id}/update', 'AdminController@updateTeam');
+
     $pages = AdminController::$pages;
 
     foreach ($pages as $page => $pageName) {

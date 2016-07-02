@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
+use App\Team;
 use App\User;
 use Auth;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -100,7 +102,31 @@ class AdminController extends Controller
 
     public function teams()
     {
-        return $this->adminView('teams');
+        return $this->adminView('teams', ['teams' => Team::all()]);
+    }
+
+    public function createTeam() {
+        return $this->adminView('team.create');
+    }
+
+    public function storeTeam(Request $request) {
+        $team = new Team();
+        $team->name = $request->name;
+        $team->save();
+
+        return $this->adminView('teams', ['teams' => Team::all()]);
+    }
+
+    public function editTeam($id) {
+        return $this->adminView('team.edit', ['team' => Team::findOrFail($id)]);
+    }
+
+    public function updateTeam(Request $request, $id) {
+        $team = Team::findOrFail($id);
+        $team->name = $request->name;
+        $team->save();
+
+        return $this->adminView('teams', ['teams' => Team::all()]);
     }
 
     public function statistics()
