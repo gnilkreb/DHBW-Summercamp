@@ -80,9 +80,10 @@ class AdminController extends Controller
 
     public function levels()
     {
+        $categories = Category::all();
         $levels = Level::all();
 
-        return $this->adminView('levels', ['levels' => $levels]);
+        return $this->adminView('levels', ['categories' => $categories, 'levels' => $levels]);
     }
 
     public function level($id = null)

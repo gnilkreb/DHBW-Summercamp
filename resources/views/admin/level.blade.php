@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', $new ? 'Neues Level' : $level->title)
+@section('title', $new ? 'Neues Level' : 'Level bearbeiten')
 
 @section('content')
     <a href="/admin/levels" class="btn btn-default">

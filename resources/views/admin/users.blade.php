@@ -13,7 +13,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Alter</th>
                 <th>Geschlecht</th>
