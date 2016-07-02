@@ -25,13 +25,14 @@
 
                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                     <label class="control-label" for="title">Titel</label>
-                    <input id="title" name="title" type="text" class="form-control" placeholder="Titel" required value="{{ $level->first_name }}">
+                    <input id="title" name="title" type="text" class="form-control" placeholder="Titel" required value="{{ $level->title }}">
                     <span class="help-block">{{ $errors->first('title') }}</span>
                 </div>
 
                 <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
                     <label for="category_id">Kategorie</label>
                     <select id="category_id" name="category_id" class="form-control">
+                        <option></option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ $level->category_id === $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                         @endforeach
