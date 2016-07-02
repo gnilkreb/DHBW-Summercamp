@@ -66,36 +66,25 @@ class AdminController extends Controller
 
     public function user($id = null)
     {
-        $user = User::find($id);
+        $user = new User();
+        $new = true;
 
-        if (!$user) {
-            $user = new User();
+        if ($id !== null) {
+            $user = User::findOrFail($id);
+            $new = false;
         }
 
-        return $this->adminView('user', ['user' => $user]);
+        return $this->adminView('user', ['user' => $user, 'new' => $new]);
     }
 
-    public function storeUser(UserRegisterRequest $request)
+    public function saveUser(UserRegisterRequest $request)
     {
-        if(!$request->editing) {
-            $user = new User();
-            $user->first_name = $request->first_name;
-            $user->last_name = $request->last_name;
-            $user->age = $request->age;
-            $user->gender = $request->gender;
-            $user->save();
-        }
-        $this->updateUser($request);
-        return $this->users();
-    }
+        $user = User::firstOrNew(['id' => $request->get('id')]);
 
-    public function updateUser(UserRegisterRequest $request) {
-        $user = User::findOrfail($request->id);
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->age = $request->age;
-        $user->gender = $request->gender;
+        $user->fill($request->all());
         $user->save();
+
+        return $this->users();
     }
 
     public function levels()
@@ -122,9 +111,12 @@ class AdminController extends Controller
 
     public function saveLevel(CreateLevelRequest $request)
     {
-        Level::firstOrCreate($request->except('_token'));
+        $level = Level::firstOrNew(['id' => $request->get('id')]);
 
-        return redirect('/admin/levels');
+        $level->fill($request->all());
+        $level->save();
+
+        return $this->levels();
     }
 
     public function teams()

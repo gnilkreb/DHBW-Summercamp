@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Level extends Model
 {
 
-    protected $fillable = ['title', 'category_id', 'order'];
+    protected $fillable = [
+        'id',
+        'title',
+        'category_id',
+        'order'
+    ];
 
     public function category()
     {

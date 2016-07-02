@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', $user->exists ? 'Benutzer bearbeiten' : 'Neuer Benutzer')
+@section('title', $new ? 'Neuer Benutzer' : 'Benutzer bearbeiten')
 
 @section('content')
     <a href="/admin/users" class="btn btn-default">
@@ -10,7 +10,7 @@
 
     <hr>
 
-    @if($user->exists)
+    @if(!$new)
         <h1>{{ $user->name() }}</h1>
     @endif
 
@@ -18,6 +18,10 @@
         <div class="col-xs-12 col-sm-6">
             <form method="POST" action="/admin/user">
                 {{ csrf_field() }}
+
+                @if(!$new)
+                    <input id="id" name="id" type="hidden" value="{{ $user->id }}">
+                @endif
 
                 <div class="form-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
                     <label class="control-label" for="first_name">Vorname</label>
@@ -46,10 +50,6 @@
                     </select>
                     <span class="help-block">{{ $errors->first('gender') }}</span>
                 </div>
-                @if($user->exists)
-                    <input type="hidden" name="editing" value="true"/>
-                    <input type="hidden" name="id" value="{{ $user->id }}"/>
-                @endif
 
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-check"></i>

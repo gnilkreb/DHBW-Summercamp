@@ -9,7 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model implements Authenticatable
 {
 
-    protected $fillable = ['first_name', 'last_name', 'age', 'gender', 'team_id'];
+    protected $fillable = [
+        'id',
+        'first_name',
+        'last_name',
+        'age',
+        'gender',
+        'team_id'
+    ];
 
     public function name()
     {
@@ -29,7 +36,7 @@ class User extends Model implements Authenticatable
     public function createdAtDiff()
     {
         Carbon::setLocale('de');
-        
+
         $createdAt = new Carbon($this->created_at);
 
         return $createdAt->diffForHumans();
