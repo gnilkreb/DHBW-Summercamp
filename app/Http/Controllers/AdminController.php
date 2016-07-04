@@ -16,24 +16,8 @@ use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class AdminController extends AdminBaseController
 {
-
-    static $pages = [
-        'dashboard' => 'Dashboard',
-        'users' => 'Benutzer',
-        'levels' => 'Levels',
-        'teams' => 'Teams',
-        'statistics' => 'Statistik'
-    ];
-
-    public function __construct()
-    {
-        $this->middleware('auth:admin', ['except' => [
-            'login',
-            'authenticate',
-        ]]);
-    }
 
     public function login()
     {
@@ -128,49 +112,6 @@ class AdminController extends Controller
         return response()->json(true);
     }
 
-    public function setCategoryActive(Request $request)
-    {
-        $id = $request->route('id');
-        $category = Category::findOrFail($id);
-        $category->active = ($request->get('active') === 'true' ? true : false);
-
-        $category->save();
-
-        return response()->json(true);
-    }
-
-    public function category($id = null)
-    {
-        $category = new Category();
-        $new = true;
-
-        if($id !== null) {
-            $category = Category::findOrFail($id);
-            $new = false;
-        }
-
-        $levels = $category->levels->sortBy('order');
-
-        return $this->adminView('category', ['category' => $category, 'new' => $new, 'levels' => $levels]);
-    }
-
-    public function saveCategory(SaveCategoryRequest $request)
-    {
-        $category = Category::firstOrNew(['id' => $request->get('id')]);
-
-        $category->fill($request->all());
-        $category->save();
-
-        return redirect('/admin/levels');
-    }
-
-    public function deleteCategory($id)
-    {
-        Category::destroy($id);
-
-        return response()->json(true);
-    }
-
     public function teams()
     {
         return $this->adminView('teams', ['teams' => Team::all()]);
@@ -203,13 +144,6 @@ class AdminController extends Controller
     public function statistics()
     {
         return $this->adminView('statistics');
-    }
-
-    private function adminView($page, $customData = [])
-    {
-        $data = ['pages' => AdminController::$pages] + $customData;
-
-        return view('admin.' . $page, $data);
     }
 
 }

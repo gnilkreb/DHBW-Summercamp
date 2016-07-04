@@ -42,10 +42,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('team/{id}', 'AdminController@editTeam');
     Route::post('team/{id}/update', 'AdminController@updateTeam');
 
-    Route::get('category/{id?}', 'AdminController@category');
-    Route::post('category', 'AdminController@saveCategory');
-    Route::delete('category/{id}', 'AdminController@deleteCategory');
-    Route::post('category/{id}/active', 'AdminController@setCategoryActive');
+    Route::get('category/{id?}', 'CategoryController@show');
+    Route::post('category', 'CategoryController@save');
+    Route::delete('category/{id}', 'CategoryController@delete');
+    Route::post('category/{id}/active', 'CategoryController@setCategoryActive');
     
     Route::get('level/{id?}', 'AdminController@level');
     Route::post('level', 'AdminController@saveLevel');
