@@ -6,8 +6,6 @@ use App\Admin;
 use App\Category;
 use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\CreateLevelRequest;
-use App\Http\Requests\SaveCategoryRequest;
-use App\Http\Requests\SetCategoryActiveRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Level;
 use App\Team;
