@@ -44,6 +44,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('category/{id?}', 'AdminController@category');
     Route::post('category', 'AdminController@saveCategory');
+    Route::delete('category/{id}', 'AdminController@deleteCategory');
     Route::post('category/{id}/active', 'AdminController@setCategoryActive');
     
     Route::get('level/{id?}', 'AdminController@level');

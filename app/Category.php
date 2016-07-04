@@ -15,7 +15,7 @@ class Category extends Model
 
     public function levels()
     {
-        return $this->hasMany('App/Level');
+        return $this->hasMany('App\Level');
     }
 
 }

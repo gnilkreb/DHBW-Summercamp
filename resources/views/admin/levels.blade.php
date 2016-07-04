@@ -58,7 +58,7 @@
                 </tbody>
             </table>
             <div class="panel-footer">
-                <button type="button" class="btn btn-danger pull-right">
+                <button type="button" class="btn btn-danger pull-right" {{ $category->levels->count() > 0 ? 'disabled' : '' }}>
                     <i class="fa fa-trash"></i>
                     Löschen
                 </button>

@@ -142,7 +142,7 @@ class AdminController extends Controller
             $new = false;
         }
 
-        return $this->adminView('category', ['category' => $category, 'new' => $new]);
+        return $this->adminView('category', ['category' => $category, 'new' => $new, 'levels' => $category->levels]);
     }
 
     public function saveCategory(SaveCategoryRequest $request)
@@ -153,6 +153,13 @@ class AdminController extends Controller
         $category->save();
 
         return redirect('/admin/levels');
+    }
+
+    public function deleteCategory($id)
+    {
+        Category::destroy($id);
+
+        return response()->json(true);
     }
 
     public function teams()

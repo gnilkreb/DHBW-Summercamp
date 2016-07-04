@@ -25,7 +25,8 @@
 
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                     <label class="control-label" for="name">Name</label>
-                    <input id="name" name="name" type="text" class="form-control" placeholder="Name" required value="{{ $category->name }}">
+                    <input id="name" name="name" type="text" class="form-control" placeholder="Name" required
+                           value="{{ $category->name }}">
                     <span class="help-block">{{ $errors->first('name') }}</span>
                 </div>
 
@@ -42,11 +43,27 @@
                     Speichern
                 </button>
 
-                <button type="button" class="btn btn-danger pull-right">
+                <button type="button" class="btn btn-danger pull-right" data-delete-category="{{ $category->id }}"
+                        data-redirect="/admin/levels" {{ $new || $levels->count() > 0 ? 'disabled' : '' }}>
                     <i class="fa fa-trash"></i>
                     Löschen
                 </button>
             </form>
+
+
+            @if(!$new)
+                <hr>
+
+                <h3>Level</h3>
+
+                <ol>
+                    @foreach($levels as $level)
+                        <li>
+                            <a href="/admin/level/{{ $level->id }}">{{ $level->title }}</a>
+                        </li>
+                    @endforeach
+                </ol>
+            @endif
         </div>
     </div>
 @endsection
