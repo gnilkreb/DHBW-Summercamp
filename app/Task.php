@@ -27,9 +27,9 @@ class Task extends Model
     public function difficultyName()
     {
         $difficultyNames = [
-            'Einfach',
-            'Mittel',
-            'Schwer'
+            1 => 'Einfach',
+            2 => 'Mittel',
+            3 => 'Schwer'
         ];
 
         return $difficultyNames[$this->difficulty];
