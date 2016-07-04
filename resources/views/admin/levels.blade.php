@@ -31,41 +31,43 @@
             </div>
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Titel</th>
-                        <th>Reihenfolge</th>
-                        <th>Erstellt</th>
-                        <th>Modifiziert</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Titel</th>
+                    <th>Reihenfolge</th>
+                    <th>Erstellt</th>
+                    <th>Modifiziert</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach($levels as $level)
-                        @if($level->category_id !== $category->id)
-                            @continue
-                        @endif
+                @foreach($levels as $level)
+                    @if($level->category_id !== $category->id)
+                        @continue
+                    @endif
 
-                        <tr>
-                            <td>{{ $level->id }}</td>
-                            <td>
-                                <a href="/admin/level/{{ $level->id }}">{{ $level->title }}</a>
-                            </td>
-                            <td>{{ $level->order }}</td>
-                            <td>{{ $level->createdAtDiff() }}</td>
-                            <td>{{ $level->updatedAtDiff() }}</td>
-                        </tr>
-                    @endforeach
+                    <tr>
+                        <td>{{ $level->id }}</td>
+                        <td>
+                            <a href="/admin/level/{{ $level->id }}">{{ $level->title }}</a>
+                        </td>
+                        <td>{{ $level->order }}</td>
+                        <td>{{ $level->createdAtDiff() }}</td>
+                        <td>{{ $level->updatedAtDiff() }}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
             <div class="panel-footer">
-                <button type="button" class="btn btn-danger pull-right" data-delete-category="{{ $category->id }}" data-redirect="/admin/levels" {{ $category->levels->count() > 0 ? 'disabled' : '' }}>
+                <button type="button" class="btn btn-danger pull-right" data-delete-category="{{ $category->id }}"
+                        data-redirect="/admin/levels" {{ $category->levels->count() > 0 ? 'disabled' : '' }}>
                     <i class="fa fa-trash"></i>
                     Löschen
                 </button>
 
-                <div class="checkbox">
+                <div class="checkbox" style="display: inline-block">
                     <label>
-                        <input type="checkbox" {{ $category->active ? 'checked' : '' }} data-set-category-active="{{ $category->id }}">
+                        <input type="checkbox"
+                               {{ $category->active ? 'checked' : '' }} data-set-category-active="{{ $category->id }}">
                         Aktiv
                     </label>
                 </div>
