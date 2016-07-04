@@ -20,7 +20,7 @@ set('writable_dirs', ['bootstrap/cache', 'storage']);
 
 // Configure servers
 server('production', '193.196.7.10')
-    ->user('username')
+    ->user('vornetran')
     ->password()
     ->env('deploy_path', '/home/vornetran/production');
 
