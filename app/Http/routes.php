@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
     
     Route::get('level/{id?}', 'AdminController@level');
     Route::post('level', 'AdminController@saveLevel');
+    Route::delete('level/{id}', 'AdminController@deleteLevel');
 
     $pages = AdminController::$pages;
 

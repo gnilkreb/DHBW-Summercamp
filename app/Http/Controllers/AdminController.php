@@ -121,6 +121,13 @@ class AdminController extends Controller
         return redirect('/admin/levels');
     }
 
+    public function deleteLevel($id)
+    {
+        Level::destroy($id);
+
+        return response()->json(true);
+    }
+
     public function setCategoryActive(Request $request)
     {
         $id = $request->route('id');
