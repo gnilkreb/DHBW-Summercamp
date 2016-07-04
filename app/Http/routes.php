@@ -8,6 +8,11 @@ Route::get('/', function () {
 });
 
 Route::get('/categories', 'CategoryController@index');
+Route::get('/category/{id}', 'CategoryController@levels');
+
+Route::get('/level/{id}', 'LevelController@show');
+
+
 /* Frontend Routes */
 
 /* Frontend Auth Routes */
