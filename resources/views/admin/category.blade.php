@@ -10,12 +10,12 @@
 
     <hr>
 
-    @if(!$new)
-        <h1>{{ $category->title }}</h1>
-    @endif
-
     <div class="row">
         <div class="col-xs-12 col-sm-6">
+            @if(!$new)
+                <h1>{{ $category->name }}</h1>
+            @endif
+
             <form method="POST" action="/admin/category">
                 {{ csrf_field() }}
 
@@ -50,21 +50,26 @@
                     Löschen
                 </button>
             </form>
-
-
-            @if(!$new)
-                <hr>
-
-                <h3>Level</h3>
-
-                <ol>
-                    @foreach($levels as $level)
-                        <li>
-                            <a href="/admin/level/{{ $level->id }}">{{ $level->title }}</a>
-                        </li>
-                    @endforeach
-                </ol>
-            @endif
         </div>
+        @if(!$new)
+            <div class="col-xs-12 col-sm-6">
+                <h2>Level</h2>
+
+                @if($levels->count() === 0)
+                    <div class="alert alert-warning">
+                        Es wurde noch kein Level für diese Kategorie erstellt!<br>
+                        <strong>
+                            <a href="/admin/level" class="alert-link">Level erstellen</a>
+                        </strong>
+                    </div>
+                @endif
+
+                <div class="list-group">
+                    @foreach($levels as $level)
+                        <a href="/admin/level/{{ $level->id }}" class="list-group-item">{{ $level->title }}</a>
+                    @endforeach
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
