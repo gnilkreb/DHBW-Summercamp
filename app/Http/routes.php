@@ -46,7 +46,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('category', 'CategoryController@save');
     Route::delete('category/{id}', 'CategoryController@delete');
     Route::post('category/{id}/active', 'CategoryController@setCategoryActive');
-    
+
+    Route::get('task/{id?}', 'TaskController@show');
+    Route::post('task', 'TaskController@save');
+
     Route::get('level/{id?}', 'AdminController@level');
     Route::post('level', 'AdminController@saveLevel');
     Route::delete('level/{id}', 'AdminController@deleteLevel');
