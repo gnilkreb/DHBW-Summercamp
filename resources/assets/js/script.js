@@ -24,6 +24,18 @@ $(document).ready(function () {
     $('.menu-login').click(function () {
         alert('Hello');
     });
-});
 
-$('[data-bootstrap-switch]').bootstrapSwitch();
+    $('[data-toggle="tooltip"]').tooltip()
+
+    $('[data-clipboard-text]').each((index, element) => {
+        const clipboard = new Clipboard(element);
+
+        clipboard.on('success', event => {
+            const $trigger = $(event.trigger);
+
+            $trigger.tooltip('show');
+
+            setTimeout(() => $trigger.tooltip('hide'), 500);
+        });
+    });
+});

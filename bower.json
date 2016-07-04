@@ -21,7 +21,7 @@
     "bootstrap": "^3.3.6",
     "hover": "Hover#^2.0.2",
     "animate.css": "^3.5.2",
-    "bootstrap-switch": "^3.3.2",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "clipboard": "^1.5.12"
   }
 }

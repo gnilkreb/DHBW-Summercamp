@@ -23,6 +23,15 @@ Route::get('/register', function () {
 Route::post('/register', 'UserController@register');
 /* Frontend Auth Routes */
 
+Route::get('/uploads/{name}', function ($name) {
+    $file = Storage::disk('public')->get($name);
+    $mimeType = Storage::disk('public')->mimeType($name);
+
+    return response($file, 200, [
+        'Content-Type' => $mimeType
+    ]);
+});
+
 /* Admin Routes */
 Route::get('/admin', function () {
     return redirect('/admin/dashboard');
@@ -51,6 +60,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('task/{id?}', 'TaskController@show');
     Route::post('task', 'TaskController@save');
     Route::delete('task/{id}', 'TaskController@delete');
+
+    Route::post('file', 'AdminController@uploadFile');
+    Route::delete('file/{name}', 'AdminController@deleteFile');
 
     Route::get('level/{id?}', 'AdminController@level');
     Route::post('level', 'AdminController@saveLevel');

@@ -1,6 +1,8 @@
 import './parallax';
 import './script';
 import './levels';
+import './file-input';
+import './files';
 
 $.ajaxSetup({
     headers: {

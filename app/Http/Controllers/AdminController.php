@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Category;
+use App\File;
 use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\CreateLevelRequest;
+use App\Http\Requests\UploadFileRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Level;
 use App\Team;
@@ -13,6 +15,8 @@ use App\User;
 use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class AdminController extends AdminBaseController
 {
@@ -92,7 +96,7 @@ class AdminController extends AdminBaseController
         $new = true;
         $categories = Category::all();
 
-        if($id !== null) {
+        if ($id !== null) {
             $level = Level::findOrFail($id);
             $new = false;
         }
@@ -129,11 +133,13 @@ class AdminController extends AdminBaseController
         return $this->adminView('teams', ['teams' => Team::all()]);
     }
 
-    public function createTeam() {
+    public function createTeam()
+    {
         return $this->adminView('team.create');
     }
 
-    public function storeTeam(Request $request) {
+    public function storeTeam(Request $request)
+    {
         $team = new Team();
         $team->name = $request->name;
         $team->save();
@@ -141,16 +147,56 @@ class AdminController extends AdminBaseController
         return $this->adminView('teams', ['teams' => Team::all()]);
     }
 
-    public function editTeam($id) {
+    public function editTeam($id)
+    {
         return $this->adminView('team.edit', ['team' => Team::findOrFail($id)]);
     }
 
-    public function updateTeam(Request $request, $id) {
+    public function updateTeam(Request $request, $id)
+    {
         $team = Team::findOrFail($id);
         $team->name = $request->name;
         $team->save();
 
         return $this->adminView('teams', ['teams' => Team::all()]);
+    }
+
+    public function files()
+    {
+        $files = Storage::disk('public')->files();
+        $collection = collect($files);
+
+        $filtered = $collection->filter(function ($file) {
+            return strpos($file, '.') !== 0;
+        });
+
+        $transformed = $filtered->map(function ($file) {
+            return [
+                'name' => $file,
+                'url' => URL::to('/uploads/' . $file)
+            ];
+        });
+
+        return $this->adminView('files', [
+            'files' => $transformed
+        ]);
+    }
+
+    public function uploadFile(UploadFileRequest $request)
+    {
+
+        $file = $request->file('file');
+
+        $file->move(storage_path() . '/app/public', $file->getClientOriginalName());
+
+        return redirect('/admin/files');
+    }
+
+    public function deleteFile($name)
+    {
+        Storage::disk('public')->delete($name);
+
+        return response()->json(true);
     }
 
     public function statistics()
