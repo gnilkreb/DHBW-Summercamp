@@ -25,19 +25,22 @@
 
                 <div class="form-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
                     <label class="control-label" for="first_name">Vorname</label>
-                    <input id="first_name" name="first_name" type="text" class="form-control" placeholder="Vorname" required value="{{ $user->first_name }}">
+                    <input id="first_name" name="first_name" type="text" class="form-control" placeholder="Vorname"
+                           required value="{{ $user->first_name }}">
                     <span class="help-block">{{ $errors->first('first_name') }}</span>
                 </div>
 
                 <div class="form-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
                     <label class="control-label" for="last_name">Nachname</label>
-                    <input id="last_name" name="last_name" type="text" class="form-control" placeholder="Nachname" required value="{{ $user->last_name }}">
+                    <input id="last_name" name="last_name" type="text" class="form-control" placeholder="Nachname"
+                           required value="{{ $user->last_name }}">
                     <span class="help-block">{{ $errors->first('last_name') }}</span>
                 </div>
 
                 <div class="form-group {{ $errors->has('age') ? 'has-error' : '' }}">
                     <label for="age">Alter</label>
-                    <input id="age" name="age" type="number" class="form-control" placeholder="Alter" required min="1" max="99" value="{{ $user->age }}">
+                    <input id="age" name="age" type="number" class="form-control" placeholder="Alter" required min="1"
+                           max="99" value="{{ $user->age }}">
                     <span class="help-block">{{ $errors->first('age') }}</span>
                 </div>
 
@@ -54,6 +57,13 @@
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-check"></i>
                     Speichern
+                </button>
+
+                <button type="button" class="btn btn-danger pull-right" data-delete="{{ $user->id }}"
+                        data-model="user"
+                        data-redirect="/admin/users" {{ $new ? 'disabled' : '' }}>
+                    <i class="fa fa-trash"></i>
+                    Löschen
                 </button>
             </form>
         </div>

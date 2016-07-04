@@ -71,6 +71,13 @@ class AdminController extends AdminBaseController
         return redirect('/admin/users');
     }
 
+    public function deleteUser($id)
+    {
+        User::destroy($id);
+
+        return response()->json(true);
+    }
+
     public function levels()
     {
         $categories = Category::all();

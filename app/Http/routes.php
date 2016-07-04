@@ -36,6 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('user/{id?}', 'AdminController@user');
     Route::post('user', 'AdminController@saveUser');
+    Route::delete('user/{id}', 'AdminController@deleteUser');
 
     Route::get('team/create', 'AdminController@createTeam');
     Route::post('team/create', 'AdminController@storeTeam');
