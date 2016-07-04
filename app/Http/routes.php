@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('task/{id?}', 'TaskController@show');
     Route::post('task', 'TaskController@save');
+    Route::delete('task/{id}', 'TaskController@delete');
 
     Route::get('level/{id?}', 'AdminController@level');
     Route::post('level', 'AdminController@saveLevel');

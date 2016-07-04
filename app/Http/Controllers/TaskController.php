@@ -39,7 +39,9 @@ class TaskController extends AdminBaseController
 
     public function delete($id)
     {
+        Task::destroy($id);
 
+        return response()->json(true);
     }
 
 }
