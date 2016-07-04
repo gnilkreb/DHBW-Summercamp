@@ -1,6 +1,6 @@
 $(() => {
     $('[data-set-category-active]').change(onSetCategoryActive);
-    $('[data-delete-category]').click(onDeleteCategory);
+    $('[data-delete]').click(onDelete);
 });
 
 function onSetCategoryActive() {
@@ -15,14 +15,15 @@ function onSetCategoryActive() {
     });
 }
 
-function onDeleteCategory() {
+function onDelete() {
     const $this = $(this);
-    const categoryId = $this.data('delete-category');
+    const modelId = $this.data('delete');
+    const modelName = $this.data('model');
     const redirect = $this.data('redirect');
 
     $.ajax({
         method: 'DELETE',
-        url: `/admin/category/${ categoryId }`,
+        url: `/admin/${ modelName }/${ modelId }`,
         success() {
             window.location.href = redirect;
         }

@@ -43,7 +43,8 @@
                     Speichern
                 </button>
 
-                <button type="button" class="btn btn-danger pull-right" data-delete-category="{{ $category->id }}"
+                <button type="button" class="btn btn-danger pull-right" data-delete="{{ $category->id }}"
+                        data-model="category"
                         data-redirect="/admin/levels" {{ $new || $levels->count() > 0 ? 'disabled' : '' }}>
                     <i class="fa fa-trash"></i>
                     Löschen

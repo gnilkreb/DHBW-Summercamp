@@ -50,6 +50,11 @@
                     <i class="fa fa-check"></i>
                     Speichern
                 </button>
+
+                <button type="button" class="btn btn-danger pull-right" data-delete="{{ $level->id }}" data-model="level" data-redirect="/admin/levels "{{ $new ? 'disabled' : '' }}>
+                    <i class="fa fa-trash"></i>
+                    Löschen
+                </button>
             </form>
         </div>
     </div>
