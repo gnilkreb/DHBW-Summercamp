@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 class CategoryController extends AdminBaseController
 {
 
+    public function index() {
+        $categories = Category::all();
+
+        return view('categories', ['categories' => $categories]);
+    }
+
     public function setCategoryActive(Request $request)
     {
         $id = $request->route('id');

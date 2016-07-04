@@ -9,33 +9,24 @@
 
     <div class="container landing-container">
         <hr/>
-        <div class="col-xs-5 sc-panel scratch-panel">
-            <div class="row">
-                <div class="col-xs-12 content-top-border"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 content">
-                    <a href="#"><img src="img/png/cat.png" width="222px"
-                                     class="img-responsive center-block hvr-grow sc-start-image"></a>
+        <?php $second = false; ?>
+        @foreach($categories as $category)
+            <div class="col-xs-5 @if($second === true) col-xs-offset-2 @endif sc-panel scratch-panel">
+                <div class="row">
+                    <div class="col-xs-12 content-top-border"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 content">
+                        <h2>{{ $category->name }}</h2>
+                        <a href="/category/{{ $category->id }}"><img src="img/png/cat.png" width="222px"
+                                         class="img-responsive center-block hvr-grow sc-start-image"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 content-bottom-border"></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 content-bottom-border"></div>
-            </div>
-        </div>
-        <div class="col-xs-5 col-xs-offset-2 sc-panel robotics-panel">
-            <div class="row">
-                <div class="col-xs-12 content-top-border"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 content">
-                    <a href="#"><img src="img/png/robot.png" width="222px"
-                                     class="img-responsive center-block hvr-grow sc-start-image"></a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 content-bottom-border"></div>
-            </div>
-        </div>
+            <?php $second = true; ?>
+        @endforeach
     </div>
 @endsection

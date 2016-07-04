@@ -7,9 +7,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/categories', function () {
-    return view('categories');
-});
+Route::get('/categories', 'CategoryController@index');
 /* Frontend Routes */
 
 /* Frontend Auth Routes */
