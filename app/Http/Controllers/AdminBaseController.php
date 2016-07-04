@@ -6,11 +6,12 @@ class AdminBaseController extends Controller
 {
 
     static $pages = [
-        'dashboard' => 'Dashboard',
-        'users' => 'Benutzer',
-        'levels' => 'Levels',
-        'teams' => 'Teams',
-        'statistics' => 'Statistik'
+        'dashboard' => ['label' => 'Dashboard', 'icon' => 'fa fa-dashboard'],
+        'users' => ['label' => 'Benutzer', 'icon' => 'fa fa-user'],
+        'levels' => ['label' => 'Level', 'icon' => 'fa fa-star'],
+        'teams' => ['label' => 'Teams', 'icon' => 'fa fa-users'],
+        'files' => ['label' => 'Dateien', 'icon' => 'fa fa-files-o'],
+        'statistics' => ['label' => 'Statistik', 'icon' => 'fa fa-bar-chart']
     ];
 
     public function __construct()

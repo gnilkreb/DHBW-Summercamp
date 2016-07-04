@@ -7,7 +7,7 @@
 
             <!-- Left Column -->
             <div class="col-xs-3">
-                <img class="img-responsive" src="/img/png/dhbw.png">
+                <img class="img-responsive" src="/img/png/dhbw2.png">
 
                 <br>
 
@@ -15,9 +15,12 @@
                     <h3>Navigation</h3>
 
                     <ul class="nav nav-pills nav-stacked">
-                        @foreach($pages as $page => $pageName)
-                            <li class="{{ (Route::getCurrentRoute()->getPath() === 'admin/' . $page ? 'active' : '') }}">
-                                <a href="/admin/{{ $page }}">{{ $pageName }}</a>
+                        @foreach($pages as $pageKey => $page)
+                            <li class="{{ (Route::getCurrentRoute()->getPath() === 'admin/' . $pageKey ? 'active' : '') }}">
+                                <a href="/admin/{{ $pageKey }}">
+                                    <i class="{{ $page['icon'] }}" style="margin-right: 5px"></i>
+                                    {{ $page['label'] }}
+                                </a>
                             </li>
                         @endforeach
                     </ul>
@@ -27,7 +30,10 @@
 
                 <ul class="nav nav-pills nav-stacked">
                     <li>
-                        <a href="/">Frontend</a>
+                        <a href="/">
+                            <i class="fa fa-television" style="margin-right: 5px"></i>
+                            Frontend
+                        </a>
                     </li>
                 </ul>
             </div>
