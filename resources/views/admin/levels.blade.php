@@ -41,19 +41,17 @@
                 </thead>
                 <tbody>
                 @foreach($levels as $level)
-                    @if($level->category_id !== $category->id)
-                        @continue
+                    @if($level->category_id == $category->id)
+                        <tr>
+                            <td>{{ $level->id }}</td>
+                            <td>
+                                <a href="/admin/level/{{ $level->id }}">{{ $level->title }}</a>
+                            </td>
+                            <td>{{ $level->order }}</td>
+                            <td>{{ $level->createdAtDiff() }}</td>
+                            <td>{{ $level->updatedAtDiff() }}</td>
+                        </tr>
                     @endif
-
-                    <tr>
-                        <td>{{ $level->id }}</td>
-                        <td>
-                            <a href="/admin/level/{{ $level->id }}">{{ $level->title }}</a>
-                        </td>
-                        <td>{{ $level->order }}</td>
-                        <td>{{ $level->createdAtDiff() }}</td>
-                        <td>{{ $level->updatedAtDiff() }}</td>
-                    </tr>
                 @endforeach
                 </tbody>
             </table>
