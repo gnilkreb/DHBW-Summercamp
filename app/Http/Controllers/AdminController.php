@@ -49,27 +49,40 @@ class AdminController extends AdminBaseController
     {
         $users = User::all();
 
-        return $this->adminView('users', ['users' => $users]);
+        return $this->adminView('users', [
+            'users' => $users
+        ]);
     }
 
     public function user($id = null)
     {
         $user = new User();
         $new = true;
+        $teams = Team::all();
 
         if ($id !== null) {
             $user = User::findOrFail($id);
             $new = false;
         }
 
-        return $this->adminView('user', ['user' => $user, 'new' => $new]);
+        return $this->adminView('user', [
+            'user' => $user,
+            'new' => $new,
+            'teams' => $teams
+        ]);
     }
 
     public function saveUser(UserRegisterRequest $request)
     {
         $user = User::firstOrNew(['id' => $request->get('id')]);
 
-        $user->fill($request->all());
+        $data = $request->all();
+
+        if ($data['team_id'] === '') {
+            $data['team_id'] = null;
+        }
+
+        $user->fill($data);
         $user->save();
 
         return redirect('/admin/users');
@@ -159,6 +172,13 @@ class AdminController extends AdminBaseController
         $team->save();
 
         return $this->adminView('teams', ['teams' => Team::all()]);
+    }
+
+    public function deleteTeam($id)
+    {
+        Team::destroy($id);
+
+        return response()->json(true);
     }
 
     public function files()

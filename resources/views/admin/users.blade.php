@@ -17,6 +17,7 @@
                 <th>Name</th>
                 <th>Alter</th>
                 <th>Geschlecht</th>
+                <th>Team</th>
                 <th>Registriert</th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@
                     <td>
                         <i class="fa fa-{{ $user->genderIcon() }}"></i>
                     </td>
+                    <td>{{ $user->teamName() }}</td>
                     <td>{{ $user->createdAtDiff() }}</td>
                 </tr>
             @endforeach

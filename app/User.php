@@ -25,7 +25,16 @@ class User extends Model implements Authenticatable
 
     public function team()
     {
-        return $this->hasOne('App\Team');
+        return $this->belongsTo('App\Team');
+    }
+
+    public function teamName()
+    {
+        if ($this->team) {
+            return $this->team->name;
+        }
+
+        return '';
     }
 
     public function genderIcon()

@@ -13,8 +13,9 @@
     <table class="table">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Name</th>
+            <th>Löschen</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,12 @@
                 <td>{{ $team->id }}</td>
                 <td>
                     <a href="/admin/team/{{ $team->id }}">{{ $team->name }}</a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs" data-delete="{{ $team->id }}" data-model="team"
+                            data-redirect="/admin/teams">
+                        <i class="fa fa-trash"></i>
+                    </button>
                 </td>
             </tr>
         @endforeach

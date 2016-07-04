@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('team/create', 'AdminController@storeTeam');
     Route::get('team/{id}', 'AdminController@editTeam');
     Route::post('team/{id}/update', 'AdminController@updateTeam');
+    Route::delete('team/{id}', 'AdminController@deleteTeam');
 
     Route::get('category/{id?}', 'CategoryController@show');
     Route::post('category', 'CategoryController@save');

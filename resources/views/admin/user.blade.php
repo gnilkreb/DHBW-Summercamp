@@ -54,6 +54,17 @@
                     <span class="help-block">{{ $errors->first('gender') }}</span>
                 </div>
 
+                <div class="form-group {{ $errors->has('team_id') ? 'has-error' : '' }}">
+                    <label for="team_id">Team</label>
+                    <select id="team_id" name="team_id" class="form-control">
+                        <option></option>
+                        @foreach($teams as $team)
+                            <option value="{{  $team->id }}" {{ $team->id === $user->team_id ? 'selected' : '' }}>{{ $team->name }}</option>
+                        @endforeach
+                    </select>
+                    <span class="help-block">{{ $errors->first('team_id') }}</span>
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-check"></i>
                     Speichern
