@@ -9,12 +9,12 @@ class FinishedTask extends Model
 
     public function user()
     {
-        return $this->hasOne('App/User');
+        return $this->hasOne('App\User');
     }
 
     public function task()
     {
-        return $this->hasOne('App/Task');
+        return $this->hasOne('App\Task');
     }
 
 }

@@ -17,12 +17,12 @@ class Level extends Model
 
     public function category()
     {
-        return $this->hasOne('App/Category');
+        return $this->hasOne('App\Category');
     }
 
     public function tasks()
     {
-        return $this->hasMany('App/Task');
+        return $this->hasMany('App\Task');
     }
 
     public function createdAtDiff()
