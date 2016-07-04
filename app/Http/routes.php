@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('team/{id}', 'AdminController@editTeam');
     Route::post('team/{id}/update', 'AdminController@updateTeam');
 
+    Route::get('category/{id?}', 'AdminController@category');
+    Route::post('category', 'AdminController@saveCategory');
     Route::post('category/{id}/active', 'AdminController@setCategoryActive');
     
     Route::get('level/{id?}', 'AdminController@level');

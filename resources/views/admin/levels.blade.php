@@ -25,7 +25,9 @@
     @foreach($categories as $category)
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">{{ $category->name }}</h3>
+                <h3 class="panel-title">
+                    <a href="/admin/category/{{ $category->id }}">{{ $category->name }}</a>
+                </h3>
             </div>
             <table class="table">
                 <thead>

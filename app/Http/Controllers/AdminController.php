@@ -6,6 +6,7 @@ use App\Admin;
 use App\Category;
 use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\CreateLevelRequest;
+use App\Http\Requests\SaveCategoryRequest;
 use App\Http\Requests\SetCategoryActiveRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Level;
@@ -129,6 +130,29 @@ class AdminController extends Controller
         $category->save();
 
         return response()->json(true);
+    }
+
+    public function category($id = null)
+    {
+        $category = new Category();
+        $new = true;
+
+        if($id !== null) {
+            $category = Category::findOrFail($id);
+            $new = false;
+        }
+
+        return $this->adminView('category', ['category' => $category, 'new' => $new]);
+    }
+
+    public function saveCategory(SaveCategoryRequest $request)
+    {
+        $category = Category::firstOrNew(['id' => $request->get('id')]);
+
+        $category->fill($request->all());
+        $category->save();
+
+        return redirect('/admin/levels');
     }
 
     public function teams()
