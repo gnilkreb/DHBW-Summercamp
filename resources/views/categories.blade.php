@@ -13,7 +13,7 @@
         @foreach($categories as $category)
             <div class="col-xs-5 @if($second === true) col-xs-offset-2 @endif sc-panel scratch-panel">
                 <div class="row">
-                    <div class="col-xs-12 content-top-border"></div>
+                    <div class="col-xs-12 content-top-border-6"></div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 content">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 content-bottom-border"></div>
+                    <div class="col-xs-12 content-bottom-border-6"></div>
                 </div>
             </div>
             <?php $second = true; ?>
