@@ -34,19 +34,21 @@ server('berkling', '193.196.7.10')
     ->password()
     ->env('deploy_path', '/home/vornetran/berkling');
 
-/**
- * Restart php-fpm on success deploy.
- */
-task('php-fpm:restart', function () {
-    // Attention: The user must have rights for restart service
-    // Attention: the command "sudo /bin/systemctl restart php-fpm.service" used only on CentOS system
-    // /etc/sudoers: username ALL=NOPASSWD:/bin/systemctl restart php-fpm.service
-    run('sudo /bin/systemctl restart php-fpm.service');
-})->desc('Restart PHP-FPM service');
-
-task('setup', function () {
-    run('npm install & bower install');
+task('deploy:bower', function () {
+    cd('{{release_path}}');
+    run('bower install');
 });
 
-after('deploy', 'setup');
-after('success', 'php-fpm:restart');
+task('deploy:npm', function () {
+    cd('{{release_path}}');
+    run('npm install');
+});
+
+task('deploy:build', function () {
+    cd('{{release_path}}');
+    run('npm run prod');
+});
+
+after('deploy', 'deploy:bower');
+after('deploy', 'deploy:npm');
+after('deploy:npm', 'deploy:build');
