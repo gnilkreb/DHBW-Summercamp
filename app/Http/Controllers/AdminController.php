@@ -90,7 +90,14 @@ class AdminController extends AdminBaseController
             $new = false;
         }
 
-        return $this->adminView('level', ['level' => $level, 'new' => $new, 'categories' => $categories]);
+        $tasks = $level->tasks->sortBy('difficulty');
+
+        return $this->adminView('level', [
+            'level' => $level,
+            'new' => $new,
+            'categories' => $categories,
+            'tasks' => $tasks
+        ]);
     }
 
     public function saveLevel(CreateLevelRequest $request)

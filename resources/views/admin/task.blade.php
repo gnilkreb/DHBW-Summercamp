@@ -33,19 +33,22 @@
                 <div class="form-group {{ $errors->has('difficulty') ? 'has-error' : '' }}">
                     <div class="radio">
                         <label class="control-label">
-                            <input type="radio" name="difficulty" id="difficulty_easy" value="1" required>
+                            <input type="radio" name="difficulty" id="difficulty_easy" value="1"
+                                   required {{ $task->difficulty === 1 ? 'checked' : '' }}>
                             Einfach
                         </label>
                     </div>
                     <div class="radio">
                         <label class="control-label">
-                            <input type="radio" name="difficulty" id="difficulty_medium" value="2">
+                            <input type="radio" name="difficulty" id="difficulty_medium"
+                                   value="2" {{ $task->difficulty === 2 ? 'checked' : '' }}>
                             Mittel
                         </label>
                     </div>
                     <div class="radio">
                         <label class="control-label">
-                            <input type="radio" name="difficulty" id="difficulty_hard" value="3">
+                            <input type="radio" name="difficulty" id="difficulty_hard"
+                                   value="3" {{ $task->difficulty === 3 ? 'checked' : '' }}>
                             Schwierig
                         </label>
                     </div>
@@ -54,7 +57,7 @@
 
                 <div class="form-group {{ $errors->has('difficulty') ? 'has-error' : '' }}">
                     <label for="content" class="control-label">Inhalt</label>
-                    <textarea id="content" name="content" class="form-control" placeholder="Inhalt" required></textarea>
+                    <textarea id="content" name="content" class="form-control" placeholder="Inhalt" required>{{ $task->content }}</textarea>
                     <span class="help-block">{{ $errors->first('content') }}</span>
                 </div>
 

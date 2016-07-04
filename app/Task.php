@@ -24,4 +24,15 @@ class Task extends Model
         return $this->hasOne('App\File');
     }
 
+    public function difficultyName()
+    {
+        $difficultyNames = [
+            'Einfach',
+            'Mittel',
+            'Schwer'
+        ];
+
+        return $difficultyNames[$this->difficulty];
+    }
+
 }
