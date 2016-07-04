@@ -45,4 +45,12 @@ class Task extends Model
         return $difficultyColors[$this->difficulty];
     }
 
+    public function taskChecked() {
+        //TODO: has to be done :D
+        if(rand(1, 10) < 5) {
+            return true;
+        }
+        return false;
+    }
+
 }
