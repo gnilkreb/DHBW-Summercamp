@@ -92,7 +92,7 @@ class AdminController extends Controller
     public function levels()
     {
         $categories = Category::all();
-        $levels = Level::all();
+        $levels = Level::all()->sortBy('order');
 
         return $this->adminView('levels', ['categories' => $categories, 'levels' => $levels]);
     }
@@ -142,7 +142,9 @@ class AdminController extends Controller
             $new = false;
         }
 
-        return $this->adminView('category', ['category' => $category, 'new' => $new, 'levels' => $category->levels]);
+        $levels = $category->levels->sortBy('order');
+
+        return $this->adminView('category', ['category' => $category, 'new' => $new, 'levels' => $levels]);
     }
 
     public function saveCategory(SaveCategoryRequest $request)
