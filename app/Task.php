@@ -35,4 +35,14 @@ class Task extends Model
         return $difficultyNames[$this->difficulty];
     }
 
+    public function difficultyColor() {
+        $difficultyColors = [
+            1 => 'green',
+            2 => 'brown',
+            3 => 'red'
+        ];
+
+        return $difficultyColors[$this->difficulty];
+    }
+
 }
