@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,15 +39,6 @@ class User extends Model implements Authenticatable
     public function genderIcon()
     {
         return $this->gender === 1 ? 'venus' : 'mars';
-    }
-
-    public function createdAtDiff()
-    {
-        Carbon::setLocale('de');
-
-        $createdAt = new Carbon($this->created_at);
-
-        return $createdAt->diffForHumans();
     }
 
     /**

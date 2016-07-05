@@ -35,8 +35,8 @@
                     <th>#</th>
                     <th>Titel</th>
                     <th>Reihenfolge</th>
-                    <th>Erstellt</th>
                     <th>Modifiziert</th>
+                    <th>Erstellt</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,8 +48,8 @@
                                 <a href="/admin/level/{{ $level->id }}">{{ $level->title }}</a>
                             </td>
                             <td>{{ $level->order }}</td>
-                            <td>{{ $level->createdAtDiff() }}</td>
-                            <td>{{ $level->updatedAtDiff() }}</td>
+                            <td>{{ Carbon::diffForHumans($level->updated_at) }}</td>
+                            <td>{{ Carbon::diffForHumans($level->created_at) }}</td>
                         </tr>
                     @endif
                 @endforeach

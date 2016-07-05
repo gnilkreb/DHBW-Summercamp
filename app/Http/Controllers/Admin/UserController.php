@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\Http\Requests\RegisterRequest;
 use App\Team;
 use App\User;
@@ -12,9 +13,11 @@ class UserController extends BaseController
     public function index()
     {
         $users = User::all();
+        $admins = Admin::all();
 
         return $this->adminView('users', [
-            'users' => $users
+            'users' => $users,
+            'admins' => $admins
         ]);
     }
 
