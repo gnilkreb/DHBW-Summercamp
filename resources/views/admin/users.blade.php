@@ -29,6 +29,7 @@
             <th>Team</th>
             <th>Modifiziert</th>
             <th>Registriert</th>
+            <th>Löschen</th>
         </tr>
         </thead>
         <tbody>
@@ -45,6 +46,11 @@
                 <td>{{ $user->teamName() }}</td>
                 <td>{{ Carbon::diffForHumans($user->updated_at) }}</td>
                 <td>{{ Carbon::diffForHumans($user->created_at) }}</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs" data-delete="{{ $user->id }}" data-model="user" data-redirect="/admin/users">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
             </tr>
         @endforeach
         </tbody>
@@ -72,7 +78,7 @@
                 <td>{{ Carbon::diffForHumans($admin->updated_at) }}</td>
                 <td>{{ Carbon::diffForHumans($admin->created_at) }}</td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs">
+                    <button type="button" class="btn btn-danger btn-xs" data-delete="{{ $admin->id }}" data-model="admin" data-redirect="/admin/users">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>

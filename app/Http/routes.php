@@ -45,7 +45,8 @@ Route::group([
     Route::get('users', 'UserController@index');
     Route::get('user/{id?}', 'UserController@show');
     Route::post('user', 'UserController@save');
-    Route::delete('user/{id}', 'UserController@delete');
+    Route::delete('user/{id}', 'UserController@deleteUser');
+    Route::delete('admin/{id}', 'UserController@deleteAdmin');
 
     /* Categories */
     Route::get('category/{id?}', 'CategoryController@show');
