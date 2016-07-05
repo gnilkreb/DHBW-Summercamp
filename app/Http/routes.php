@@ -22,15 +22,16 @@ Route::get('/register', function () {
 });
 
 Route::post('/register', 'UserController@register');
-/* Frontend Auth Routes */
 
+/* File Upload retrieval */
 Route::get('/uploads/{name}', 'Admin\FileController@show');
 
-/* Admin Routes */
+/* Admin Redirect */
 Route::get('/admin', function () {
     return redirect('/admin/dashboard');
 });
 
+/* Admin Routes */
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin'
