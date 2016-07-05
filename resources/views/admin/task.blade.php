@@ -61,6 +61,13 @@
                     <span class="help-block">{{ $errors->first('content') }}</span>
                 </div>
 
+                <div class="form-group {{ $errors->has('youtube_url') ? 'has-error' : '' }}">
+                    <label class="control-label" for="youtube_url">YouTube URL</label>
+                    <input id="youtube_url" name="youtube_url" type="text" class="form-control" placeholder="YouTube URL"
+                           value="{{ $task->youtube_url }}">
+                    <span class="help-block">{{ $errors->first('youtube_url') }}</span>
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-check"></i>
                     Speichern

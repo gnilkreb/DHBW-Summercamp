@@ -25,7 +25,8 @@ class SaveTaskRequest extends Request
         return [
             'level_id' => 'required|numeric',
             'difficulty' => 'required|numeric|min:1|max:3',
-            'content' => 'required|string'
+            'content' => 'required|string',
+            'youtube_url' => 'optional|string'
         ];
     }
 
@@ -34,7 +35,8 @@ class SaveTaskRequest extends Request
         return [
             'level_id' => 'Level',
             'difficulty' => 'Schwierigkeitsgrad',
-            'content' => 'Inhalt'
+            'content' => 'Inhalt',
+            'youtube_url' => 'YouTube URL'
         ];
     }
 
