@@ -14,7 +14,6 @@ body {
 }
 
 .app-font {
-  //font-family: 'Nunito', sans-serif;
   font-family: 'Timber Font', sans-serif;
 }
 
@@ -40,33 +39,39 @@ body {
 }
 
 .content {
+  background-image: url('../img/png/content_pattern.png');
   background-size: 100%;
-  background: url('../img/png/content_pattern.png') repeat-y;
-  padding: 10px 3px 3px;
+  background-repeat: repeat-y;
+  padding: 3px;
+  padding-top: 10px;
 }
 
 .content-top-border-6 {
+  background-image: url('../img/png/content_topborder.png');
   background-size: 100%;
   min-height: 3px;
-  background: url('../img/png/content_topborder.png') no-repeat;
+  background-repeat: no-repeat;
 }
 
 .content-top-border-12 {
+  background-image: url('../img/png/content_topborder.png');
   background-size: 100%;
   min-height: 5px;
-  background: url('../img/png/content_topborder.png') no-repeat;
+  background-repeat: no-repeat;
 }
 
 .content-bottom-border-6 {
+  background-image: url('../img/png/content_bottomborder.png');
   background-size: 100%;
   min-height: 3px;
-  background: url('../img/png/content_bottomborder.png') no-repeat;
+  background-repeat: no-repeat;
 }
 
 .content-bottom-border-12 {
+  background-image: url('../img/png/content_bottomborder.png');
   background-size: 100%;
   min-height: 5px;
-  background: url('../img/png/content_bottomborder.png') no-repeat;
+  background-repeat: no-repeat;
 }
 
 .sc-start-image {
