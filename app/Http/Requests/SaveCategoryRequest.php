@@ -22,7 +22,7 @@ class SaveCategoryRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories',
+            'name' => 'required',
             'image_url' => 'required|url'
         ];
     }

@@ -30,6 +30,13 @@
                     <span class="help-block">{{ $errors->first('name') }}</span>
                 </div>
 
+                <div class="form-group {{ $errors->has('image_url') ? 'has-error' : '' }}">
+                    <label class="control-label" for="image_url">Bild URL</label>
+                    <input id="image_url" name="image_url" type="text" class="form-control" placeholder="Bild URL" required
+                           value="{{ $category->image_url }}">
+                    <span class="help-block">{{ $errors->first('image_url') }}</span>
+                </div>
+
                 <div class="checkbox">
                     <label>
                         <input type="hidden" name="active" value="0">
