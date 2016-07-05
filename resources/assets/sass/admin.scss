@@ -1,7 +1,9 @@
-body {
-  padding-top: 50px;
-}
-
 .admin-font {
   font-family: 'Lato', sans-serif;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 50px;
+  }
 }

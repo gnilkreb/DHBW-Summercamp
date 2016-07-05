@@ -7,9 +7,7 @@
 
             <!-- Left Column -->
             <div class="col-sm-3">
-                <img class="img-responsive" src="/img/png/dhbw2.png" style="max-width: 250px">
-
-                <br>
+                <img class="img-responsive hidden-xs" src="/img/png/dhbw2.png">
 
                 @if(Auth::guard('admin')->check())
                     <h3>Navigation</h3>
