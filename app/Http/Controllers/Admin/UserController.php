@@ -55,16 +55,9 @@ class UserController extends BaseController
         return redirect('/admin/users');
     }
 
-    public function deleteUser($id)
+    public function delete($id)
     {
         User::destroy($id);
-
-        return response()->json(true);
-    }
-
-    public function deleteAdmin($id)
-    {
-        Admin::destroy($id);
 
         return response()->json(true);
     }

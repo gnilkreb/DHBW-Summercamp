@@ -9,7 +9,7 @@
             Neuer Benutzer
         </a>
 
-        <a href="/admin/new" class="btn btn-default">
+        <a href="/admin/admin" class="btn btn-default">
             <i class="fa fa-user-secret"></i>
             Neuer Admin
         </a>
@@ -74,7 +74,9 @@
         @foreach($admins as $admin)
             <tr>
                 <td>{{ $admin->id }}</td>
-                <td>{{ $admin->name }}</td>
+                <td>
+                    <a href="/admin/admin/{{ $admin->id }}">{{ $admin->name }}</a>
+                </td>
                 <td>{{ Carbon::diffForHumans($admin->updated_at) }}</td>
                 <td>{{ Carbon::diffForHumans($admin->created_at) }}</td>
                 <td>

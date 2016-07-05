@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model implements Authenticatable
 {
 
-    protected $fillable = ['name', 'password'];
+    protected $fillable = [
+        'name',
+        'password'
+    ];
 
     /**
      * Get the name of the unique identifier for the user.
