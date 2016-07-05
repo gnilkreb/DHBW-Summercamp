@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
+
 class TaskController extends Controller
 {
 
     public function show($id)
     {
-        return view('task');
+        $task = Task::findOrFail($id);
+
+        return view('task', [
+            'task' => $task
+        ]);
     }
 
 }
