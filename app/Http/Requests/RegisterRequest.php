@@ -15,6 +15,7 @@ class RegisterRequest extends Request
         return [
             'first_name' => 'required|min:3|max:20',
             'last_name' => 'required|min:3|max:20',
+            'password' => 'required|string',
             'age' => 'required|numeric|min:1|max:99',
             'gender' => 'required|boolean'
         ];
@@ -25,6 +26,7 @@ class RegisterRequest extends Request
         return [
             'first_name' => 'Vorname',
             'last_name' => 'Nachname',
+            'password' => 'Passwort',
             'age' => 'Alter',
             'gender' => 'Geschlecht'
         ];

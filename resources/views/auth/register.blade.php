@@ -18,6 +18,12 @@
             <span class="help-block">{{ $errors->first('last_name') }}</span>
         </div>
 
+        <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+            <label for="password">Passwort</label>
+            <input id="password" name="password" type="text" class="form-control" placeholder="Passwort" required>
+            <span class="help-block">{{ $errors->first('password') }}</span>
+        </div>
+
         <div class="form-group {{ $errors->has('age') ? 'has-error' : '' }}">
             <label for="age">Alter</label>
             <input id="age" name="age" type="number" class="form-control" placeholder="Alter" required min="1" max="99">
