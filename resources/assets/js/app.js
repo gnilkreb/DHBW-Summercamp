@@ -3,6 +3,7 @@ import './script';
 import './levels';
 import './file-input';
 import './files';
+import './options';
 
 $.ajaxSetup({
     headers: {

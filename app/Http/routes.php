@@ -1,9 +1,7 @@
 <?php
 
 /* Frontend Routes */
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 /* Categories */
 Route::get('/categories', 'CategoryController@index');
@@ -40,6 +38,7 @@ Route::group([
 
     /* Dashboard */
     Route::get('dashboard', 'DashboardController@index');
+    Route::post('option/{id}', 'DashboardController@option');
 
     /* Users */
     Route::get('users', 'UserController@index');

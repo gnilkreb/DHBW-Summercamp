@@ -10,7 +10,9 @@ class Option extends Model
     protected $fillable = [
         'id',
         'key',
-        'name'
+        'name',
+        'type',
+        'label'
     ];
 
 }

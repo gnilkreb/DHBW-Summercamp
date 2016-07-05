@@ -18,10 +18,12 @@
                     <div class="row">
                         <a href="login"><img src="img/png/menu_login.png" width="200px" class="hvr-grow"/></a>
                     </div>
-                    <div class="row">
-                        <a href="register"><img src="img/png/menu_register.png" width="200px"
-                                                     class="hvr-grow"/></a>
-                    </div>
+                    @if($register)
+                        <div class="row">
+                            <a href="register"><img src="img/png/menu_register.png" width="200px"
+                                                    class="hvr-grow"/></a>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="row">
