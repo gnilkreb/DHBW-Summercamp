@@ -12,7 +12,7 @@ class CreateOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('options', function (Blueprint $table) {
+        Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
             $table->string('key')->unique();
             $table->string('value');
