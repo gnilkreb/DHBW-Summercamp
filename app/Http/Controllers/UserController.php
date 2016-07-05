@@ -36,7 +36,7 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended('categories');
+        return redirect()->intended('/categories');
     }
     
 }

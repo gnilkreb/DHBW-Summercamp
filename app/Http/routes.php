@@ -1,8 +1,6 @@
 <?php
 
 /* Frontend Routes */
-use App\Http\Controllers\AdminController;
-
 Route::get('/', function () {
     return view('home');
 });
@@ -40,11 +38,13 @@ Route::get('/admin', function () {
     return redirect('/admin/dashboard');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin'
+], function () {
     /* Admin Auth Routes */
-    Route::get('login', 'AdminController@login');
-    Route::post('login', 'AdminController@authenticate');
-    /* Admin Auth Routes */
+    Route::get('login', 'LoginController@show');
+    Route::post('login', 'LoginController@login');
 
     Route::get('user/{id?}', 'AdminController@user');
     Route::post('user', 'AdminController@saveUser');
@@ -72,7 +72,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('level', 'AdminController@saveLevel');
     Route::delete('level/{id}', 'AdminController@deleteLevel');
 
-    $pages = AdminController::$pages;
+    $pages = \App\Http\Controllers\Admin\BaseController::$pages;
 
     foreach ($pages as $page => $pageName) {
         Route::get($page, 'AdminController@' . $page);

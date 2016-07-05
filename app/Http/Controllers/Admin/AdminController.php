@@ -1,44 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Admin;
 use App\Category;
-use App\File;
-use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\CreateLevelRequest;
 use App\Http\Requests\UploadFileRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Level;
 use App\Team;
 use App\User;
-use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
-class AdminController extends AdminBaseController
+class AdminController extends BaseController
 {
-
-    public function login()
-    {
-        $admins = Admin::all();
-
-        return view('admin.login', ['pages' => [], 'admins' => $admins]);
-    }
-
-    public function authenticate(AdminLoginRequest $request)
-    {
-        $adminId = $request->admin_id;
-        $password = $request->password;
-
-        if (Auth::guard('admin')->attempt(['id' => $adminId, 'password' => $password])) {
-            return redirect()->intended('admin.dashboard');
-        }
-
-        return redirect()->back()->withErrors(['password' => 'Falsches Passwort']);
-    }
 
     public function dashboard()
     {

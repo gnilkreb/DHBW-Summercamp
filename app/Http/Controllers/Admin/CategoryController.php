@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Requests\SaveCategoryRequest;
 use Illuminate\Http\Request;
 
-class CategoryController extends AdminBaseController
+class CategoryController extends BaseController
 {
 
     public function index() {

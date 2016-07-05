@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\SaveTaskRequest;
 use App\Level;
 use App\Task;
 
-class TaskController extends AdminBaseController
+class TaskController extends BaseController
 {
 
     public function show($id = null)
