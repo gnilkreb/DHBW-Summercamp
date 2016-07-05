@@ -5,7 +5,7 @@
             <select id="school" name="school" class="form-control" {{ $admin ? '' : 'required' }}>
                 <option></option>
                 @foreach($schools as $school)
-                    <option value="{{ $school }}" {{ ($user && $user->school === $school) ? 'selected' : '' }}>{{ $school }}</option>
+                    <option value="{{ $school }}" {{ (!empty($user) && $user->school === $school) ? 'selected' : '' }}>{{ $school }}</option>
                 @endforeach
             </select>
             <span class="help-block">{{ $errors->first('school') }}</span>
@@ -17,7 +17,7 @@
             <select id="grade" name="grade" class="form-control" {{ $admin ? '' : 'required' }}>
                 <option></option>
                 @foreach($grades as $grade)
-                    <option value="{{ $grade }}" {{ ($user && $user->grade == $grade) ? 'selected' : '' }}>{{ $grade }}. Klasse</option>
+                    <option value="{{ $grade }}" {{ (!empty($user) && $user->grade == $grade) ? 'selected' : '' }}>{{ $grade }}. Klasse</option>
                 @endforeach
             </select>
             <span class="help-block">{{ $errors->first('grade') }}</span>
