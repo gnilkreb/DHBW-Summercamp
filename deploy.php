@@ -32,6 +32,11 @@ task('deploy:npm', function () {
     run('npm install');
 });
 
+task('deploy:migrate', function () {
+    cd('{{release_path}}');
+    run('php artisan migrate');
+});
+
 task('deploy:build', function () {
     cd('{{release_path}}');
     run('npm run prod');
@@ -43,5 +48,6 @@ task('deploy:php-fpm', function () {
 
 after('deploy', 'deploy:bower');
 after('deploy', 'deploy:npm');
+after('deploy', 'deploy:migrate');
 after('deploy:npm', 'deploy:build');
 after('deploy:build', 'deploy:php-fpm');
