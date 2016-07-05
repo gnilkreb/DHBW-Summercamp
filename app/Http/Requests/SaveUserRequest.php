@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class RegisterRequest extends Request
+class SaveUserRequest extends Request
 {
 
     public function authorize()
@@ -15,11 +15,11 @@ class RegisterRequest extends Request
         return [
             'first_name' => 'required|min:3|max:20',
             'last_name' => 'required|min:3|max:20',
-            'password' => 'required|string',
+            'password' => 'string',
             'age' => 'required|numeric|min:1|max:99',
             'gender' => 'required|boolean',
-            'school' => 'required|string',
-            'grade' => 'required|numeric|min:1|max:13'
+            'school' => 'string',
+            'grade' => 'numeric|min:1|max:13'
         ];
     }
 

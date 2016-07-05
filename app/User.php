@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model implements Authenticatable
 {
 
+    static public function schoolsAndGrades()
+    {
+        return [
+            'schools' => [
+                'Grundschule',
+                'Hauptschule',
+                'Realschule',
+                'Gymnasium'
+            ],
+            'grades' => range(1, 13)
+        ];
+    }
+
     protected $fillable = [
         'id',
         'first_name',
@@ -17,7 +30,9 @@ class User extends Model implements Authenticatable
         'team_id',
         'login_at',
         'password',
-        'role'
+        'role',
+        'school',
+        'grade'
     ];
 
     protected $dates = ['login_at'];
@@ -39,6 +54,15 @@ class User extends Model implements Authenticatable
         }
 
         return '';
+    }
+
+    public function schoolAndGrade()
+    {
+        if (!$this->school || !$this->grade) {
+            return false;
+        }
+
+        return $this->school . ' ' . $this->grade . '. Klasse';
     }
 
     public function genderIcon()

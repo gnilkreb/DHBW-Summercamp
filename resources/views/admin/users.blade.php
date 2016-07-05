@@ -22,6 +22,7 @@
             <th>Alter</th>
             <th>Geschlecht</th>
             <th>Team</th>
+            <th>Schule</th>
             <th>Admin</th>
             <th>Login</th>
             <th>Modifiziert</th>
@@ -41,6 +42,11 @@
                     <i class="fa fa-{{ $user->genderIcon() }}"></i>
                 </td>
                 <td>{{ $user->teamName() }}</td>
+                <td>
+                    @if($user->schoolAndGrade())
+                        <i class="fa fa-graduation-cap" title="{{ $user->schoolAndGrade() }}"></i>
+                    @endif
+                </td>
                 <td>
                     @if($user->isAdmin())
                         <i class="fa fa-check"></i>

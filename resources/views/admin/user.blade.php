@@ -37,6 +37,12 @@
                     <span class="help-block">{{ $errors->first('last_name') }}</span>
                 </div>
 
+                <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                    <label class="control-label" for="password">Passwort</label>
+                    <input id="password" type="password" name="password" class="form-control" placeholder="Passwort">
+                    <span class="help-block">{{ $errors->first('password') }}</span>
+                </div>
+
                 <div class="form-group {{ $errors->has('age') ? 'has-error' : '' }}">
                     <label for="age">Alter</label>
                     <input id="age" name="age" type="number" class="form-control" placeholder="Alter" required min="1"
@@ -65,6 +71,8 @@
                     <span class="help-block">{{ $errors->first('team_id') }}</span>
                 </div>
 
+                @include('includes.schools-and-grades', ['admin' => true])
+
                 <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
                     <label for="role">Rolle</label>
                     <select id="role" name="role" class="form-control" required>
@@ -72,12 +80,6 @@
                         <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
                     </select>
                     <span class="help-block">{{ $errors->first('role') }}</span>
-                </div>
-
-                <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                    <label class="control-label" for="password">Passwort</label>
-                    <input id="password" type="password" name="password" class="form-control" placeholder="Passwort">
-                    <span class="help-block">{{ $errors->first('password') }}</span>
                 </div>
 
                 <button type="submit" class="btn btn-primary">

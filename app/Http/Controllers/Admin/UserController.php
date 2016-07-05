@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\SaveUserRequest;
 use App\Team;
 use App\User;
 
@@ -33,10 +33,10 @@ class UserController extends BaseController
             'user' => $user,
             'new' => $new,
             'teams' => $teams
-        ]);
+        ] + User::schoolsAndGrades());
     }
 
-    public function save(RegisterRequest $request)
+    public function save(SaveUserRequest $request)
     {
         $user = User::firstOrNew(['id' => $request->get('id')]);
 

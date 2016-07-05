@@ -20,7 +20,7 @@
 
         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
             <label for="password">Passwort</label>
-            <input id="password" name="password" type="text" class="form-control" placeholder="Passwort" required>
+            <input id="password" name="password" type="password" class="form-control" placeholder="Passwort" required>
             <span class="help-block">{{ $errors->first('password') }}</span>
         </div>
 
@@ -32,13 +32,15 @@
 
         <div class="form-group {{ $errors->has('gender') ? 'has-error' : '' }}">
             <label for="gender">Geschlecht</label>
-            <select id="gender" name="gender" class="form-control">
+            <select id="gender" name="gender" class="form-control" required>
                 <option></option>
                 <option value="1">Weiblich</option>
                 <option value="0">Männlich</option>
             </select>
             <span class="help-block">{{ $errors->first('gender') }}</span>
         </div>
+
+        @include('includes.schools-and-grades', ['admin' => false])
 
         <div class="form-group">
             <div class="row">
