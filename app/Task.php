@@ -51,7 +51,7 @@ class Task extends Model
         $color = $this->difficultyColor();
         $checked = $this->taskChecked();
 
-        return '/img/png/btn_' . $color . ($checked ? '_checked' : '') . '.png';
+        return '/img/png/btn_' . $color . ($checked ? '_check' : '') . '.png';
     }
 
     public function taskChecked()
