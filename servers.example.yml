@@ -2,10 +2,10 @@ production:
   host: 193.196.7.10
   user: vornetran
   password: secret
-  deploy_path: /home/vornetran/production
+  deploy_path: /summercamp/production
 
 berkling:
   host: 193.196.7.10
   user: vornetran
   password: secret
-  deploy_path: /home/vornetran/berkling
+  deploy_path: /summercamp/berkling
