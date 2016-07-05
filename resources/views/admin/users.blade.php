@@ -8,11 +8,6 @@
             <i class="fa fa-user-plus"></i>
             Neuer Benutzer
         </a>
-
-        <a href="/admin/admin" class="btn btn-default">
-            <i class="fa fa-user-secret"></i>
-            Neuer Admin
-        </a>
     </div>
 
     <hr>
@@ -27,6 +22,7 @@
             <th>Alter</th>
             <th>Geschlecht</th>
             <th>Team</th>
+            <th>Admin</th>
             <th>Login</th>
             <th>Modifiziert</th>
             <th>Registriert</th>
@@ -35,7 +31,7 @@
         </thead>
         <tbody>
         @foreach($users as $user)
-            <tr>
+            <tr class="{{ $user->isAdmin() ? 'active' : '' }}">
                 <td>{{ $user->id }}</td>
                 <td>
                     <a href="user/{{ $user->id }}">{{ $user->name() }}</a>
@@ -45,46 +41,16 @@
                     <i class="fa fa-{{ $user->genderIcon() }}"></i>
                 </td>
                 <td>{{ $user->teamName() }}</td>
+                <td>
+                    @if($user->isAdmin())
+                        <i class="fa fa-check"></i>
+                    @endif
+                </td>
                 <td>{{ Carbon::diffForHumans($user->login_at) }}</td>
                 <td>{{ Carbon::diffForHumans($user->updated_at) }}</td>
                 <td>{{ Carbon::diffForHumans($user->created_at) }}</td>
                 <td>
                     <button type="button" class="btn btn-danger btn-xs" data-delete="{{ $user->id }}" data-model="user" data-redirect="/admin/users">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-
-    <hr>
-
-    <h3>Admins</h3>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <td>#</td>
-            <td>Name</td>
-            <td>Login</td>
-            <td>Modifiziert</td>
-            <td>Erstellt</td>
-            <td>Löschen</td>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($admins as $admin)
-            <tr>
-                <td>{{ $admin->id }}</td>
-                <td>
-                    <a href="/admin/admin/{{ $admin->id }}">{{ $admin->name }}</a>
-                </td>
-                <td>{{ $admin->loginAt() }}</td>
-                <td>{{ Carbon::diffForHumans($admin->updated_at) }}</td>
-                <td>{{ Carbon::diffForHumans($admin->created_at) }}</td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-xs" data-delete="{{ $admin->id }}" data-model="admin" data-redirect="/admin/users">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>

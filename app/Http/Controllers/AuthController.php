@@ -36,15 +36,20 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $userId = $request->user_id;
-        $user = User::findOrFail($userId);
+        $password = $request->password;
 
-        Auth::login($user);
+        if (Auth::guard('web')->attempt(['id' => $userId, 'password' => $password])) {
+            $user = User::findOrFail($userId);
+            $user->login_at = Carbon::now();
 
-        $user->login_at = Carbon::now();
+            $user->save();
 
-        $user->save();
+            $intended = $request->get('redirect');
 
-        return redirect()->intended('/categories');
+            return redirect()->intended($intended);
+        }
+
+        return redirect()->back()->withErrors(['password' => 'Falsches Passwort']);
     }
 
 }

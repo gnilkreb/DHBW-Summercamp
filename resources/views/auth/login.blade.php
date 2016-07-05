@@ -3,8 +3,14 @@
 @section('title', 'Anmelden')
 
 @section('auth-content')
+    @if($errors->has('message'))
+        <div class="alert alert-warning">{{ $errors->first('message') }}</div>
+    @endif
+
     <form style="margin: 25px;" method="POST" action="login">
         {{ csrf_field() }}
+
+        <input type="hidden" name="redirect" value="/categories">
 
         <div class="form-group">
             <label class="control-label" for="user_id">Wer bist du?</label>
@@ -14,6 +20,12 @@
                     <option value="{{ $user->id }}">{{ $user->name() }}</option>
                 @endforeach
             </select>
+        </div>
+
+        <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+            <label class="control-label" for="password">Passwort</label>
+            <input id="password" type="password" name="password" class="form-control" placeholder="Passwort" required>
+            <span class="help-block">{{ $errors->first('password') }}</span>
         </div>
 
         <div class="form-group">

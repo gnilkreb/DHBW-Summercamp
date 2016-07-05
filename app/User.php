@@ -15,7 +15,9 @@ class User extends Model implements Authenticatable
         'age',
         'gender',
         'team_id',
-        'login_at'
+        'login_at',
+        'password',
+        'role'
     ];
 
     protected $dates = ['login_at'];
@@ -42,6 +44,16 @@ class User extends Model implements Authenticatable
     public function genderIcon()
     {
         return $this->gender === 1 ? 'venus' : 'mars';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 
     /**

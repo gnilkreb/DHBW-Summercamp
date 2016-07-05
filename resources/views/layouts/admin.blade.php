@@ -11,7 +11,7 @@
                 <div class="col-sm-3">
                     <img class="img-responsive hidden-xs" src="/img/png/dhbw2.png">
 
-                    @if(Auth::guard('admin')->check())
+                    @if(Auth::guard('web')->check())
                         <h3>Navigation</h3>
 
                         <ul class="nav nav-pills nav-stacked">

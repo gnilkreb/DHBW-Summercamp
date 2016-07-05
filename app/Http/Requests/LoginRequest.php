@@ -23,14 +23,16 @@ class LoginRequest extends Request
     public function rules()
     {
         return [
-            'user_id' => 'required|numeric'
+            'user_id' => 'required|numeric',
+            'password' => 'required|string'
         ];
     }
 
     public function attributes()
     {
         return [
-            'user_id' => 'Benutzer'
+            'user_id' => 'Benutzer',
+            'password' => 'Passwort'
         ];
     }
 

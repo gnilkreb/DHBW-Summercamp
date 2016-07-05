@@ -18,7 +18,7 @@ class BaseController extends Controller
 
     public function __construct($except = [])
     {
-        $this->middleware('auth:admin', [
+        $this->middleware('auth.admin', [
             'except' => $except
         ]);
     }

@@ -28,13 +28,13 @@ Route::get('/admin', function () {
 });
 
 /* Admin Routes */
+
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin'
 ], function () {
     /* Auth */
     Route::get('login', 'LoginController@index');
-    Route::post('login', 'LoginController@login');
 
     /* Dashboard */
     Route::get('dashboard', 'DashboardController@index');
@@ -45,11 +45,6 @@ Route::group([
     Route::get('user/{id?}', 'UserController@show');
     Route::post('user', 'UserController@save');
     Route::delete('user/{id}', 'UserController@delete');
-
-    /* Admins */
-    Route::get('admin/{id?}', 'AdminController@show');
-    Route::post('admin', 'AdminController@save');
-    Route::delete('admin/{id}', 'AdminController@delete');
 
     /* Categories */
     Route::get('category/{id?}', 'CategoryController@show');

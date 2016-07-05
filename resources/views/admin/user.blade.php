@@ -65,6 +65,21 @@
                     <span class="help-block">{{ $errors->first('team_id') }}</span>
                 </div>
 
+                <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
+                    <label for="role">Rolle</label>
+                    <select id="role" name="role" class="form-control" required>
+                        <option value="user" {{ $new || $user->role === 'user' ? 'selected' : '' }}>Benutzer</option>
+                        <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
+                    </select>
+                    <span class="help-block">{{ $errors->first('role') }}</span>
+                </div>
+
+                <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                    <label class="control-label" for="password">Passwort</label>
+                    <input id="password" type="password" name="password" class="form-control" placeholder="Passwort">
+                    <span class="help-block">{{ $errors->first('password') }}</span>
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-check"></i>
                     Speichern

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 
-class TaskController extends Controller
+class TaskController extends BaseController
 {
 
     public function show($id)

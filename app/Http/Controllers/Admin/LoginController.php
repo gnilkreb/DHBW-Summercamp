@@ -4,38 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminLoginRequest;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class LoginController extends Controller
 {
 
     public function index()
     {
-        $admins = Admin::all();
+        $users = User::all()->where('role', 'admin');
 
         return view('admin.login', [
             'pages' => [],
-            'admins' => $admins
+            'users' => $users
         ]);
-    }
-
-    public function login(AdminLoginRequest $request)
-    {
-        $adminId = $request->admin_id;
-        $password = $request->password;
-
-        if (Auth::guard('admin')->attempt(['id' => $adminId, 'password' => $password])) {
-            $admin = Admin::findOrFail($adminId);
-            $admin->login_at = Carbon::now();
-
-            $admin->save();
-
-            return redirect()->intended('/admin/dashboard');
-        }
-
-        return redirect()->back()->withErrors(['password' => 'Falsches Passwort']);
     }
 
 }

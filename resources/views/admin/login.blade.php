@@ -5,14 +5,20 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12 col-sm-6">
-            <form method="POST" action="login">
+            @if($errors->has('message'))
+                <div class="alert alert-warning">{{ $errors->first('message') }}</div>
+            @endif
+
+            <form method="POST" action="/login">
                 {{ csrf_field() }}
 
+                <input type="hidden" name="redirect" value="/admin">
+
                 <div class="form-group">
-                    <label class="control-label" for="admin_id">Admin</label>
-                    <select id="admin_id" name="admin_id" class="form-control">
-                        @foreach($admins as $admin)
-                            <option value="{{ $admin->id }}">{{ $admin->name }}</option>
+                    <label class="control-label" for="user_id">Benutzer</label>
+                    <select id="user_id" name="user_id" class="form-control">
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name() }}</option>
                         @endforeach
                     </select>
                 </div>

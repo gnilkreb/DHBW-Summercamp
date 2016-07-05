@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin;
 use App\Http\Requests\RegisterRequest;
 use App\Team;
 use App\User;
@@ -12,12 +11,10 @@ class UserController extends BaseController
 
     public function index()
     {
-        $users = User::all();
-        $admins = Admin::all();
+        $users = User::all()->sortBy('role');
 
         return $this->adminView('users', [
-            'users' => $users,
-            'admins' => $admins
+            'users' => $users
         ]);
     }
 
@@ -47,6 +44,12 @@ class UserController extends BaseController
 
         if ($data['team_id'] === '') {
             $data['team_id'] = null;
+        }
+
+        if ($data['password'] !== '') {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
         }
 
         $user->fill($data);
