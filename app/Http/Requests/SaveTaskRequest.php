@@ -26,7 +26,7 @@ class SaveTaskRequest extends Request
             'level_id' => 'required|numeric',
             'difficulty' => 'required|numeric|min:1|max:3',
             'content' => 'required|string',
-            'youtube_url' => 'optional|string'
+            'youtube_url' => 'string'
         ];
     }
 
