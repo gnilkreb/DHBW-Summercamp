@@ -15,8 +15,9 @@ set('shared_dirs', [
     'storage/framework/sessions',
     'storage/framework/views',
     'storage/logs',
+    'node_modules'
 ]);
-set('writable_dirs', ['bootstrap/cache', 'storage']);
+set('writable_dirs', ['bootstrap/cache', 'storage', 'node_modules']);
 
 // Configure servers
 server('production', '193.196.7.10')
