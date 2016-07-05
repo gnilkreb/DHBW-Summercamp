@@ -42,40 +42,49 @@ Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin'
 ], function () {
-    /* Admin Auth Routes */
-    Route::get('login', 'LoginController@show');
+    /* Auth */
+    Route::get('login', 'LoginController@index');
     Route::post('login', 'LoginController@login');
 
-    Route::get('user/{id?}', 'AdminController@user');
-    Route::post('user', 'AdminController@saveUser');
-    Route::delete('user/{id}', 'AdminController@deleteUser');
+    /* Dashboard */
+    Route::get('dashboard', 'DashboardController@index');
 
-    Route::get('team/create', 'AdminController@createTeam');
-    Route::post('team/create', 'AdminController@storeTeam');
-    Route::get('team/{id}', 'AdminController@editTeam');
-    Route::post('team/{id}/update', 'AdminController@updateTeam');
-    Route::delete('team/{id}', 'AdminController@deleteTeam');
+    /* Users */
+    Route::get('users', 'UserController@index');
+    Route::get('user/{id?}', 'UserController@show');
+    Route::post('user', 'UserController@save');
+    Route::delete('user/{id}', 'UserController@delete');
 
+    /* Categories */
     Route::get('category/{id?}', 'CategoryController@show');
     Route::post('category', 'CategoryController@save');
     Route::delete('category/{id}', 'CategoryController@delete');
     Route::post('category/{id}/active', 'CategoryController@setCategoryActive');
+    
+    /* Levels */
+    Route::get('levels', 'LevelController@index');
+    Route::get('level/{id?}', 'LevelController@show');
+    Route::post('level', 'LevelController@save');
+    Route::delete('level/{id}', 'LevelController@delete');
 
+    /* Tasks */
     Route::get('task/{id?}', 'TaskController@show');
     Route::post('task', 'TaskController@save');
     Route::delete('task/{id}', 'TaskController@delete');
-
-    Route::post('file', 'AdminController@uploadFile');
-    Route::delete('file/{name}', 'AdminController@deleteFile');
-
-    Route::get('level/{id?}', 'AdminController@level');
-    Route::post('level', 'AdminController@saveLevel');
-    Route::delete('level/{id}', 'AdminController@deleteLevel');
-
-    $pages = \App\Http\Controllers\Admin\BaseController::$pages;
-
-    foreach ($pages as $page => $pageName) {
-        Route::get($page, 'AdminController@' . $page);
-    }
+    
+    /* Teams */
+    Route::get('teams', 'TeamController@index');
+    Route::get('team/create', 'TeamController@createTeam');
+    Route::post('team/create', 'TeamController@storeTeam');
+    Route::get('team/{id}', 'TeamController@editTeam');
+    Route::post('team/{id}/update', 'TeamController@updateTeam');
+    Route::delete('team/{id}', 'TeamController@deleteTeam');
+    
+    /* Files */
+    Route::get('files', 'FileController@index');
+    Route::post('file', 'FileController@upload');
+    Route::delete('file/{name}', 'FileController@delete');
+    
+    /* Statistic */
+    Route::get('statistics', 'StatisticController@index');
 });
-/* Admin Routes */

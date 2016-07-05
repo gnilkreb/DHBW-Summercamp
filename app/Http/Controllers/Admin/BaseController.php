@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class BaseController extends Controller
 {
 
-    static $pages = [
+    private $pages = [
         'dashboard' => ['label' => 'Dashboard', 'icon' => 'fa fa-dashboard'],
         'users' => ['label' => 'Benutzer', 'icon' => 'fa fa-user'],
         'levels' => ['label' => 'Level', 'icon' => 'fa fa-star'],
@@ -18,15 +18,12 @@ class BaseController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:admin', ['except' => [
-            'login',
-            'authenticate',
-        ]]);
+        $this->middleware('auth:admin');
     }
 
     protected function adminView($page, $customData = [])
     {
-        $data = ['pages' => AdminController::$pages] + $customData;
+        $data = ['pages' => $this->pages] + $customData;
 
         return view('admin.' . $page, $data);
     }
