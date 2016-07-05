@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-xs-12 content">
                         <h2>{{ $category->name }}</h2>
-                        <a href="/category/{{ $category->id }}"><img src="img/png/cat.png" width="222px"
+                        <a href="/category/{{ $category->id }}"><img src="{{ $category->image_url }}" width="222px"
                                          class="img-responsive center-block hvr-grow sc-start-image"></a>
                     </div>
                 </div>
