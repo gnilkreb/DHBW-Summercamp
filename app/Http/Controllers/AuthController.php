@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\User;
 use Auth;
@@ -32,12 +33,8 @@ class AuthController extends Controller
         return redirect('/categories');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $this->validate($request, [
-            'user' => 'required|numeric'
-        ]);
-
         $userId = $request->user_id;
         $user = User::findOrFail($userId);
 
