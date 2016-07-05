@@ -8,8 +8,18 @@ use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
+
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function showLogin()
+    {
+        return view('auth.login', ['users' => User::all()]);
+    }
 
     public function register(UserRegisterRequest $request)
     {
@@ -20,17 +30,12 @@ class UserController extends Controller
         return redirect('categories');
     }
 
-    public function login()
-    {
-        return view('auth.login', ['users' => User::all()]);
-    }
-
-    public function authenticate(Request $request)
+    public function login(Request $request)
     {
         $this->validate($request, [
-            'user' => 'required|numeric' 
+            'user' => 'required|numeric'
         ]);
-        
+
         $userId = $request->user_id;
         $user = User::findOrFail($userId);
 
@@ -38,5 +43,5 @@ class UserController extends Controller
 
         return redirect()->intended('/categories');
     }
-    
+
 }

@@ -9,19 +9,13 @@ Route::get('/categories', 'CategoryController@index');
 Route::get('/category/{id}', 'CategoryController@levels');
 
 Route::get('/level/{id}', 'LevelController@show');
-
-
 /* Frontend Routes */
 
 /* Frontend Auth Routes */
-Route::get('/login', 'UserController@login');
-Route::post('/login', 'UserController@authenticate');
-
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
-Route::post('/register', 'UserController@register');
+Route::get('/register', 'AuthController@showRegister');
+Route::get('/login', 'AuthController@showLogin');
+Route::post('/register', 'AuthController@register');
+Route::post('/login', 'AuthController@login');
 
 /* File Upload retrieval */
 Route::get('/uploads/{name}', 'Admin\FileController@show');
