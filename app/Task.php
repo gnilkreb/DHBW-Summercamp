@@ -35,7 +35,8 @@ class Task extends Model
         return $difficultyNames[$this->difficulty];
     }
 
-    public function difficultyColor() {
+    public function difficultyColor()
+    {
         $difficultyColors = [
             1 => 'green',
             2 => 'brown',
@@ -45,9 +46,18 @@ class Task extends Model
         return $difficultyColors[$this->difficulty];
     }
 
-    public function taskChecked() {
+    public function imageUrl()
+    {
+        $color = $this->difficultyColor();
+        $checked = $this->taskChecked();
+
+        return '/img/png/btn_' . $color . ($checked ? '_checked' : '') . '.png';
+    }
+
+    public function taskChecked()
+    {
         //TODO: has to be done :D
-        if(rand(1, 10) < 5) {
+        if (rand(1, 10) < 5) {
             return true;
         }
         return false;

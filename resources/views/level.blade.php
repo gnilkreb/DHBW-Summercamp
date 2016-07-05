@@ -18,9 +18,8 @@
                 <div class="col-xs-12 content">
                     @foreach($tasks as $task)
                         <div class="col-xs-4 star-column">
-                            <a href="level_detail.html">
-                                <img src="/img/png/btn_{{ $task->difficultyColor() }}@if($task->taskChecked())_checked @endif.png"
-                                     class="img-responsive center-block star hvr-grow">
+                            <a href="/task/{{ $task->id }}">
+                                <img src="{{ $task->imageUrl() }}" class="img-responsive center-block star hvr-grow">
                                 <br/>
                             </a>
                             Leicht
