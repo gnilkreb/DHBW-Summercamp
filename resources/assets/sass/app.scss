@@ -12,11 +12,8 @@ body {
 }
 
 .app-font {
-  font-family: 'Nunito', sans-serif;
-}
-
-.bootstrap-switch {
-  border: 0;
+  //font-family: 'Nunito', sans-serif;
+  font-family: 'Timber Font', sans-serif;
 }
 
 .logoobject {
@@ -37,46 +34,37 @@ body {
 .sc-panel {
   text-align: center;
   color: #eee;
+  margin-bottom: 50px;
 }
 
 .content {
-  background-image: url('/img/png/content_pattern.png');
   background-size: 100%;
-  background-repeat: repeat-y;
-  padding: 3px;
-  padding-top: 10px;
+  background: url('../img/png/content_pattern.png') repeat-y;
+  padding: 10px 3px 3px;
 }
 
 .content-top-border-6 {
-  background-image: url('/img/png/content_topborder.png');
   background-size: 100%;
   min-height: 3px;
-  background-repeat: no-repeat;
+  background: url('../img/png/content_topborder.png') no-repeat;
 }
 
 .content-top-border-12 {
-  background-image: url('/img/png/content_topborder.png');
   background-size: 100%;
   min-height: 5px;
-  background-repeat: no-repeat;
+  background: url('../img/png/content_topborder.png') no-repeat;
 }
 
 .content-bottom-border-6 {
-  background-image: url('/img/png/content_bottomborder.png');
   background-size: 100%;
   min-height: 3px;
-  background-repeat: no-repeat;
+  background: url('../img/png/content_bottomborder.png') no-repeat;
 }
 
 .content-bottom-border-12 {
-  background-image: url('/img/png/content_bottomborder.png');
   background-size: 100%;
   min-height: 5px;
-  background-repeat: no-repeat;
-}
-
-.content-menu {
-
+  background: url('../img/png/content_bottomborder.png') no-repeat;
 }
 
 .sc-start-image {
@@ -89,6 +77,18 @@ body {
 
 .star {
   max-height: 100px;
+}
+
+.task-text {
+  text-align: left;
+  margin-left: 25px;
+  font-size: 2rem;
+  letter-spacing: 0.25rem;
+  line-height: 3rem;
+}
+
+.task-video {
+  margin-right: 25px;
 }
 
 @media (min-width: 768px) {
@@ -184,4 +184,3 @@ body {
     margin-top: 320px;
   }
 }
-
