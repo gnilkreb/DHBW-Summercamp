@@ -18,7 +18,9 @@ class AuthController extends Controller
 
     public function showLogin()
     {
-        return view('auth.login', ['users' => User::all()]);
+        return view('auth.login', [
+            'users' => User::all()
+        ]);
     }
 
     public function register(UserRegisterRequest $request)
@@ -27,7 +29,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('categories');
+        return redirect('/categories');
     }
 
     public function login(Request $request)
