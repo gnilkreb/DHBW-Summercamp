@@ -7,6 +7,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -38,6 +39,10 @@ class AuthController extends Controller
         $user = User::findOrFail($userId);
 
         Auth::login($user);
+
+        $user->login_at = Carbon::now();
+
+        $user->save();
 
         return redirect()->intended('/categories');
     }

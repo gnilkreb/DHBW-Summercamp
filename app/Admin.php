@@ -10,8 +10,20 @@ class Admin extends Model implements Authenticatable
 
     protected $fillable = [
         'name',
-        'password'
+        'password',
+        'login_at'
     ];
+
+    protected $dates = ['login_at'];
+
+    public function loginAt()
+    {
+        if ($this->login_at) {
+            return $this->login_at->diffForHumans();
+        }
+
+        return 'nie';
+    }
 
     /**
      * Get the name of the unique identifier for the user.

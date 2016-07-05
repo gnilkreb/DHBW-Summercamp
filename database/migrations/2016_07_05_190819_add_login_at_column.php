@@ -14,11 +14,11 @@ class AddLoginAtColumn extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dateTime('login_at');
+            $table->dateTime('login_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
 
         Schema::table('admins', function (Blueprint $table) {
-            $table->dateTime('login_at');
+            $table->dateTime('login_at')->nullable()->default(null);
         });
     }
 

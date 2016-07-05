@@ -27,6 +27,7 @@
             <th>Alter</th>
             <th>Geschlecht</th>
             <th>Team</th>
+            <th>Login</th>
             <th>Modifiziert</th>
             <th>Registriert</th>
             <th>Löschen</th>
@@ -44,6 +45,7 @@
                     <i class="fa fa-{{ $user->genderIcon() }}"></i>
                 </td>
                 <td>{{ $user->teamName() }}</td>
+                <td>{{ Carbon::diffForHumans($user->login_at) }}</td>
                 <td>{{ Carbon::diffForHumans($user->updated_at) }}</td>
                 <td>{{ Carbon::diffForHumans($user->created_at) }}</td>
                 <td>
@@ -65,6 +67,7 @@
         <tr>
             <td>#</td>
             <td>Name</td>
+            <td>Login</td>
             <td>Modifiziert</td>
             <td>Erstellt</td>
             <td>Löschen</td>
@@ -77,6 +80,7 @@
                 <td>
                     <a href="/admin/admin/{{ $admin->id }}">{{ $admin->name }}</a>
                 </td>
+                <td>{{ $admin->loginAt() }}</td>
                 <td>{{ Carbon::diffForHumans($admin->updated_at) }}</td>
                 <td>{{ Carbon::diffForHumans($admin->created_at) }}</td>
                 <td>

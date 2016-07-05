@@ -14,8 +14,11 @@ class User extends Model implements Authenticatable
         'last_name',
         'age',
         'gender',
-        'team_id'
+        'team_id',
+        'login_at'
     ];
+
+    protected $dates = ['login_at'];
 
     public function name()
     {
