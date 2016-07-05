@@ -14,6 +14,7 @@ class LevelController extends Controller
         $tasks = $level->tasks;
 
         return view('level', [
+            'level' => $level,
             'tasks' => $tasks
         ]);
     }

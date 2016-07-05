@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="centered-logo">
-        <object class="logoobject" data="img/svg/logo.svg" type="image/svg+xml"></object>
+        <object class="logoobject" data="/img/svg/logo.svg" type="image/svg+xml"></object>
     </div>
 
     <div class="container landing-container">
@@ -19,7 +19,7 @@
                     @foreach($tasks as $task)
                         <div class="col-xs-4 star-column">
                             <a href="level_detail.html">
-                                <img src="img/png/btn_{{ $task->difficultyColor() }}@if($task->taskChecked())_checked @endif.png"
+                                <img src="/img/png/btn_{{ $task->difficultyColor() }}@if($task->taskChecked())_checked @endif.png"
                                      class="img-responsive center-block star hvr-grow">
                                 <br/>
                             </a>
