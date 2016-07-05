@@ -6,8 +6,8 @@
         <div class="row">
 
             <!-- Left Column -->
-            <div class="col-xs-3">
-                <img class="img-responsive" src="/img/png/dhbw2.png">
+            <div class="col-sm-3">
+                <img class="img-responsive" src="/img/png/dhbw2.png" style="max-width: 300px">
 
                 <br>
 
@@ -40,7 +40,7 @@
             <!-- Left Column -->
 
             <!-- Right Column -->
-            <div class="col-xs-9">
+            <div class="col-sm-9">
                 <div class="page-header">
                     <h2>
                         @yield('title')
