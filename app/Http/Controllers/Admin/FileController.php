@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Storage;
 class FileController extends BaseController
 {
 
+    public function __construct()
+    {
+        parent::__construct(['show']);
+    }
+
     public function index()
     {
         $files = Storage::disk('public')->files();
@@ -37,6 +42,16 @@ class FileController extends BaseController
         $file->move(storage_path() . '/app/public', $file->getClientOriginalName());
 
         return redirect('/admin/files');
+    }
+
+    public function show($name)
+    {
+        $file = Storage::disk('public')->get($name);
+        $mimeType = Storage::disk('public')->mimeType($name);
+
+        return response($file, 200, [
+            'Content-Type' => $mimeType
+        ]);
     }
 
     public function delete($name)

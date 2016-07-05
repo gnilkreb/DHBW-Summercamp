@@ -16,9 +16,11 @@ class BaseController extends Controller
         'statistics' => ['label' => 'Statistik', 'icon' => 'fa fa-bar-chart']
     ];
 
-    public function __construct()
+    public function __construct($except = [])
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:admin', [
+            'except' => $except
+        ]);
     }
 
     protected function adminView($page, $customData = [])

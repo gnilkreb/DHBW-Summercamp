@@ -24,14 +24,7 @@ Route::get('/register', function () {
 Route::post('/register', 'UserController@register');
 /* Frontend Auth Routes */
 
-Route::get('/uploads/{name}', function ($name) {
-    $file = Storage::disk('public')->get($name);
-    $mimeType = Storage::disk('public')->mimeType($name);
-
-    return response($file, 200, [
-        'Content-Type' => $mimeType
-    ]);
-});
+Route::get('/uploads/{name}', 'Admin\FileController@show');
 
 /* Admin Routes */
 Route::get('/admin', function () {
