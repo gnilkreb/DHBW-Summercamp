@@ -49,6 +49,11 @@ task('deploy:build', function () {
     run('npm run prod');
 });
 
+task('deploy:php-fpm', function () {
+    run('sudo /etc/init.d/php7.0-fpm restart');
+});
+
 after('deploy', 'deploy:bower');
 after('deploy', 'deploy:npm');
 after('deploy:npm', 'deploy:build');
+after('deploy:build', 'deploy:php-fpm');
