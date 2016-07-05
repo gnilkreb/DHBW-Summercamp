@@ -7,5 +7,6 @@
 Homestead.yaml
 Homestead.json
 .env
+servers.yml
 /.idea
 composer.phar

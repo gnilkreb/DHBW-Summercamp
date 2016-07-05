@@ -20,20 +20,7 @@ set('shared_dirs', [
 set('writable_dirs', ['bootstrap/cache', 'storage', 'node_modules']);
 
 // Configure servers
-server('production', '193.196.7.10')
-    ->user('vornetran')
-    ->password()
-    ->env('deploy_path', '/home/vornetran/production');
-
-server('development', '193.196.7.10')
-    ->user('vornetran')
-    ->password()
-    ->env('deploy_path', '/home/vornetran/development');
-
-server('berkling', '193.196.7.10')
-    ->user('vornetran')
-    ->password()
-    ->env('deploy_path', '/home/vornetran/berkling');
+serverList('servers.yml');
 
 task('deploy:bower', function () {
     cd('{{release_path}}');
