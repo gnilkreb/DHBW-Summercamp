@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Requests\LoginRequest;
-use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\RegisterRequest;
 use App\User;
 use Auth;
-use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -24,7 +23,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function register(UserRegisterRequest $request)
+    public function register(RegisterRequest $request)
     {
         $user = User::create($request->all());
 

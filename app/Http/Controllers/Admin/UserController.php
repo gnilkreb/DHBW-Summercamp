@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Team;
 use App\User;
 
@@ -36,7 +36,7 @@ class UserController extends BaseController
         ]);
     }
 
-    public function save(UserRegisterRequest $request)
+    public function save(RegisterRequest $request)
     {
         $user = User::firstOrNew(['id' => $request->get('id')]);
 

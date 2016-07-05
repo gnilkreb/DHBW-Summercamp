@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class UserRegisterRequest extends Request
+class RegisterRequest extends Request
 {
 
     public function authorize()
