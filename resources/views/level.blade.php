@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Level')
+@section('title', $level->title)
 
 @section('content')
+
     <div class="centered-logo">
-        <object class="logoobject" data="/img/svg/logo.svg" type="image/svg+xml"></object>
+        <object class="logoobject" data="img/svg/logo.svg" type="image/svg+xml"></object>
     </div>
 
     <div class="container landing-container">
@@ -15,14 +16,14 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 content">
-                    @foreach($levels as $level)
+                    @foreach($tasks as $task)
                         <div class="col-xs-4 star-column">
-                            <a href="/level/{{ $level->id }}">
-                                <img src="/img/png/star_empty.png" class="img-responsive center-block star hvr-grow">
+                            <a href="level_detail.html">
+                                <img src="img/png/btn_{{ $task->difficultyColor() }}@if($task->taskChecked())_checked @endif.png"
+                                     class="img-responsive center-block star hvr-grow">
                                 <br/>
                             </a>
-
-                            {{ $level->title }}
+                            Leicht
                         </div>
                     @endforeach
                 </div>

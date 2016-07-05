@@ -11,7 +11,9 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        return view('categories', ['categories' => $categories]);
+        return view('categories', [
+            'categories' => $categories
+        ]);
     }
 
     public function levels($id)
@@ -20,12 +22,9 @@ class CategoryController extends Controller
 
         $levels = $category->levels;
 
-        return view('levels', ['levels' => $levels]);
-    }
-
-    public function difficulties($id)
-    {
-        return view('difficulty');
+        return view('levels', [
+            'levels' => $levels
+        ]);
     }
 
 }

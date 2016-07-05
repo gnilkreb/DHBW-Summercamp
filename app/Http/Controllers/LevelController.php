@@ -7,11 +7,15 @@ use App\Level;
 
 class LevelController extends Controller
 {
-    public function show($id) {
+
+    public function show($id)
+    {
         $level = Level::findOrFail($id);
         $tasks = $level->tasks;
 
-        return view('tasks', ['tasks' => $tasks]);
+        return view('level', [
+            'tasks' => $tasks
+        ]);
     }
 
 }

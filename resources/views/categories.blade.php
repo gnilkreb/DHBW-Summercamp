@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Willkommen')
+@section('title', 'Kategorien')
 
 @section('content')
     <div class="centered-logo">

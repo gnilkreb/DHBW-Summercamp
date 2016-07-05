@@ -5,11 +5,15 @@ Route::get('/', function () {
     return view('home');
 });
 
+/* Categories */
 Route::get('/categories', 'CategoryController@index');
 Route::get('/category/{id}', 'CategoryController@levels');
 
+/* Level */
 Route::get('/level/{id}', 'LevelController@show');
-/* Frontend Routes */
+
+/* Tasks */
+Route::get('/task/{id}', 'TaskController@show');
 
 /* Frontend Auth Routes */
 Route::get('/register', 'AuthController@showRegister');
