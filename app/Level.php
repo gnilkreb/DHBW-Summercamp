@@ -16,7 +16,7 @@ class Level extends Model
 
     public function category()
     {
-        return $this->hasOne('App\Category');
+        return $this->belongsTo('App\Category');
     }
 
     public function tasks()

@@ -15,12 +15,12 @@ class TaskRequest extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function task()
     {
-        return $this->hasOne('App\Task');
+        return $this->belongsTo('App\Task');
     }
 
 }

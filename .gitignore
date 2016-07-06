@@ -3,7 +3,7 @@
 /public/storage
 /public/components
 /public/css/app.css*
-/public/js/app.js*
+/public/js/*
 Homestead.yaml
 Homestead.json
 .env

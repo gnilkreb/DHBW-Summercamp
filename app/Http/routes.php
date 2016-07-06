@@ -40,6 +40,10 @@ Route::group([
     Route::get('dashboard', 'DashboardController@index');
     Route::post('option/{id}', 'DashboardController@option');
 
+    /* Requests */
+    Route::get('requests', 'RequestsController@index');
+    Route::get('requests/partial', 'RequestsController@requests');
+
     /* Users */
     Route::get('users', 'UserController@index');
     Route::get('user/{id?}', 'UserController@show');

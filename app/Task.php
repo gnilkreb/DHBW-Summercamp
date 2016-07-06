@@ -18,7 +18,7 @@ class Task extends Model
 
     public function level()
     {
-        return $this->hasOne('App\Level');
+        return $this->belongsTo('App\Level');
     }
 
     public function pdf()
