@@ -44,6 +44,7 @@ Route::group([
     /* Requests */
     Route::get('requests', 'RequestsController@index');
     Route::get('requests/partial', 'RequestsController@requests');
+    Route::post('request/{id}', 'RequestsController@save');
 
     /* Users */
     Route::get('users', 'UserController@index');
