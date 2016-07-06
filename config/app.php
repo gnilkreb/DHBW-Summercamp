@@ -160,7 +160,8 @@ return [
          * Custom Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Vinkla\Pusher\PusherServiceProvider::class
+        Vinkla\Pusher\PusherServiceProvider::class,
+        Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
 
     ],
 
@@ -208,7 +209,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Carbon' => App\Helpers\CarbonHelper::class,
-        'Pusher' => Vinkla\Pusher\Facades\Pusher::class
+        'Pusher' => Vinkla\Pusher\Facades\Pusher::class,
+        'Bugsnag' => Bugsnag\BugsnagLaravel\BugsnagFacade::class
 
     ],
 
