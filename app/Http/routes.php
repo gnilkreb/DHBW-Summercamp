@@ -12,6 +12,7 @@ Route::get('/level/{id}', 'LevelController@show');
 
 /* Tasks */
 Route::get('/task/{id}', 'TaskController@show');
+Route::get('/task/{id}/request', 'TaskController@request');
 
 /* Frontend Auth Routes */
 Route::get('/register', 'AuthController@showRegister');

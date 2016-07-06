@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use Illuminate\Http\Request;
 
 class TaskController extends BaseController
 {
@@ -14,6 +15,11 @@ class TaskController extends BaseController
         return view('task', [
             'task' => $task
         ]);
+    }
+
+    public function request($id, Request $request)
+    {
+        
     }
 
 }
