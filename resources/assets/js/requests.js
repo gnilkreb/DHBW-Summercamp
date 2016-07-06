@@ -6,6 +6,7 @@ const channel = pusher.subscribe('admin');
 
 channel.bind('requests', payload => {
     updateElements(payload.count, payload.html);
+    notie.alert(4, 'Anfragen aktualisiert', 5);
 });
 
 $(() => {
