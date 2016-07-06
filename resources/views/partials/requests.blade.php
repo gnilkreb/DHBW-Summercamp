@@ -21,6 +21,9 @@
                 </a>
                 abgeben
             </div>
+
+            <hr class="visible-xs-block">
+
             <div class="col-sm-3">
                 <button type="button" class="btn btn-primary pull-left">
                     <i class="fa fa-check"></i>

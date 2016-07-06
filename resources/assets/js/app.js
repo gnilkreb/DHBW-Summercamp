@@ -4,6 +4,7 @@ import './levels';
 import './file-input';
 import './files';
 import './options';
+import './requests';
 
 $.ajaxSetup({
     headers: {

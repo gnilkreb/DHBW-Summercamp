@@ -160,6 +160,7 @@ return [
          * Custom Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Vinkla\Pusher\PusherServiceProvider::class
 
     ],
 
@@ -206,7 +207,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Carbon' => App\Helpers\CarbonHelper::class
+        'Carbon' => App\Helpers\CarbonHelper::class,
+        'Pusher' => Vinkla\Pusher\Facades\Pusher::class
 
     ],
 

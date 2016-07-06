@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "barryvdh/laravel-ide-helper": "^2.1",
-        "nesbot/carbon": "^1.21"
+        "nesbot/carbon": "^1.21",
+        "vinkla/pusher": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

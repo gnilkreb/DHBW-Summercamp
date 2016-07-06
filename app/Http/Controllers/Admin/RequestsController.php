@@ -15,9 +15,16 @@ class RequestsController extends BaseController
     public function requests()
     {
         $requests = TaskRequest::where('done', 0)->orderBy('created_at', 'asc')->get();
+        $count = $requests->count();
+        $html = view('partials.requests', [
+            'requests' => $requests
+        ])->render();
         
-        return view('partials.requests', [
-            'requests' => $requests 
+        return response()->json([
+            'data' => [
+                'count' => $count,
+                'html' => $html
+            ] 
         ]);
     }
 
