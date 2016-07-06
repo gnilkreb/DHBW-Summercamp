@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaskRequest extends Model
 {
+    
     protected $fillable = [
         'user_id',
         'task_id',
