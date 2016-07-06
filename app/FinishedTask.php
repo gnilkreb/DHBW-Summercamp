@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class FinishedTask extends Model
 {
 
+    protected $fillable = [
+        'user_id',
+        'task_id'
+    ];
+
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function task()
     {
-        return $this->hasOne('App\Task');
+        return $this->belongsTo('App\Task');
     }
 
 }

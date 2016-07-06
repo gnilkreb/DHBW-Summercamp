@@ -5,11 +5,12 @@ const pusher = new Pusher('a99a230c0d6a70328f20', {
 const channel = pusher.subscribe('admin');
 
 channel.bind('requests', payload => {
-    console.log('requests', payload);
     updateElements(payload.count, payload.html);
 });
 
-$(() => loadRequests());
+$(() => {
+    loadRequests();
+});
 
 function loadRequests() {
     $.ajax({
@@ -26,4 +27,17 @@ function loadRequests() {
 function updateElements(count, html) {
     $('#requests-badge').html(count);
     $('#requests-container').html(html);
+    $('[data-handle-request]').click(onHandleRequest);
+}
+
+function onHandleRequest() {
+    const $this = $(this);
+    const id = $this.data('handle-request');
+    const accept = $this.data('accept');
+
+    $.ajax({
+        method: 'POST',
+        url: `/admin/request/${id}/`,
+        data: {accept}
+    });
 }

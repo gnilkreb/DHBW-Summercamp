@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\FinishedTask;
 use App\TaskRequest;
 use Illuminate\Http\Request;
+use Pusher;
 
 class RequestsController extends BaseController
 {
@@ -21,6 +22,19 @@ class RequestsController extends BaseController
             'count' => $count,
             'html' => $html
         ];
+    }
+
+    private $pusher;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $options = [
+            'cluster' => 'eu',
+            'encrypted' => true
+        ];
+        $this->pusher = new Pusher(env('PUSHER_KEY'), env('PUSHER_SECRET'), env('PUSHER_APP_ID'), $options);
     }
 
     public function index()
@@ -40,7 +54,7 @@ class RequestsController extends BaseController
     public function save($id, Request $request)
     {
         $this->validate($request, [
-            'accept' => 'required|boolean'
+            'accept' => 'required'
         ]);
 
         $taskRequest = TaskRequest::findOrFail($id);
@@ -48,6 +62,7 @@ class RequestsController extends BaseController
         $taskRequest->done = true;
 
         $taskRequest->save();
+        $this->pusher->trigger('admin', 'requests', RequestsController::requestsPayload());
 
         if ($accept === 'true') {
             FinishedTask::create([

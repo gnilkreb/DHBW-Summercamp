@@ -25,11 +25,11 @@
             <hr class="visible-xs-block">
 
             <div class="col-sm-3">
-                <button type="button" class="btn btn-primary pull-left">
+                <button type="button" class="btn btn-primary pull-left" data-handle-request="{{ $request->id }}" data-accept="true">
                     <i class="fa fa-check"></i>
                 </button>
 
-                <button type="button" class="btn btn-default pull-right">
+                <button type="button" class="btn btn-default pull-right" data-handle-request="{{ $request->id }}" data-accept="false">
                     <i class="fa fa-remove"></i>
                 </button>
             </div>
