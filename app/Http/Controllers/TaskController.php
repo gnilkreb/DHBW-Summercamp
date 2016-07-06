@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\RequestsController;
 use App\Task;
 use Illuminate\Http\Request;
+use Vinkla\Pusher\Facades\Pusher;
 
 class TaskController extends BaseController
 {
@@ -23,6 +25,10 @@ class TaskController extends BaseController
             'user_id' => $request->user()->id,
             'task_id' => $id
         ]);
+
+        $payload = RequestsController::requestsPayload();
+
+        Pusher::trigger('admin', 'requests', $payload);
 
         return response(200);
     }
