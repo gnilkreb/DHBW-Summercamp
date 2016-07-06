@@ -1,8 +1,9 @@
 var landscapeX = 0;
 var cloudsX = 0;
 var mouseX = 0;
-var speed = 0.5;
+var speed = 1;
 var parafactor = 2;
+var direction = 1;
 
 $('.bg-landscape').css('background-position', landscapeX + 'px bottom');
 $('.bg-clouds').css('background-position', cloudsX + 'px bottom');
@@ -12,14 +13,15 @@ update();
 $(document).mousemove(function(event) {
       if(mouseX != 0) {
         if(event.pageX > mouseX) {
-          landscapeX = landscapeX - (speed * parafactor);
-          cloudsX = cloudsX - speed;
+          direction = -1;
         }
         if(event.pageX < mouseX) {
-          landscapeX = landscapeX + speed * parafactor;
-          cloudsX = cloudsX + speed;
+          direction = 1;
         }
       }
+
+      landscapeX = landscapeX + (direction * (speed * parafactor));
+      cloudsX = cloudsX + (direction * speed);
 
       $('.bg-landscape').css('background-position', landscapeX + 'px bottom');
       $('.bg-clouds').css('background-position', cloudsX + 'px bottom');
@@ -29,8 +31,8 @@ $(document).mousemove(function(event) {
 
 function update() {
   setInterval(function() {
-    landscapeX = landscapeX + speed * parafactor;
-    cloudsX = cloudsX + speed;
+    landscapeX = landscapeX + (direction * (speed * parafactor));
+    cloudsX = cloudsX + (direction * speed);
     $('.bg-landscape').css('background-position', landscapeX + 'px bottom');
     $('.bg-clouds').css('background-position', cloudsX + 'px bottom');
   }, 50);
