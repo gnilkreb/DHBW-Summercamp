@@ -22,7 +22,7 @@
                                         {{ $page['label'] }}
 
                                         @if($pageKey === 'requests')
-                                            <span class="badge">{{ $requests }}</span>
+                                            <span id="requests-badge" class="badge">{{ $requests }}</span>
                                         @endif
                                     </a>
                                 </li>
