@@ -1,5 +1,16 @@
 # DHBW Summercamp
 
+## Dependencies
+- [NodeJS](https://nodejs.org/en/)
+- MySQL Server
+- Ubuntu/Debian packages
+    - nginx
+    - mysql-server
+    - build-essential
+    - git
+    - php7.0 & friends
+    - `sudo apt-get install nginx mysql-server build-essential git php7.0 php7.0-cli php7.0-fpm php7.0-mcrypt php7.0-mysql`
+
 ## Setup
 1. `cp .env.example .env`
 2. MySQL Datenbank Verbindung in `.env` eintragen
@@ -7,7 +18,8 @@
 4. `bower install` (als root: `--allow-root`!)
 5. `npm install` (unter Windows: `--no-bin-links`!)
 6. `php artisan key:generate`
-7. `gulp`
+7. `php artisan db:seed`
+8. `gulp`
 
 ## Scripts
 - `npm run dev` - Development Build
