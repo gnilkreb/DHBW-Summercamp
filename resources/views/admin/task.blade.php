@@ -68,6 +68,13 @@
                     <span class="help-block">{{ $errors->first('youtube_url') }}</span>
                 </div>
 
+                <div class="form-group {{ $errors->has('pdf_url') ? 'has-error' : '' }}">
+                    <label class="control-label" for="pdf_url">PDF URL</label>
+                    <input id="pdf_url" name="pdf_url" type="text" class="form-control" placeholder="PDF URL"
+                           value="{{ $task->pdf_url }}">
+                    <span class="help-block">{{ $errors->first('pdf_url') }}</span>
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-check"></i>
                     Speichern
