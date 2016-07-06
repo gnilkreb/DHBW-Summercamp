@@ -4,11 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\RequestsController;
 use App\Task;
+use App\TaskRequest;
 use Illuminate\Http\Request;
-use Vinkla\Pusher\Facades\Pusher;
+use Pusher;
 
 class TaskController extends BaseController
 {
+
+    private $pusher;
+
+    public function __construct()
+    {
+        $options = [
+            'cluster' => 'eu',
+            'encrypted' => true
+        ];
+        $this->pusher = new Pusher(env('PUSHER_KEY'), env('PUSHER_SECRET'), env('PUSHER_APP_ID'), $options);
+    }
 
     public function show($id)
     {
@@ -21,14 +33,14 @@ class TaskController extends BaseController
 
     public function request($id, Request $request)
     {
-        Task::create([
+        TaskRequest::create([
             'user_id' => $request->user()->id,
             'task_id' => $id
         ]);
 
         $payload = RequestsController::requestsPayload();
 
-        Pusher::trigger('admin', 'requests', $payload);
+        $this->pusher->trigger('admin', 'requests', $payload);
 
         return response(200);
     }

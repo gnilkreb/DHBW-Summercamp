@@ -5,6 +5,7 @@ const pusher = new Pusher('a99a230c0d6a70328f20', {
 const channel = pusher.subscribe('admin');
 
 channel.bind('requests', payload => {
+    console.log('requests', payload);
     updateElements(payload.count, payload.html);
 });
 
