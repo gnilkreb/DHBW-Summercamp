@@ -20,6 +20,10 @@
                                     <a href="/admin/{{ $pageKey }}">
                                         <i class="{{ $page['icon'] }}" style="margin-right: 5px"></i>
                                         {{ $page['label'] }}
+
+                                        @if($pageKey === 'requests')
+                                            <span class="badge">{{ $requests }}</span>
+                                        @endif
                                     </a>
                                 </li>
                             @endforeach
