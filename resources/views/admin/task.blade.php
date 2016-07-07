@@ -121,27 +121,37 @@
                 <h3>Multiple Choice</h3>
 
                 <div class="list-group">
-                    @foreach($task->answers as $answer)
+                    @forelse($task->answers as $answer)
                         <button type="button"
                                 class="list-group-item {{ $answer->correct ? 'list-group-item-success' : 'list-group-item-danger' }}"
                                 title="Antwort löschen"
-                                data-toggle="tooltip" data-placement="top" data-container="body">
+                                data-toggle="tooltip" data-placement="top" data-container="body"
+                                data-delete="{{ $answer->id }}" data-model="answer" data-redirect="/admin/task/{{ $task->id }}">
                             <i class="fa {{ $answer->correct ? 'fa-check' : 'fa-times' }}"></i>
                             {{ $answer->label }}
                         </button>
-                    @endforeach
+                    @empty
+                        <div class="list-group-item list-group-item-warning">Es wurde noch keine Antwort hinzugefügt</div>
+                    @endforelse
                 </div>
 
                 <hr>
 
-                <form method="POST" action="/admin/task/answer">
-                    <label for="label" class="control-label">Antwort</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="hidden" name="correct" value="0">
-                            <input type="checkbox" name="correct" value="1">
-                        </span>
-                        <input id="label" type="text" name="label" class="form-control" placeholder="Antwort">
+                <form method="POST" action="/admin/answer">
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="task_id" value="{{ $task->id }}">
+
+                    <div class="form-group {{ $errors->has('label') ? 'has-error' : '' }}">
+                        <label for="label" class="control-label">Antwort</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="hidden" name="correct" value="0">
+                                <input type="checkbox" name="correct" value="1">
+                            </span>
+                            <input id="label" type="text" name="label" class="form-control" placeholder="Antwort" required>
+                        </div>
+                        <span class="help-block">{{ $errors->first('label') }}</span>
                     </div>
 
                     <br>

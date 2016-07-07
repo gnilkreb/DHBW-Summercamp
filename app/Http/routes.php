@@ -68,6 +68,10 @@ Route::group([
     Route::get('task/{id?}', 'TaskController@show');
     Route::post('task', 'TaskController@save');
     Route::delete('task/{id}', 'TaskController@delete');
+
+    /* Answers */
+    Route::post('answer', 'AnswerController@save');
+    Route::delete('answer/{id}', 'AnswerController@delete');
     
     /* Teams */
     Route::get('teams', 'TeamController@index');
