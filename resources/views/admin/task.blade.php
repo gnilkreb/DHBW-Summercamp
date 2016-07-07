@@ -116,5 +116,10 @@
                 </button>
             </form>
         </div>
+        @if($task->finish_type === App\Enums\FinishType::MULTIPLE_CHOICE)
+            <div class="col-xs-12 col-sm-6">
+                <h3>Multiple Choice</h3>
+            </div>
+        @endif
     </div>
 @endsection
