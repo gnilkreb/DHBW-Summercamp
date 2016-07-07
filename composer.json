@@ -11,7 +11,8 @@
         "nesbot/carbon": "^1.21",
         "vinkla/pusher": "^2.3",
         "bugsnag/bugsnag-laravel": "1.*",
-        "pusher/pusher-php-server": "^2.4"
+        "pusher/pusher-php-server": "^2.4",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

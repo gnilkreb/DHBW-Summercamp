@@ -81,22 +81,22 @@
                     <label class="control-label">Abgabe</label>
                     <div class="radio">
                         <label class="control-label">
-                            <input type="radio" name="finish_type" id="self" value="{{ App\Enums\FinishType::SELF }}"
-                                   required {{ $task->finish_type === App\Enums\FinishType::SELF ? 'checked' : '' }}>
+                            <input type="radio" name="finish_type" id="self" value="{{ App\Domain\Tasks\FinishType::SELF }}"
+                                   required {{ $task->finish_type === App\Domain\Tasks\FinishType::SELF ? 'checked' : '' }}>
                             Selbstprüfung
                         </label>
                     </div>
                     <div class="radio">
                         <label class="control-label">
                             <input type="radio" name="finish_type" id="multiple-choice"
-                                   value="{{ App\Enums\FinishType::MULTIPLE_CHOICE }}" {{ $task->finish_type === App\Enums\FinishType::MULTIPLE_CHOICE ? 'checked' : '' }}>
+                                   value="{{ App\Domain\Tasks\FinishType::MULTIPLE_CHOICE }}" {{ $task->finish_type === App\Domain\Tasks\FinishType::MULTIPLE_CHOICE ? 'checked' : '' }}>
                             Multiple Choice
                         </label>
                     </div>
                     <div class="radio">
                         <label class="control-label">
                             <input type="radio" name="finish_type" id="teacher"
-                                   value="{{ App\Enums\FinishType::TEACHER }}" {{ $task->finish_type === App\Enums\FinishType::TEACHER ? 'checked' : '' }}>
+                                   value="{{ App\Domain\Tasks\FinishType::TEACHER }}" {{ $task->finish_type === App\Domain\Tasks\FinishType::TEACHER ? 'checked' : '' }}>
                             Lehrer
                         </label>
                     </div>
@@ -116,7 +116,7 @@
                 </button>
             </form>
         </div>
-        @if($task->finish_type === App\Enums\FinishType::MULTIPLE_CHOICE)
+        @if($task->finish_type === App\Domain\Tasks\FinishType::MULTIPLE_CHOICE)
             <div class="col-xs-12 col-sm-6">
                 <h3>Multiple Choice</h3>
 

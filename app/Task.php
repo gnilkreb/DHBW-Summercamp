@@ -22,11 +22,6 @@ class Task extends Model
         return $this->belongsTo('App\Level');
     }
 
-    public function pdf()
-    {
-        return $this->hasOne('App\File');
-    }
-
     public function difficultyName()
     {
         $difficultyNames = [
