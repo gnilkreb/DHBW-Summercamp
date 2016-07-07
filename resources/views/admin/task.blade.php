@@ -119,6 +119,38 @@
         @if($task->finish_type === App\Enums\FinishType::MULTIPLE_CHOICE)
             <div class="col-xs-12 col-sm-6">
                 <h3>Multiple Choice</h3>
+
+                <div class="list-group">
+                    @foreach($task->answers as $answer)
+                        <button type="button"
+                                class="list-group-item {{ $answer->correct ? 'list-group-item-success' : 'list-group-item-danger' }}"
+                                title="Antwort löschen"
+                                data-toggle="tooltip" data-placement="top" data-container="body">
+                            <i class="fa {{ $answer->correct ? 'fa-check' : 'fa-times' }}"></i>
+                            {{ $answer->label }}
+                        </button>
+                    @endforeach
+                </div>
+
+                <hr>
+
+                <form method="POST" action="/admin/task/answer">
+                    <label for="label" class="control-label">Antwort</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="hidden" name="correct" value="0">
+                            <input type="checkbox" name="correct" value="1">
+                        </span>
+                        <input id="label" type="text" name="label" class="form-control" placeholder="Antwort">
+                    </div>
+
+                    <br>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-plus"></i>
+                        Antwort hinzufügen
+                    </button>
+                </form>
             </div>
         @endif
     </div>
