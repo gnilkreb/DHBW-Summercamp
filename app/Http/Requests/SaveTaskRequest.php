@@ -27,7 +27,8 @@ class SaveTaskRequest extends Request
             'difficulty' => 'required|numeric|min:1|max:3',
             'content' => 'required|string',
             'youtube_url' => 'string',
-            'pdf_url' => 'string'
+            'pdf_url' => 'string',
+            'finish_type' => 'required|numeric|min:0|max:2'
         ];
     }
 
@@ -38,7 +39,8 @@ class SaveTaskRequest extends Request
             'difficulty' => 'Schwierigkeitsgrad',
             'content' => 'Inhalt',
             'youtube_url' => 'YouTube URL',
-            'pdf_url' => 'PDF URL'
+            'pdf_url' => 'PDF URL',
+            'finish_type' => 'Abgabe'
         ];
     }
 

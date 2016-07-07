@@ -57,13 +57,15 @@
 
                 <div class="form-group {{ $errors->has('difficulty') ? 'has-error' : '' }}">
                     <label for="content" class="control-label">Inhalt</label>
-                    <textarea id="content" name="content" class="form-control" placeholder="Inhalt" required>{{ $task->content }}</textarea>
+                    <textarea id="content" name="content" class="form-control" placeholder="Inhalt"
+                              required>{{ $task->content }}</textarea>
                     <span class="help-block">{{ $errors->first('content') }}</span>
                 </div>
 
                 <div class="form-group {{ $errors->has('youtube_url') ? 'has-error' : '' }}">
                     <label class="control-label" for="youtube_url">YouTube URL</label>
-                    <input id="youtube_url" name="youtube_url" type="text" class="form-control" placeholder="YouTube URL"
+                    <input id="youtube_url" name="youtube_url" type="text" class="form-control"
+                           placeholder="YouTube URL"
                            value="{{ $task->youtube_url }}">
                     <span class="help-block">{{ $errors->first('youtube_url') }}</span>
                 </div>
@@ -73,6 +75,32 @@
                     <input id="pdf_url" name="pdf_url" type="text" class="form-control" placeholder="PDF URL"
                            value="{{ $task->pdf_url }}">
                     <span class="help-block">{{ $errors->first('pdf_url') }}</span>
+                </div>
+
+                <div class="form-group {{ $errors->has('finish_type') ? 'has-error' : '' }}">
+                    <label class="control-label">Abgabe</label>
+                    <div class="radio">
+                        <label class="control-label">
+                            <input type="radio" name="finish_type" id="self" value="{{ App\Enums\FinishType::SELF }}"
+                                   required {{ $task->finish_type === App\Enums\FinishType::SELF ? 'checked' : '' }}>
+                            Selbstprüfung
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label class="control-label">
+                            <input type="radio" name="finish_type" id="multiple-choice"
+                                   value="{{ App\Enums\FinishType::MULTIPLE_CHOICE }}" {{ $task->finish_type === App\Enums\FinishType::MULTIPLE_CHOICE ? 'checked' : '' }}>
+                            Multiple Choice
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label class="control-label">
+                            <input type="radio" name="finish_type" id="teacher"
+                                   value="{{ App\Enums\FinishType::TEACHER }}" {{ $task->finish_type === App\Enums\FinishType::TEACHER ? 'checked' : '' }}>
+                            Lehrer
+                        </label>
+                    </div>
+                    <span class="help-block">{{ $errors->first('finish_type') }}</span>
                 </div>
 
                 <button type="submit" class="btn btn-primary">

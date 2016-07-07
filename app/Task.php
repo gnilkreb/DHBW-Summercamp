@@ -13,7 +13,8 @@ class Task extends Model
         'difficulty',
         'content',
         'youtube_url',
-        'pdf_url'
+        'pdf_url',
+        'finish_type'
     ];
 
     public function level()
