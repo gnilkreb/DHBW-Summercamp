@@ -66,4 +66,9 @@ class Task extends Model
         return false;
     }
 
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
+
 }
