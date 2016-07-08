@@ -71,13 +71,20 @@
                             <a href="/admin/task" class="alert-link">Aufgabe erstellen</a>
                         </strong>
                     </div>
-                @endif
+                @else
+                    <div class="list-group">
+                        @foreach($tasks as $task)
+                            <a href="/admin/task/{{ $task->id }}" class="list-group-item">{{ $task->difficultyName() }}</a>
+                        @endforeach
+                    </div>
 
-                <div class="list-group">
-                    @foreach($tasks as $task)
-                        <a href="/admin/task/{{ $task->id }}" class="list-group-item">{{ $task->difficultyName() }}</a>
-                    @endforeach
-                </div>
+                    <hr>
+
+                    <a href="/admin/task" class="btn btn-default">
+                        <i class="fa fa-tasks"></i>
+                        Neue Aufgabe erstellen
+                    </a>
+                @endif
             </div>
         @endif
     </div>
