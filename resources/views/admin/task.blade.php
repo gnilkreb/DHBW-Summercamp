@@ -110,7 +110,7 @@
 
                 <button type="button" class="btn btn-danger pull-right" data-delete="{{ $task->id }}"
                         data-model="task"
-                        data-redirect="/admin/levels" {{ $new ? 'disabled' : '' }}>
+                        data-redirect="/admin/levels" {{ $new || $task->answers->count() > 0 ? 'disabled' : '' }}>
                     <i class="fa fa-trash"></i>
                     Löschen
                 </button>
