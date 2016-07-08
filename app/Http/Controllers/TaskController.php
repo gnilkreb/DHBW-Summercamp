@@ -64,7 +64,7 @@ class TaskController extends BaseController
     private function multipleChoice(Task $task, User $user, Request $request)
     {
         $this->validate($request, [
-            'answer_id' => 'required|numeric|exists:answers'
+            'answer_id' => 'required|numeric|exists:answers,id'
         ]);
 
         $answerId = $request->get('answer_id');
@@ -72,7 +72,7 @@ class TaskController extends BaseController
 
         if (!$answer->correct) {
             return redirect()->back()->withErrors([
-                'answer_id' => 'Diese Antwort war leider falsch, denk noch einmal genau nach!'
+                'wrong_answer' => 'Diese Antwort war leider falsch, denk noch einmal genau nach!'
             ]);
         }
 

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('body')
-    <body class="admin-font">
+    <body class="admin-font" data-admin>
         @include('includes.noscript')
 
         <div class="container">

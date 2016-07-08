@@ -30,6 +30,10 @@
 
                     </div>
                     <div class="row">
+                        @if($errors->has('wrong_answer'))
+                            <div class="label label-warning">{{ $errors->first('wrong_answer') }}</div>
+                        @endif
+
                         <form method="POST" action="/task/{{ $task->id }}/finish">
                             {{ csrf_field() }}
 

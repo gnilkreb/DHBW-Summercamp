@@ -1,17 +1,23 @@
-const pusher = new Pusher('a99a230c0d6a70328f20', {
-    cluster: 'eu',
-    encrypted: true
-});
-const channel = pusher.subscribe('admin');
+if ($('[data-admin]').length === 1) {
+    init();
+}
 
-channel.bind('requests', payload => {
-    updateElements(payload.count, payload.html);
-    notie.alert(4, 'Anfragen aktualisiert', 5);
-});
+function init() {
+    const pusher = new Pusher('a99a230c0d6a70328f20', {
+        cluster: 'eu',
+        encrypted: true
+    });
+    const channel = pusher.subscribe('admin');
 
-$(() => {
-    loadRequests();
-});
+    channel.bind('requests', payload => {
+        updateElements(payload.count, payload.html);
+        notie.alert(4, 'Anfragen aktualisiert', 5);
+    });
+
+    $(() => {
+        loadRequests();
+    });
+}
 
 function loadRequests() {
     $.ajax({
