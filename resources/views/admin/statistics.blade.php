@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="alert alert-warning">
-        <strong>TODO: Richtige statt Guttenberg Daten verwenden</strong>
+        <strong>TODO:</strong> Richtige statt Guttenberg Daten verwenden
     </div>
     <div id="statistics-container" class="container">
         <div class="col-md-4">
