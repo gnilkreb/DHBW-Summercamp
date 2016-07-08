@@ -5,6 +5,7 @@ import './file-input';
 import './files';
 import './options';
 import './requests';
+import './statistics';
 
 Pusher.logToConsole = true;
 

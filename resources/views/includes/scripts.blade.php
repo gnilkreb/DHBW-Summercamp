@@ -7,7 +7,11 @@
 <script src="/components/clipboard/dist/clipboard.min.js"></script>
 <script src="/components/pusher-websocket-iso/dist/web/pusher.js"></script>
 <script src="/components/notie/dist/notie.min.js"></script>
+
+@stack('scripts')
+
 <script src="/js/app.js"></script>
+
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -17,5 +21,3 @@
     ga('create', 'UA-40279069-5', 'auto');
     ga('send', 'pageview');
 </script>
-
-@stack('scripts')
