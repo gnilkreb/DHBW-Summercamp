@@ -3,10 +3,19 @@
 @section('title', $new ? 'Neue Aufgabe' : 'Aufgabe bearbeiten')
 
 @section('content')
-    <a href="/admin/levels" class="btn btn-default">
-        <i class="fa fa-arrow-left"></i>
-        Level Übersicht
-    </a>
+    <div class="btn-group">
+        <a href="/admin/levels" class="btn btn-default">
+            <i class="fa fa-arrow-left"></i>
+            Level Übersicht
+        </a>
+
+        @if(!$new)
+            <a href="/admin/level/{{ $task->level->id }}" class="btn btn-default">
+                <i class="fa fa-star"></i>
+                {{ $task->level->title }}
+            </a>
+        @endif
+    </div>
 
     <hr>
 
