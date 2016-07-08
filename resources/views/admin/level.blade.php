@@ -54,7 +54,7 @@
                 </button>
 
                 <button type="button" class="btn btn-danger pull-right" data-delete="{{ $level->id }}"
-                        data-model="level" data-redirect="/admin/levels "{{ $new ? 'disabled' : '' }}>
+                        data-model="level" data-redirect="/admin/levels "{{ $new || $level->tasks->count() > 0 ? 'disabled' : '' }}>
                     <i class="fa fa-trash"></i>
                     Löschen
                 </button>
