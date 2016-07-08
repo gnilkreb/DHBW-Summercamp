@@ -29,6 +29,22 @@
                         </div>
 
                     </div>
+                    <div class="row">
+                        <form method="POST" action="/task/{{ $task->id }}/finish">
+                            @if($task->finish_type === App\Domain\Tasks\FinishType::MULTIPLE_CHOICE)
+                                @foreach($task->answers as $answer)
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="answer_id" id="answer_{{ $answer->id }}" value="{{ $answer->id }}">
+                                            {{ $answer->label }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            @endif
+
+                            <button type="submit" class="btn btn-primary btn-lg hvr-pulse-grow">Aufgabe lösen</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row">
