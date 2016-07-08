@@ -34,7 +34,7 @@ class TaskController extends BaseController
         $task->fill($request->all());
         $task->save();
 
-        return redirect('/admin/levels');
+        return redirect('/admin/level/' . $task->level->id);
     }
 
     public function delete($id)
