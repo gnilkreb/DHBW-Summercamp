@@ -31,6 +31,8 @@
                     </div>
                     <div class="row">
                         <form method="POST" action="/task/{{ $task->id }}/finish">
+                            {{ csrf_field() }}
+
                             @if($task->finish_type === App\Domain\Tasks\FinishType::MULTIPLE_CHOICE)
                                 @foreach($task->answers as $answer)
                                     <div class="radio">
