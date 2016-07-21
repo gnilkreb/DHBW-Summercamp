@@ -15,6 +15,11 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 content">
+                    @if($task->pdf_url)
+                    <div class="col-xs-12" style="text-align: right; padding-right: 40px;">
+                        <a href="{{ $task->pdf_url }}" target="_blank" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-bottom: 15px;">PDF</a>
+                    </div>
+                    @endif
                     <div class="col-xs-6">
                         <p style="text-align: left; margin-left: 25px; font-size: 2rem; letter-spacing: 0.25rem; line-height: 3rem;">{!! $task->content !!}</p>
                     </div>
@@ -47,8 +52,7 @@
                                     </div>
                                 @endforeach
                             @endif
-
-                            <button type="submit" class="btn btn-primary btn-lg hvr-pulse-grow">Aufgabe lösen</button>
+                                <button type="submit" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-top: 15px;">Aufgabe lösen</button>
                         </form>
                     </div>
                 </div>
