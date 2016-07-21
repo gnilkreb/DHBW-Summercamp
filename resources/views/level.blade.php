@@ -22,7 +22,7 @@
                                 <img src="{{ $task->imageUrl() }}" class="img-responsive center-block star hvr-grow">
                                 <br/>
                             </a>
-                            Leicht
+                            {{ $task->difficultyName() }}
                         </div>
                     @endforeach
                 </div>
