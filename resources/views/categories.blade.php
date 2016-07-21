@@ -9,6 +9,19 @@
 
     <div class="container landing-container">
         <hr/>
+        <div class="col-xs-12 sc-panel scratch-panel">
+            <div class="row">
+                <div class="col-xs-12 content-top-border-12"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 content">
+                    <h3>Hey {{ Auth::user()->first_name }}, du bist auf Platz {{ Auth::user()->getRank() }}! <br/>Weiter so!</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 content-bottom-border-12"></div>
+            </div>
+        </div>
         @foreach($categories as $index => $category)
             @if($category->active)
                 <div class="col-xs-5 @if($index >= 1) col-xs-offset-2 @endif sc-panel scratch-panel">

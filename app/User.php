@@ -80,6 +80,26 @@ class User extends Model implements Authenticatable
         return $this->role === 'admin';
     }
 
+    public function getRank() {
+        $users = User::all();
+        $ranking = [];
+        foreach($users as $user) {
+            $ranking[$user->id] = $user->finishedTasks()->count();
+        }
+        $finished = $ranking[$this->id];
+        $count = 1;
+        foreach($ranking as $rank) {
+            if($rank > $finished) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+
+    public function finishedTasks() {
+        return $this->hasMany('App\FinishedTask');
+    }
+
     /**
      * Get the name of the unique identifier for the user.
      *
