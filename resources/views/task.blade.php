@@ -17,12 +17,17 @@
                 <div class="col-xs-12 content">
                     @if($task->pdf_url)
                     <div class="col-xs-12" style="text-align: right; padding-right: 40px;">
-                        <a href="{{ $task->pdf_url }}" target="_blank" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-bottom: 15px;">PDF</a>
+                        <a href="{{ $task->pdf_url }}" target="_blank" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-bottom: 15px;"><i class="fa fa-file-pdf-o"></i> </a>
                     </div>
                     @endif
+                    @if($task->youtube_url)
                     <div class="col-xs-6">
+                    @else
+                    <div class="col-xs-12">
+                    @endif
                         <p style="text-align: left; margin-left: 25px; font-size: 2rem; letter-spacing: 0.25rem; line-height: 3rem;">{!! $task->content !!}</p>
                     </div>
+                    @if($task->youtube_url)
                     <div class="col-xs-6">
                         <!-- https://www.youtube.com/embed/8JG4aeVreCQ?rel=0&amp;showinfo=0 -->
                         <div style="margin-right: 25px;">
@@ -32,8 +37,8 @@
                                     frameborder="0"
                                     scrolling="no"></iframe>
                         </div>
-
                     </div>
+                    @endif
                     <div class="row">
                         @if($errors->has('wrong_answer'))
                             <div class="label label-warning">{{ $errors->first('wrong_answer') }}</div>
