@@ -30,5 +30,8 @@
                 <div class="col-xs-12 content-bottom-border-6"></div>
             </div>
         </div>
+        <div class="col-xs-12" style="text-align: center; margin-top: 13%;">
+            <img src="img/png/dm_logo.png" class="img-responsive center-block" style="max-height: 150px;"/>
+        </div>
     </div>
 @endsection
