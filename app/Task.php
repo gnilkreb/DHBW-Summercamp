@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Task extends Model
 {
@@ -47,18 +48,20 @@ class Task extends Model
     public function imageUrl()
     {
         $color = $this->difficultyColor();
-        $checked = $this->taskChecked();
+        $finished = $this->finished();
 
-        return '/img/png/btn_' . $color . ($checked ? '_checked' : '') . '.png';
+        return '/img/png/btn_' . $color . ($finished ? '_checked' : '') . '.png';
     }
 
-    public function taskChecked()
+    public function finished()
     {
-        //TODO: has to be done :D
-        if (rand(1, 10) < 5) {
-            return true;
-        }
-        return false;
+        $user = Auth::user();
+        $result = FinishedTask::where([
+            ['user_id', $user->id],
+            ['task_id', $this->id]
+        ])->get();
+
+        return $result->count() === 1;
     }
 
     public function answers()
