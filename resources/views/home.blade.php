@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="col-xs-12" style="text-align: center; margin-top: 13%;">
-            <img src="img/png/dm_logo.png" class="img-responsive center-block" style="max-height: 150px;"/>
+            <img src="img/png/dm_logo.png" class="img-responsive center-block animated fadeInUpBig" style="max-height: 150px; border-radius: 5px"/>
         </div>
     </div>
 @endsection
