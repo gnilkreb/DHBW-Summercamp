@@ -72,9 +72,14 @@
                 </div>
 
                 <div class="form-group {{ $errors->has('youtube_url') ? 'has-error' : '' }}">
-                    <label class="control-label" for="youtube_url">YouTube URL</label>
+                    <label class="control-label" for="youtube_url">
+                        YouTube Embed URL
+                        <a href="https://support.google.com/youtube/answer/171780?hl=de" target="_blank">
+                            <i class="fa fa-exclamation-circle" style="color: red" data-toggle="tooltip" data-placemenet="top" data-html="true" title="<strong>Achtung: Embed URL des Videos verwenden!</strong>"></i>
+                        </a>
+                    </label>
                     <input id="youtube_url" name="youtube_url" type="text" class="form-control"
-                           placeholder="YouTube URL"
+                           placeholder="YouTube Embed URL"
                            value="{{ $task->youtube_url }}">
                     <span class="help-block">{{ $errors->first('youtube_url') }}</span>
                 </div>
