@@ -19,8 +19,7 @@ class CategoryController extends BaseController
     public function levels($id)
     {
         $category = Category::findOrFail($id);
-
-        $levels = $category->levels;
+        $levels = $category->levels->sortBy('order');
 
         return view('levels', [
             'levels' => $levels
