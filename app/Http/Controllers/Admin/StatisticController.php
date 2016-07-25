@@ -10,7 +10,7 @@ class StatisticController extends BaseController
 
     public function index()
     {
-        return $this->adminView('statistics', ['users' => $users = User::all(), 'tasks' => Task::all()]);
+        return $this->adminView('statistics', ['users' => $users = User::where('role', 'user')->get(), 'tasks' => Task::all()]);
     }
 
 }

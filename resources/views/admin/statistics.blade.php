@@ -19,6 +19,12 @@
             <h2>Altersverteilung</h2>
             <div id="barchart-ageo"></div>
         </div>
+        <div class="col-md-6">
+            <div id="piechart-school"></div>
+        </div>
+        <div class="col-md-6">
+            <div id="piechart-grade"></div>
+        </div>
     </div>
 @endsection
 
@@ -123,6 +129,39 @@
                 x: {
                     categories: ['Category 1', 'Category 2']
                 }
+            }
+        });
+
+        var gymnasium = 0;
+        var realschule = 0;
+        var hauptschule = 0;
+        var grundschule = 0;
+
+        for(var i = 0; i < users.length; i++) {
+            if(users[i].school == 'Gymnasium') {
+                gymnasium++;
+            }
+            if(users[i].school == 'Realschule') {
+                realschule++;
+            }
+            if(users[i].school == 'Hauptschule') {
+                hauptschule++;
+            }
+        }
+
+        const piechartSchool = c3.generate({
+            bindto: '#piechart-school',
+            data: {
+                // iris data from R
+                columns: [
+                    ['Gymnasium', gymnasium],
+                    ['Realschule', realschule],
+                    ['Hauptschule', hauptschule]
+                ],
+                type: 'donut'
+            },
+            donut: {
+                title: 'Schularten'
             }
         });
     </script>
