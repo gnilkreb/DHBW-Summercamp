@@ -3,9 +3,6 @@
 @section('title', 'Statistik')
 
 @section('content')
-    <div class="alert alert-warning">
-        <strong>TODO:</strong> Richtige statt Guttenberg Daten verwenden
-    </div>
     <div id="users" data-users-array="{{$users}}" ></div>
     <div id="tasks" data-tasks-array="{{$tasks}}" ></div>
     <div id="statistics-container" class="container">
