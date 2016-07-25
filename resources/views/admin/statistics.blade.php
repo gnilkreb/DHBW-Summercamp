@@ -15,15 +15,15 @@
         <div class="col-md-3">
             <div id="piechart-difficulty"></div>
         </div>
-        <div class="col-md-6">
-            <h2>Altersverteilung</h2>
-            <div id="barchart-ageo"></div>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div id="piechart-school"></div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div id="piechart-grade"></div>
+        </div>
+        <div class="col-md-12">
+            <h2>Altersverteilung</h2>
+            <div id="barchart-ageo"></div>
         </div>
     </div>
 @endsection
