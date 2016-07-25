@@ -55,13 +55,26 @@
             }
         });
 
+        var male = ['Männlich'];
+        var female = ['Weiblich'];
+        var sum = ['Gesamt'];
+
+        for(var i = 0; i < users.length; i++) {
+            if(users[i].gender == 1) {
+                male.push(users[i].age);
+            } else {
+                female.push(users[i].age);
+            }
+            sum.push(users[i].age);
+        }
+
         const barchartAge = c3.generate({
             bindto: '#barchart-ageo',
             data: {
                 columns: [
-                    ['Männlich', 13, 17, 13, 14, 12, 13, 16, 9],
-                    ['Weiblich', 15, 15, 17, 16, 11, 15, 18, 11],
-                    ['Gesamt', 13, 17, 13, 14, 12, 13, 16, 9, 15, 15, 17, 16, 11, 15, 18, 11]
+                    male,
+                    female,
+                    sum
                 ],
                 type: 'bar'
             },
