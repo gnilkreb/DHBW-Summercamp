@@ -7,12 +7,15 @@
         <strong>TODO:</strong> Richtige statt Guttenberg Daten verwenden
     </div>
     <div id="users" data-users-array="{{$users}}" ></div>
+    <div id="tasks" data-tasks-array="{{$tasks}}" ></div>
     <div id="statistics-container" class="container">
-        <div class="col-md-4">
-            <h2>Geschlechtsverteilung</h2>
+        <div class="col-md-3">
             <div id="piechart-gendero"></div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-3">
+            <div id="piechart-difficulty"></div>
+        </div>
+        <div class="col-md-6">
             <h2>Altersverteilung</h2>
             <div id="barchart-ageo"></div>
         </div>
@@ -28,6 +31,7 @@
     <script src="/components/c3/c3.min.js"></script>
     <script>
         var users = $('#users').data('users-array');
+        var tasks = $('#tasks').data('tasks-array');
 
         var male = 0;
         var female = 0;
@@ -52,6 +56,38 @@
             },
             donut: {
                 title: 'Geschlechtsverteilung'
+            }
+        });
+
+        var bronze = 0;
+        var silver = 0;
+        var gold = 0;
+
+        for(var i = 0; i < tasks.length; i++) {
+            if(tasks[i].difficulty == 1) {
+                bronze++;
+            }
+            if(tasks[i].difficulty == 2) {
+                silver++;
+            }
+            if(tasks[i].difficulty == 3) {
+                gold++;
+            }
+        }
+
+        const piechartDifficulty = c3.generate({
+            bindto: '#piechart-difficulty',
+            data: {
+                // iris data from R
+                columns: [
+                    ['Bronze', bronze],
+                    ['Silber', silver],
+                    ['Gold', gold]
+                ],
+                type: 'donut'
+            },
+            donut: {
+                title: 'Schwierigkeitsgrade'
             }
         });
 
