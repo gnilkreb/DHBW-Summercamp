@@ -90,17 +90,40 @@ function initAgeChart(users) {
         } else {
             male.push(user.age);
         }
-
         sum.push(user.age);
     });
+    
+    var avgFem = 0;
+    
+    female.forEach(fem => {
+        avgFem = avgFem + fem;
+    });
+    
+    avgFem = avgFem / female.length;
+    
+    var avgMal = 0;
+    
+    male.forEach(mal => {
+        avgMal = avgMal + mal;
+    });
+    
+    avgMal = avgMal / male.length;
+    
+    var avgSum = 0;
+    
+    sum.forEach(s => {
+        avgSum = avgSum + s;
+    });
+    
+    avgSum = avgSum / sum.length;
 
     c3.generate({
         bindto: '#barchart-ageo',
         data: {
             columns: [
-                male,
-                female,
-                sum
+                avgMal,
+                avgFem,
+                avgSum
             ],
             colors: {
                 'Männlich': MALE_COLOR,
