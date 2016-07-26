@@ -1,13 +1,21 @@
 $(() => {
     if ($('#statistics-container').length === 1) {
-        initCharts();
+        const users = $('#users').data('users-array');
+        const tasks = $('#tasks').data('tasks-array');
+
+        initCharts(users, tasks);
     }
 });
 
-function initCharts() {
-    var users = $('#users').data('users-array');
-    var tasks = $('#tasks').data('tasks-array');
+function initCharts(users, tasks) {
+    initGenderChart(users);
+    initDifficultyChart(tasks);
+    initAgeChart(users);
+    initSchoolChart(users);
+    initGradeChart(users);
+}
 
+function initGenderChart(users) {
     var male = 0;
     var female = 0;
 
@@ -33,7 +41,9 @@ function initCharts() {
             title: 'Geschlechtsverteilung'
         }
     });
+}
 
+function initDifficultyChart(tasks) {
     var bronze = 0;
     var silver = 0;
     var gold = 0;
@@ -65,7 +75,9 @@ function initCharts() {
             title: 'Schwierigkeitsgrade'
         }
     });
+}
 
+function initAgeChart(users) {
     var male = ['Männlich'];
     var female = ['Weiblich'];
     var sum = ['Gesamt'];
@@ -100,7 +112,9 @@ function initCharts() {
             }
         }
     });
+}
 
+function initSchoolChart(users) {
     var gymnasium = 0;
     var realschule = 0;
     var hauptschule = 0;
@@ -133,7 +147,9 @@ function initCharts() {
             title: 'Schularten'
         }
     });
+}
 
+function initGradeChart(users) {
     var one = 0;
     var two = 0;
     var three = 0;
