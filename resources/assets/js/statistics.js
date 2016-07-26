@@ -5,7 +5,7 @@ $(() => {
     if ($('#statistics-container').length === 1) {
         const users = $('#users').data('users-array');
         const tasks = $('#tasks').data('tasks-array');
-
+        console.log(users, tasks);
         initCharts(users, tasks);
     }
 });
@@ -19,21 +19,20 @@ function initCharts(users, tasks) {
 }
 
 function initGenderChart(users) {
-    var male = 0;
-    var female = 0;
+    let male = 0;
+    let female = 0;
 
-    for (var i = 0; i < users.length; i++) {
-        if (users[i].gender == 1) {
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].gender === 1) {
             male++;
         } else {
             female++;
         }
     }
 
-    const piechartGender = c3.generate({
+    c3.generate({
         bindto: '#piechart-gendero',
         data: {
-            // iris data from R
             columns: [
                 ['Männlich', male],
                 ['Weiblich', female],
@@ -51,26 +50,25 @@ function initGenderChart(users) {
 }
 
 function initDifficultyChart(tasks) {
-    var bronze = 0;
-    var silver = 0;
-    var gold = 0;
+    let bronze = 0;
+    let silver = 0;
+    let gold = 0;
 
-    for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i].difficulty == 1) {
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].difficulty === 1) {
             bronze++;
         }
-        if (tasks[i].difficulty == 2) {
+        if (tasks[i].difficulty === 2) {
             silver++;
         }
-        if (tasks[i].difficulty == 3) {
+        if (tasks[i].difficulty === 3) {
             gold++;
         }
     }
 
-    const piechartDifficulty = c3.generate({
+    c3.generate({
         bindto: '#piechart-difficulty',
         data: {
-            // iris data from R
             columns: [
                 ['Bronze', bronze],
                 ['Silber', silver],
@@ -90,12 +88,12 @@ function initDifficultyChart(tasks) {
 }
 
 function initAgeChart(users) {
-    var male = ['Männlich'];
-    var female = ['Weiblich'];
-    var sum = ['Gesamt'];
+    const male = ['Männlich'];
+    const female = ['Weiblich'];
+    const sum = ['Gesamt'];
 
-    for (var i = 0; i < users.length; i++) {
-        if (users[i].gender == 1) {
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].gender === 1) {
             male.push(users[i].age);
         } else {
             female.push(users[i].age);
@@ -103,7 +101,7 @@ function initAgeChart(users) {
         sum.push(users[i].age);
     }
 
-    const barchartAge = c3.generate({
+    c3.generate({
         bindto: '#barchart-ageo',
         data: {
             columns: [
@@ -132,12 +130,12 @@ function initAgeChart(users) {
 }
 
 function initSchoolChart(users) {
-    var gymnasium = 0;
-    var realschule = 0;
-    var hauptschule = 0;
-    var grundschule = 0;
+    let gymnasium = 0;
+    let realschule = 0;
+    let hauptschule = 0;
+    let grundschule = 0;
 
-    for (var i = 0; i < users.length; i++) {
+    for (let i = 0; i < users.length; i++) {
         if (users[i].school == 'Gymnasium') {
             gymnasium++;
         }
@@ -147,16 +145,19 @@ function initSchoolChart(users) {
         if (users[i].school == 'Hauptschule') {
             hauptschule++;
         }
+        if (users[i].school === 'Grundschule') {
+            grundschule++;
+        }
     }
 
-    const piechartSchool = c3.generate({
+    c3.generate({
         bindto: '#piechart-school',
         data: {
-            // iris data from R
             columns: [
                 ['Gymnasium', gymnasium],
                 ['Realschule', realschule],
-                ['Hauptschule', hauptschule]
+                ['Hauptschule', hauptschule],
+                ['Grundschule', grundschule]
             ],
             type: 'donut'
         },
@@ -167,21 +168,21 @@ function initSchoolChart(users) {
 }
 
 function initGradeChart(users) {
-    var one = 0;
-    var two = 0;
-    var three = 0;
-    var four = 0;
-    var five = 0;
-    var six = 0;
-    var seven = 0;
-    var eight = 0;
-    var nine = 0;
-    var ten = 0;
-    var eleven = 0;
-    var twelve = 0;
-    var thirteen = 0;
+    let one = 0;
+    let two = 0;
+    let three = 0;
+    let four = 0;
+    let five = 0;
+    let six = 0;
+    let seven = 0;
+    let eight = 0;
+    let nine = 0;
+    let ten = 0;
+    let eleven = 0;
+    let twelve = 0;
+    let thirteen = 0;
 
-    for (var i = 0; i < users.length; i++) {
+    for (let i = 0; i < users.length; i++) {
         if (users[i].grade == 1) {
             one++;
         }
@@ -223,10 +224,9 @@ function initGradeChart(users) {
         }
     }
 
-    const piechartGrade = c3.generate({
+    c3.generate({
         bindto: '#piechart-grade',
         data: {
-            // iris data from R
             columns: [
                 ['1', one],
                 ['2', two],
