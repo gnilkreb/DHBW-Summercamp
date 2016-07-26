@@ -86,9 +86,9 @@ function initAgeChart(users) {
 
     users.forEach(user => {
         if (user.gender === 1) {
-            male.push(user.age);
-        } else {
             female.push(user.age);
+        } else {
+            male.push(user.age);
         }
 
         sum.push(user.age);
