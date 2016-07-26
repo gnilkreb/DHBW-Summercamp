@@ -19,7 +19,7 @@
             <div id="piechart-grade"></div>
         </div>
         <div class="col-md-12">
-            <h2>Altersverteilung</h2>
+            <h2>Altersdurchschnitt</h2>
             <div id="barchart-ageo"></div>
         </div>
     </div>

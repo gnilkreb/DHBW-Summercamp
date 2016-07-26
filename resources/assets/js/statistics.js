@@ -80,9 +80,9 @@ function initDifficultyChart(tasks) {
 }
 
 function initAgeChart(users) {
-    const male = ['Männlich'];
-    const female = ['Weiblich'];
-    const sum = ['Gesamt'];
+    const male = [];
+    const female = [];
+    const sum = [];
 
     users.forEach(user => {
         if (user.gender === 1) {
@@ -90,40 +90,21 @@ function initAgeChart(users) {
         } else {
             male.push(user.age);
         }
+
         sum.push(user.age);
     });
-    
-    var avgFem = 0;
-    
-    female.forEach(fem => {
-        avgFem = avgFem + fem;
-    });
-    
-    avgFem = avgFem / female.length;
-    
-    var avgMal = 0;
-    
-    male.forEach(mal => {
-        avgMal = avgMal + mal;
-    });
-    
-    avgMal = avgMal / male.length;
-    
-    var avgSum = 0;
-    
-    sum.forEach(s => {
-        avgSum = avgSum + s;
-    });
-    
-    avgSum = avgSum / sum.length;
+
+    const avgFemale = average(female);
+    const avgMale = average(male);
+    const avgSum = average(sum);
 
     c3.generate({
         bindto: '#barchart-ageo',
         data: {
             columns: [
-                avgMal,
-                avgFem,
-                avgSum
+                ['Männlich', avgMale],
+                ['Weiblich', avgFemale],
+                ['Gesamt', avgSum]
             ],
             colors: {
                 'Männlich': MALE_COLOR,
@@ -208,4 +189,10 @@ function initGradeChart(users) {
             title: 'Klasse'
         }
     });
+}
+
+function average(array) {
+    const sum = array.reduce((previous, current) => previous + current, 0);
+
+    return Math.round(sum / array.length);
 }
