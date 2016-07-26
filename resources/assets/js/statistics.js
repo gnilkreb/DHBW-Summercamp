@@ -136,13 +136,13 @@ function initSchoolChart(users) {
     let grundschule = 0;
 
     users.forEach(user => {
-        if (user.school == 'Gymnasium') {
+        if (user.school === 'Gymnasium') {
             gymnasium++;
         }
-        if (user.school == 'Realschule') {
+        if (user.school === 'Realschule') {
             realschule++;
         }
-        if (user.school == 'Hauptschule') {
+        if (user.school === 'Hauptschule') {
             hauptschule++;
         }
         if (user.school === 'Grundschule') {
