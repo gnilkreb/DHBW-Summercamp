@@ -50,29 +50,23 @@ function initGenderChart(users) {
 }
 
 function initDifficultyChart(tasks) {
-    let bronze = 0;
-    let silver = 0;
-    let gold = 0;
+    const data = {
+        '1': 0,
+        '2': 0,
+        '3': 0
+    };
 
     tasks.forEach(task => {
-        if (task.difficulty === 1) {
-            bronze++;
-        }
-        if (task.difficulty === 2) {
-            silver++;
-        }
-        if (task.difficulty === 3) {
-            gold++;
-        }
+        data[task.difficulty]++;
     });
 
     c3.generate({
         bindto: '#piechart-difficulty',
         data: {
             columns: [
-                ['Bronze', bronze],
-                ['Silber', silver],
-                ['Gold', gold]
+                ['Bronze', data['1']],
+                ['Silber', data['2']],
+                ['Gold', data['3']]
             ],
             colors: {
                 Bronze: '#CD7F32',
@@ -98,6 +92,7 @@ function initAgeChart(users) {
         } else {
             female.push(user.age);
         }
+
         sum.push(user.age);
     });
 
@@ -130,34 +125,25 @@ function initAgeChart(users) {
 }
 
 function initSchoolChart(users) {
-    let gymnasium = 0;
-    let realschule = 0;
-    let hauptschule = 0;
-    let grundschule = 0;
+    const data = {
+        'Grundschule': 0,
+        'Hauptschule': 0,
+        'Realschule': 0,
+        'Gymnasium': 0
+    };
 
     users.forEach(user => {
-        if (user.school === 'Gymnasium') {
-            gymnasium++;
-        }
-        if (user.school === 'Realschule') {
-            realschule++;
-        }
-        if (user.school === 'Hauptschule') {
-            hauptschule++;
-        }
-        if (user.school === 'Grundschule') {
-            grundschule++;
-        }
+        data[user.school]++;
     });
 
     c3.generate({
         bindto: '#piechart-school',
         data: {
             columns: [
-                ['Gymnasium', gymnasium],
-                ['Realschule', realschule],
-                ['Hauptschule', hauptschule],
-                ['Grundschule', grundschule]
+                ['Gymnasium', data['Gymnasium']],
+                ['Realschule', data['Realschule']],
+                ['Hauptschule', data['Hauptschule']],
+                ['Grundschule', data['Grundschule']]
             ],
             type: 'donut'
         },
@@ -168,80 +154,33 @@ function initSchoolChart(users) {
 }
 
 function initGradeChart(users) {
-    let one = 0;
-    let two = 0;
-    let three = 0;
-    let four = 0;
-    let five = 0;
-    let six = 0;
-    let seven = 0;
-    let eight = 0;
-    let nine = 0;
-    let ten = 0;
-    let eleven = 0;
-    let twelve = 0;
-    let thirteen = 0;
+    const data = {};
+
+    for (let i = 1; i <= 13; i++) {
+        data[i] = 0;
+    }
 
     users.forEach(user => {
-        if (user.grade == 1) {
-            one++;
+        if (!user.grade) {
+            return;
         }
-        if (user.grade == 2) {
-            two++;
-        }
-        if (user.grade == 3) {
-            three++;
-        }
-        if (user.grade == 4) {
-            four++;
-        }
-        if (user.grade == 5) {
-            five++;
-        }
-        if (user.grade == 6) {
-            six++;
-        }
-        if (user.grade == 7) {
-            seven++;
-        }
-        if (user.grade == 8) {
-            eight++;
-        }
-        if (user.grade == 9) {
-            nine++;
-        }
-        if (user.grade == 10) {
-            ten++;
-        }
-        if (user.grade == 11) {
-            eleven++;
-        }
-        if (user.grade == 12) {
-            twelve++;
-        }
-        if (user.grade == 12) {
-            thirteen++;
-        }
+
+        data[user.grade]++;
     });
+
+    const columns = [];
+
+    for (let key in data) {
+        const value = data[key];
+        const column = [key, value];
+
+        columns.push(column);
+    }
 
     c3.generate({
         bindto: '#piechart-grade',
         data: {
-            columns: [
-                ['1', one],
-                ['2', two],
-                ['3', three],
-                ['4', four],
-                ['5', five],
-                ['6', six],
-                ['7', seven],
-                ['8', eight],
-                ['9', nine],
-                ['10', ten],
-                ['11', eleven],
-                ['12', twelve],
-                ['13', thirteen]
-            ],
+            columns,
             type: 'donut'
         },
         donut: {
