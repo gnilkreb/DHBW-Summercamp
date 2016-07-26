@@ -1,3 +1,6 @@
+const MALE_COLOR = '#2980b9';
+const FEMALE_COLOR = '#c0392b';
+
 $(() => {
     if ($('#statistics-container').length === 1) {
         const users = $('#users').data('users-array');
@@ -35,6 +38,10 @@ function initGenderChart(users) {
                 ['Männlich', male],
                 ['Weiblich', female],
             ],
+            colors: {
+                'Männlich': MALE_COLOR,
+                'Weiblich': FEMALE_COLOR
+            },
             type: 'donut'
         },
         donut: {
@@ -104,6 +111,11 @@ function initAgeChart(users) {
                 female,
                 sum
             ],
+            colors: {
+                'Männlich': MALE_COLOR,
+                'Weiblich': FEMALE_COLOR,
+                'Gesamt': '#2c3e50'
+            },
             type: 'bar'
         },
         bar: {
