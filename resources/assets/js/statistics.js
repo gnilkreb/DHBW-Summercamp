@@ -22,13 +22,13 @@ function initGenderChart(users) {
     let male = 0;
     let female = 0;
 
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].gender === 1) {
+    users.forEach(user => {
+        if (user.gender === 1) {
             male++;
         } else {
             female++;
         }
-    }
+    });
 
     c3.generate({
         bindto: '#piechart-gendero',
@@ -54,17 +54,17 @@ function initDifficultyChart(tasks) {
     let silver = 0;
     let gold = 0;
 
-    for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].difficulty === 1) {
+    tasks.forEach(task => {
+        if (task.difficulty === 1) {
             bronze++;
         }
-        if (tasks[i].difficulty === 2) {
+        if (task.difficulty === 2) {
             silver++;
         }
-        if (tasks[i].difficulty === 3) {
+        if (task.difficulty === 3) {
             gold++;
         }
-    }
+    });
 
     c3.generate({
         bindto: '#piechart-difficulty',
@@ -92,14 +92,14 @@ function initAgeChart(users) {
     const female = ['Weiblich'];
     const sum = ['Gesamt'];
 
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].gender === 1) {
-            male.push(users[i].age);
+    users.forEach(user => {
+        if (user.gender === 1) {
+            male.push(user.age);
         } else {
-            female.push(users[i].age);
+            female.push(user.age);
         }
-        sum.push(users[i].age);
-    }
+        sum.push(user.age);
+    });
 
     c3.generate({
         bindto: '#barchart-ageo',
@@ -135,20 +135,20 @@ function initSchoolChart(users) {
     let hauptschule = 0;
     let grundschule = 0;
 
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].school == 'Gymnasium') {
+    users.forEach(user => {
+        if (user.school == 'Gymnasium') {
             gymnasium++;
         }
-        if (users[i].school == 'Realschule') {
+        if (user.school == 'Realschule') {
             realschule++;
         }
-        if (users[i].school == 'Hauptschule') {
+        if (user.school == 'Hauptschule') {
             hauptschule++;
         }
-        if (users[i].school === 'Grundschule') {
+        if (user.school === 'Grundschule') {
             grundschule++;
         }
-    }
+    });
 
     c3.generate({
         bindto: '#piechart-school',
@@ -182,47 +182,47 @@ function initGradeChart(users) {
     let twelve = 0;
     let thirteen = 0;
 
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].grade == 1) {
+    users.forEach(user => {
+        if (user.grade == 1) {
             one++;
         }
-        if (users[i].grade == 2) {
+        if (user.grade == 2) {
             two++;
         }
-        if (users[i].grade == 3) {
+        if (user.grade == 3) {
             three++;
         }
-        if (users[i].grade == 4) {
+        if (user.grade == 4) {
             four++;
         }
-        if (users[i].grade == 5) {
+        if (user.grade == 5) {
             five++;
         }
-        if (users[i].grade == 6) {
+        if (user.grade == 6) {
             six++;
         }
-        if (users[i].grade == 7) {
+        if (user.grade == 7) {
             seven++;
         }
-        if (users[i].grade == 8) {
+        if (user.grade == 8) {
             eight++;
         }
-        if (users[i].grade == 9) {
+        if (user.grade == 9) {
             nine++;
         }
-        if (users[i].grade == 10) {
+        if (user.grade == 10) {
             ten++;
         }
-        if (users[i].grade == 11) {
+        if (user.grade == 11) {
             eleven++;
         }
-        if (users[i].grade == 12) {
+        if (user.grade == 12) {
             twelve++;
         }
-        if (users[i].grade == 12) {
+        if (user.grade == 12) {
             thirteen++;
         }
-    }
+    });
 
     c3.generate({
         bindto: '#piechart-grade',
