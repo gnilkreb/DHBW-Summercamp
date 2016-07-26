@@ -5,7 +5,7 @@ $(() => {
     if ($('#statistics-container').length === 1) {
         const users = $('#users').data('users-array');
         const tasks = $('#tasks').data('tasks-array');
-        console.log(users, tasks);
+
         initCharts(users, tasks);
     }
 });
@@ -19,23 +19,21 @@ function initCharts(users, tasks) {
 }
 
 function initGenderChart(users) {
-    let male = 0;
-    let female = 0;
+    const data = {
+        '0': 0,
+        '1': 0
+    };
 
     users.forEach(user => {
-        if (user.gender === 1) {
-            male++;
-        } else {
-            female++;
-        }
+        data[user.gender]++;
     });
 
     c3.generate({
         bindto: '#piechart-gendero',
         data: {
             columns: [
-                ['Männlich', male],
-                ['Weiblich', female],
+                ['Männlich', data['0']],
+                ['Weiblich', data['1']],
             ],
             colors: {
                 'Männlich': MALE_COLOR,
