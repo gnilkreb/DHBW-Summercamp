@@ -69,6 +69,11 @@ function initDifficultyChart(tasks) {
                 ['Silber', silver],
                 ['Gold', gold]
             ],
+            colors: {
+                Bronze: '#CD7F32',
+                Silber: 'silver',
+                Gold: 'gold'
+            },
             type: 'donut'
         },
         donut: {
