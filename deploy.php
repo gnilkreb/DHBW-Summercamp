@@ -54,6 +54,6 @@ task('deploy:clear-config', function () {
 after('deploy', 'deploy:bower');
 after('deploy', 'deploy:npm');
 after('deploy', 'deploy:migrate');
+after('deploy', 'deploy:clear-config');
 after('deploy:npm', 'deploy:build');
 after('deploy:build', 'deploy:php-fpm');
-after('deploy:php-fpm', 'deploy:clear-config');
