@@ -64,6 +64,18 @@ class Task extends Model
         return $result->count() >= 1;
     }
 
+    public function teacherRequested()
+    {
+        $user = Auth::user();
+        $result = TaskRequest::where([
+            ['user_id', $user->id],
+            ['task_id', $this->id],
+            ['done', 0]
+        ]);
+
+        return $result->count() >= 1;
+    }
+
     public function answers()
     {
         return $this->hasMany('App\Answer');

@@ -56,7 +56,12 @@
                                         </div>
                                     @endforeach
                                 @endif
-                                <button type="submit" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-top: 15px;">Aufgabe lösen</button>
+
+                                @if($task->teacherRequested())
+                                    <h3 class="animated rubberBand">Ein Lehrer sollte gleich bei dir sein.</h3>
+                                @else
+                                    <button type="submit" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-top: 15px;">Aufgabe lösen</button>
+                                @endif
                             </form>
                         @endif
                     </div>
