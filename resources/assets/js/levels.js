@@ -1,6 +1,7 @@
 $(() => {
     $('[data-set-category-active]').change(onSetCategoryActive);
     $('[data-delete]').click(onDelete);
+    checkForFinishedTask();
 });
 
 function onSetCategoryActive() {
@@ -28,4 +29,14 @@ function onDelete() {
             window.location.href = redirect;
         }
     });
+}
+
+function checkForFinishedTask() {
+    const taskHasBeenFinished = $('#task-finished').length > 0;
+
+    if (!taskHasBeenFinished) {
+        return;
+    }
+
+    swal('Sehr gut!', 'Du hast diese Aufgabe richtig gelöst.', 'success');
 }

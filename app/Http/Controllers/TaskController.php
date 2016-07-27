@@ -45,7 +45,7 @@ class TaskController extends BaseController
 
         switch ($task->finish_type) {
             case FinishType::SELF:
-                return $this->self($task, $user);
+                return $this->self($task, $user, $request);
             case FinishType::MULTIPLE_CHOICE:
                 return $this->multipleChoice($task, $user, $request);
             case FinishType::TEACHER:
@@ -55,11 +55,12 @@ class TaskController extends BaseController
         throw new Exception('Unknown finish type: ' . $task->finish_type);
     }
 
-    private function self(Task $task, User $user)
+    private function self(Task $task, User $user, Request $request)
     {
         $this->finishTask($task, $user);
+        $request->session()->flash('status', true);
 
-        return redirect()->back();
+        return redirect('/level/' . $task->level->id);
     }
 
     private function multipleChoice(Task $task, User $user, Request $request)
@@ -78,8 +79,9 @@ class TaskController extends BaseController
         }
 
         $this->finishTask($task, $user);
+        $request->session()->flash('status', true);
 
-        return redirect()->back();
+        return redirect('/level/' . $task->level->id);
     }
 
     private function teacher(Task $task, User $user)

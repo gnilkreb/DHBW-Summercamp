@@ -3,6 +3,9 @@
 @section('title', $level->title)
 
 @section('content')
+    @if(session('status'))
+        <span id="task-finished"></span>
+    @endif
 
     <div class="centered-logo">
         <object class="logoobject" data="/img/svg/logo.svg" type="image/svg+xml"></object>
