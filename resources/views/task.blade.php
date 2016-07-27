@@ -20,11 +20,7 @@
                         <a href="{{ $task->pdf_url }}" target="_blank" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-bottom: 15px;"><i class="fa fa-file-pdf-o"></i> </a>
                     </div>
                     @endif
-                    @if($task->youtube_url)
-                    <div class="col-xs-6">
-                    @else
-                    <div class="col-xs-12">
-                    @endif
+                    <div class="@if($task->youtube_url) col-xs-6 @else col-xs-12 @endif">
                         <p style="text-align: left; margin-left: 25px; font-size: 2rem; letter-spacing: 0.25rem; line-height: 3rem;">{!! $task->content !!}</p>
                     </div>
                     @if($task->youtube_url)
@@ -40,25 +36,29 @@
                     </div>
                     @endif
                     <div class="row">
-                        @if($errors->has('wrong_answer'))
-                            <div class="label label-warning">{{ $errors->first('wrong_answer') }}</div>
-                        @endif
-
-                        <form method="POST" action="/task/{{ $task->id }}/finish">
-                            {{ csrf_field() }}
-
-                            @if($task->finish_type === App\Domain\Tasks\FinishType::MULTIPLE_CHOICE)
-                                @foreach($task->answers as $answer)
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="answer_id" id="answer_{{ $answer->id }}" value="{{ $answer->id }}">
-                                            {{ $answer->label }}
-                                        </label>
-                                    </div>
-                                @endforeach
+                        @if($task->finished())
+                            <h3 class="animated infinite pulse">Du hast diese Aufgabe richtig gelöst, weiter so! :)</h3>
+                        @else
+                            @if($errors->has('wrong_answer'))
+                                <div class="label label-warning">{{ $errors->first('wrong_answer') }}</div>
                             @endif
+
+                            <form method="POST" action="/task/{{ $task->id }}/finish">
+                                {{ csrf_field() }}
+
+                                @if($task->finish_type === App\Domain\Tasks\FinishType::MULTIPLE_CHOICE)
+                                    @foreach($task->answers as $answer)
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="answer_id" id="answer_{{ $answer->id }}" value="{{ $answer->id }}">
+                                                {{ $answer->label }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                @endif
                                 <button type="submit" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-top: 15px;">Aufgabe lösen</button>
-                        </form>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>

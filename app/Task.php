@@ -61,7 +61,7 @@ class Task extends Model
             ['task_id', $this->id]
         ])->get();
 
-        return $result->count() === 1;
+        return $result->count() >= 1;
     }
 
     public function answers()
