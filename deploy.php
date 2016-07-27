@@ -47,6 +47,7 @@ task('deploy:php-fpm', function () {
 });
 
 task('deploy:clear-config', function () {
+    cd('{{release_path}}');
     run('php artisan config:clear');
 });
 
