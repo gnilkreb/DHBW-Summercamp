@@ -40,7 +40,7 @@
                             <h3 class="animated infinite pulse">Du hast diese Aufgabe richtig gelöst, weiter so! :)</h3>
                         @else
                             @if($errors->has('wrong_answer'))
-                                <div class="label label-warning">{{ $errors->first('wrong_answer') }}</div>
+                                <div class="label label-warning" style="font-size: 100%">{{ $errors->first('wrong_answer') }}</div>
                             @endif
 
                             <form method="POST" action="/task/{{ $task->id }}/finish">
