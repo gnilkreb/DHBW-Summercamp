@@ -98,7 +98,7 @@ class TaskController extends BaseController
 
     private function finishTask(Task $task, User $user)
     {
-        $team = $user->team();
+        $team = $user->team;
 
         if ($team) {
             $this->finishTaskForTeam($task, $team);
@@ -110,7 +110,7 @@ class TaskController extends BaseController
 
     private function finishTaskForTeam(Task $task, Team $team)
     {
-        $users = $team->users();
+        $users = $team->users;
 
         foreach ($users as $user) {
             $this->finishTaskForUser($task, $user);
