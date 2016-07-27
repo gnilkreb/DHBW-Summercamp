@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Category;
 use App\Domain\Tasks\FinishType;
 use App\FinishedTask;
 use App\Http\Controllers\Admin\RequestsController;
+use App\Level;
 use App\Task;
 use App\TaskRequest;
 use App\Team;
@@ -32,9 +34,13 @@ class TaskController extends BaseController
     public function show($id)
     {
         $task = Task::findOrFail($id);
+        $level = Level::findOrFail($task->id);
+        $category = Category::findOrFail($level->id);
 
         return view('task', [
-            'task' => $task
+            'task' => $task,
+            'level' => $level,
+            'category' => $category
         ]);
     }
 

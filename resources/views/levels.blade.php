@@ -15,6 +15,12 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 content">
+                    <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
+                        <li><a href="/">Start</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/categories">Kategorien</a></li>
+                        <li><a href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
+                    </ol>
                     @foreach($levels as $level)
                         <div class="col-xs-4 star-column">
                             <a href="/level/{{ $level->id }}">

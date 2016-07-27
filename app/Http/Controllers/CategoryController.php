@@ -22,7 +22,8 @@ class CategoryController extends BaseController
         $levels = $category->levels->sortBy('order');
 
         return view('levels', [
-            'levels' => $levels
+            'levels' => $levels,
+            'category' => $category
         ]);
     }
 

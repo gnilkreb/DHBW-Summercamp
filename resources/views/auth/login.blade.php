@@ -7,6 +7,11 @@
         <div class="alert alert-warning">{{ $errors->first('message') }}</div>
     @endif
 
+    <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
+        <li><a href="/">Start</a></li>
+        <li><a href="/login">Login</a></li>
+    </ol>
+
     <form style="margin: 25px;" method="POST" action="login">
         {{ csrf_field() }}
 
@@ -28,7 +33,6 @@
             @if($errors->first('password'))
                 <hr style="border-color: transparent;"/><div class="alert alert-danger">{{ $errors->first('password') }}</div>
             @endif
-
         </div>
 
         <div class="form-group">
