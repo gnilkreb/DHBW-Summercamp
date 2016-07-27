@@ -46,8 +46,13 @@ task('deploy:php-fpm', function () {
     run('sudo /etc/init.d/php7.0-fpm restart');
 });
 
+task('deploy:clear-config', function () {
+    run('php artisan config:clear');
+});
+
 after('deploy', 'deploy:bower');
 after('deploy', 'deploy:npm');
 after('deploy', 'deploy:migrate');
 after('deploy:npm', 'deploy:build');
 after('deploy:build', 'deploy:php-fpm');
+after('deploy:php-fpm', 'deploy:clear-config');
