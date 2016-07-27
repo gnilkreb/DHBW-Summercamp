@@ -8,6 +8,7 @@ use App\FinishedTask;
 use App\Http\Controllers\Admin\RequestsController;
 use App\Task;
 use App\TaskRequest;
+use App\Team;
 use App\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -96,6 +97,27 @@ class TaskController extends BaseController
     }
 
     private function finishTask(Task $task, User $user)
+    {
+        $team = $user->team();
+
+        if ($team) {
+            $this->finishTaskForTeam($task, $team);
+            return;
+        }
+
+        $this->finishTaskForUser($task, $user);
+    }
+
+    private function finishTaskForTeam(Task $task, Team $team)
+    {
+        $users = $team->users();
+
+        foreach ($users as $user) {
+            $this->finishTaskForUser($task, $user);
+        }
+    }
+
+    private function finishTaskForUser(Task $task, User $user)
     {
         FinishedTask::create([
             'user_id' => $user->id,
