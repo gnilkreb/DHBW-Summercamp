@@ -22,10 +22,13 @@
             </select>
         </div>
 
-        <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+        <div class="form-group">
             <label class="control-label" for="password">Passwort</label>
             <input id="password" type="password" name="password" class="form-control" placeholder="Passwort" required>
-            <span class="help-block">{{ $errors->first('password') }}</span>
+            @if($errors->first('password'))
+                <hr style="border-color: transparent;"/><div class="alert alert-danger">{{ $errors->first('password') }}</div>
+            @endif
+
         </div>
 
         <div class="form-group">
