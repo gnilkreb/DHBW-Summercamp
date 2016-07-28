@@ -7,25 +7,17 @@
         <a href="/login">Anmelden</a>
     </li>
 
-    <li>
-        <a href="/categories">Kategorien</a>
-    </li>
+    @include('includes.breadcrumb', ['href' => '/categories', 'label' => 'Kategorien', 'active' => !isset($category)])
 
     @if(isset($category))
-        <li>
-            <a href="/category/{{ $category->id }}">{{ $category->name }}</a>
-        </li>
+        @include('includes.breadcrumb', ['href' => '/category/' . $category->id, 'label' => $category->name, 'active' => !isset($level)])
     @endif
 
     @if(isset($level))
-        <li>
-            <a href="/level/{{ $level->id }}">{{ $level->title }}</a>
-        </li>
+        @include('includes.breadcrumb', ['href' => '/level/' . $level->id, 'label' => $level->title, 'active' => !isset($task)])
     @endif
 
     @if(isset($task))
-        <li>
-            <a href="/task/{{ $task->id }}">{{ $task->difficultyName() }}</a>
-        </li>
+        @include('includes.breadcrumb', ['href' => '/task/' . $task->id, 'label' => $task->difficultyName(), 'active' => true])
     @endif
 </ol>
