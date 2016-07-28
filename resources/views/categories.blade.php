@@ -15,12 +15,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 content">
-
-                    <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
-                        <li><a href="/">Start</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/categories">Kategorien</a></li>
-                    </ol>
+                    @include('includes.breadcrumbs')
 
                     <h3>Hey {{ Auth::user()->first_name }}, du bist auf Platz {{ Auth::user()->getRank() }}! <br/>Weiter so!</h3>
                 </div>

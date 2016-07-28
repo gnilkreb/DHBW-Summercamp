@@ -19,13 +19,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 content">
-                    <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
-                        <li><a href="/">Start</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/categories">Kategorien</a></li>
-                        <li><a href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
-                        <li><a href="/level/{{ $level->id }}">{{ $level->title }}</a></li>
-                    </ol>
+                    @include('includes.breadcrumbs')
+
                     @foreach($tasks as $task)
                         <div class="col-xs-4 star-column">
                             <a href="/task/{{ $task->id }}">

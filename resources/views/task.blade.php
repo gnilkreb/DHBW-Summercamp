@@ -16,14 +16,7 @@
             <div class="row">
                 <div class="col-xs-12 content">
                     <div class="row">
-                        <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
-                            <li><a href="/">Start</a></li>
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/categories">Kategorien</a></li>
-                            <li><a href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
-                            <li><a href="/level/{{ $level->id }}">{{ $level->title }}</a></li>
-                            <li><a href="/task/{{ $task->id }}">{{ $task->difficultyName() }}</a></li>
-                        </ol>
+                        @include('includes.breadcrumbs')
                     </div>
                     @if($task->pdf_url)
                     <div class="row" style="text-align: right; padding-right: 40px;">
