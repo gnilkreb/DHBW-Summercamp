@@ -15,34 +15,38 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 content">
-                    <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
-                        <li><a href="/">Start</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/categories">Kategorien</a></li>
-                        <li><a href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
-                        <li><a href="/level/{{ $level->id }}">{{ $level->title }}</a></li>
-                        <li><a href="/task/{{ $task->id }}">{{ $task->difficultyName() }}</a></li>
-                    </ol>
+                    <div class="row">
+                        <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
+                            <li><a href="/">Start</a></li>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/categories">Kategorien</a></li>
+                            <li><a href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
+                            <li><a href="/level/{{ $level->id }}">{{ $level->title }}</a></li>
+                            <li><a href="/task/{{ $task->id }}">{{ $task->difficultyName() }}</a></li>
+                        </ol>
+                    </div>
                     @if($task->pdf_url)
-                    <div class="col-xs-12" style="text-align: right; padding-right: 40px;">
+                    <div class="row" style="text-align: right; padding-right: 40px;">
                         <a href="{{ $task->pdf_url }}" target="_blank" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-bottom: 15px;"><i class="fa fa-file-pdf-o"></i> </a>
                     </div>
                     @endif
-                    <div class="@if($task->youtube_url) col-xs-6 @else col-xs-12 @endif">
-                        <p style="text-align: left; margin-left: 25px; font-size: 2rem; letter-spacing: 0.25rem; line-height: 3rem;">{!! $task->content !!}</p>
-                    </div>
-                    @if($task->youtube_url)
-                    <div class="col-xs-6">
-                        <!-- https://www.youtube.com/embed/8JG4aeVreCQ?rel=0&amp;showinfo=0 -->
-                        <div style="margin-right: 25px;">
-                            <iframe id="ytplayer" type="text/html" width="100%" height="390"
-                                    style="background-color: white;"
-                                    src="{{ $task->youtube_url }}"
-                                    frameborder="0"
-                                    scrolling="no"></iframe>
+                    <div class="row">
+                        <div class="@if($task->youtube_url) col-xs-6 @else col-xs-12 @endif">
+                            <p style="text-align: left; margin-left: 25px; font-size: 2rem; letter-spacing: 0.25rem; line-height: 3rem;">{!! $task->content !!}</p>
                         </div>
+                        @if($task->youtube_url)
+                        <div class="col-xs-6">
+                            <!-- https://www.youtube.com/embed/8JG4aeVreCQ?rel=0&amp;showinfo=0 -->
+                            <div style="margin-right: 25px;">
+                                <iframe id="ytplayer" type="text/html" width="100%" height="390"
+                                        style="background-color: white;"
+                                        src="{{ $task->youtube_url }}"
+                                        frameborder="0"
+                                        scrolling="no"></iframe>
+                            </div>
+                        </div>
+                        @endif
                     </div>
-                    @endif
                     <div class="row">
                         @if($task->finished())
                             <h3 class="animated infinite pulse">Du hast diese Aufgabe richtig gelöst, weiter so! :)</h3>
