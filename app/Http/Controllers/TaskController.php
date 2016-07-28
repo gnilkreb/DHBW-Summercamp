@@ -34,8 +34,8 @@ class TaskController extends BaseController
     public function show($id)
     {
         $task = Task::findOrFail($id);
-        $level = Level::findOrFail($task->id);
-        $category = Category::findOrFail($level->id);
+        $level = $task->level;
+        $category = $level->category;
 
         return view('task', [
             'task' => $task,

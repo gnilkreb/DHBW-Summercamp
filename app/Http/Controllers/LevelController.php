@@ -13,7 +13,7 @@ class LevelController extends BaseController
     {
         $level = Level::findOrFail($id);
         $tasks = $level->tasks;
-        $category = Category::findOrFail($level->id);
+        $category = $level->category;
 
         return view('level', [
             'level' => $level,
