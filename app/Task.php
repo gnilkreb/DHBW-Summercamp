@@ -18,6 +18,10 @@ class Task extends Model
         'finish_type'
     ];
 
+    protected $casts = [
+        'finish_type' => 'integer'
+    ];
+
     public function level()
     {
         return $this->belongsTo('App\Level');
