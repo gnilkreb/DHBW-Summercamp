@@ -1,12 +1,35 @@
+const pusher = new Pusher('a99a230c0d6a70328f20', {
+    cluster: 'eu',
+    encrypted: true
+});
+
+initFrontend();
+
 if ($('[data-admin]').length === 1) {
-    init();
+    initBackend();
 }
 
-function init() {
-    const pusher = new Pusher('a99a230c0d6a70328f20', {
-        cluster: 'eu',
-        encrypted: true
-    });
+function initFrontend() {
+    const $userIdElement = $('#user-id');
+    const userId = $userIdElement.length > 0 ? parseInt($userIdElement.data('user-id'), 10) : null;
+
+    if (!userId) {
+        return;
+    }
+
+    pusher
+        .subscribe('frontend')
+        .bind('finished', payload => {
+            if (payload.userId !== userId) {
+                return;
+            }
+
+            swal('Aufgabe gelöst!', 'Ein Lehrer hat deine Anfrage akzeptiert.', 'success')
+                .then(() => window.location.reload());
+        });
+}
+
+function initBackend() {
     const channel = pusher.subscribe('admin');
 
     channel.bind('requests', payload => {

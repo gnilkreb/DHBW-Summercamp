@@ -65,6 +65,10 @@ class RequestsController extends BaseController
         $this->pusher->trigger('admin', 'requests', RequestsController::requestsPayload());
 
         if ($accept === 'true') {
+            $this->pusher->trigger('frontend', 'finished', [
+                'userId' => $taskRequest->user_id,
+            ]);
+
             FinishedTask::create([
                 'user_id' => $taskRequest->user_id,
                 'task_id' => $taskRequest->task_id
