@@ -3,6 +3,8 @@
 @section('title', 'Aufgabe')
 
 @section('content')
+    @include('includes.multiple-choice-modal')
+
     @if(session('wrong-answer'))
         <span id="wrong-answer"></span>
     @endif
@@ -48,26 +50,21 @@
                         @if($task->finished())
                             <h3 class="animated infinite pulse">Du hast diese Aufgabe richtig gelöst, weiter so! :)</h3>
                         @else
-                            <form method="POST" action="/task/{{ $task->id }}/finish">
-                                {{ csrf_field() }}
+                            @if($task->isMultipleChoice())
+                                <button type="button" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-top: 15px" data-toggle="modal" data-target="#modal">
+                                    Aufgabe lösen
+                                </button>
+                            @else
+                                <form method="POST" action="/task/{{ $task->id }}/finish">
+                                    {{ csrf_field() }}
 
-                                @if($task->finish_type === App\Domain\Tasks\FinishType::MULTIPLE_CHOICE)
-                                    @foreach($task->answers as $answer)
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="answer_id" id="answer_{{ $answer->id }}" value="{{ $answer->id }}">
-                                                {{ $answer->label }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                @endif
-
-                                @if($task->teacherRequested())
-                                    <h3 class="animated rubberBand">Ein Lehrer sollte gleich bei dir sein.</h3>
-                                @else
-                                    <button type="submit" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-top: 15px;">Aufgabe lösen</button>
-                                @endif
-                            </form>
+                                    @if($task->teacherRequested())
+                                        <h3 class="animated rubberBand">Ein Lehrer sollte gleich bei dir sein.</h3>
+                                    @else
+                                        <button type="submit" class="btn btn-primary btn-lg hvr-pulse-grow" style="margin-top: 15px;">Aufgabe lösen</button>
+                                    @endif
+                                </form>
+                            @endif
                         @endif
                     </div>
                 </div>

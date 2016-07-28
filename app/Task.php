@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Domain\Tasks\FinishType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,6 +84,11 @@ class Task extends Model
     public function answers()
     {
         return $this->hasMany('App\Answer');
+    }
+
+    public function isMultipleChoice()
+    {
+        return $this->finish_type === FinishType::MULTIPLE_CHOICE;
     }
 
 }
