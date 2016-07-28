@@ -79,9 +79,9 @@ class TaskController extends BaseController
         $answer = Answer::findOrFail($answerId);
 
         if (!$answer->correct) {
-            return redirect()->back()->withErrors([
-                'wrong_answer' => 'Diese Antwort war leider falsch, denk noch einmal genau nach!'
-            ]);
+            $request->session()->flash('wrong-answer', true);
+
+            return redirect()->back();
         }
 
         $this->finishTask($task, $user);

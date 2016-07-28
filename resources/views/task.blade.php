@@ -3,6 +3,10 @@
 @section('title', 'Aufgabe')
 
 @section('content')
+    @if(session('wrong-answer'))
+        <span id="wrong-answer"></span>
+    @endif
+
     <div class="centered-logo">
         <object class="logoobject" data="/img/svg/logo.svg" type="image/svg+xml"></object>
     </div>
@@ -44,10 +48,6 @@
                         @if($task->finished())
                             <h3 class="animated infinite pulse">Du hast diese Aufgabe richtig gelöst, weiter so! :)</h3>
                         @else
-                            @if($errors->has('wrong_answer'))
-                                <div class="label label-warning" style="font-size: 100%">{{ $errors->first('wrong_answer') }}</div>
-                            @endif
-
                             <form method="POST" action="/task/{{ $task->id }}/finish">
                                 {{ csrf_field() }}
 

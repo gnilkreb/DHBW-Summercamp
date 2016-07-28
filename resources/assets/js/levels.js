@@ -2,6 +2,7 @@ $(() => {
     $('[data-set-category-active]').change(onSetCategoryActive);
     $('[data-delete]').click(onDelete);
     checkForFinishedTask();
+    checkForWrongAnswer();
 });
 
 function onSetCategoryActive() {
@@ -39,4 +40,14 @@ function checkForFinishedTask() {
     }
 
     swal('Sehr gut!', 'Du hast diese Aufgabe richtig gelöst.', 'success');
+}
+
+function checkForWrongAnswer() {
+    const wrongAnswer = $('#wrong-answer').length > 0;
+
+    if (!wrongAnswer) {
+        return;
+    }
+
+    swal('Falsche Antwort!', 'Denk noch einmal genau nach.', 'error');
 }
