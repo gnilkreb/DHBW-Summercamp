@@ -23,11 +23,13 @@
 
                     @foreach($tasks as $task)
                         <div class="col-xs-4 star-column">
-                            <a href="/task/{{ $task->id }}">
-                                <img src="{{ $task->imageUrl() }}" class="img-responsive center-block star hvr-grow">
-                                <br/>
-                            </a>
-                            {{ $task->difficultyName() }}
+                            <div>
+                                <a href="/task/{{ $task->id }}" class="hvr-grow">
+                                    <span class="star-text">{{ $task->difficulty }}</span>
+                                    <img src="{{ $task->imageUrl() }}" class="img-responsive center-block star">
+                                </a>
+                            </div>
+                            <div>{{ $task->difficultyName() }}</div>
                         </div>
                     @endforeach
                 </div>

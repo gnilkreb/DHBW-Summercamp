@@ -1,7 +1,7 @@
 var landscapeX = 0;
 var cloudsX = 0;
 var mouseX = 0;
-var speed = 0.3;
+var speed = 0.5;
 var parafactor = 2;
 var direction = 1;
 
@@ -36,5 +36,5 @@ function update() {
 
         $('.bg-landscape').css('background-position', Math.round(landscapeX) + 'px bottom');
         $('.bg-clouds').css('background-position', Math.round(cloudsX) + 'px bottom');
-    }, 16);
+    }, 30);
 }

@@ -80,23 +80,37 @@ class User extends Model implements Authenticatable
         return $this->role === 'admin';
     }
 
-    public function getRank() {
-        $users = User::all();
-        $ranking = [];
-        foreach($users as $user) {
-            $ranking[$user->id] = $user->finishedTasks()->count();
+    public function getRank()
+    {
+        $levels = Level::all();
+        $users = User::where('role', 'user')->get();
+
+        foreach ($users as $user) {
+            $user->stars = 0;
         }
-        $finished = $ranking[$this->id];
-        $count = 1;
-        foreach($ranking as $rank) {
-            if($rank > $finished) {
-                $count++;
+
+        foreach ($levels as $level) {
+            foreach ($users as $user) {
+                $user->stars += $level->stars($user);
             }
         }
-        return $count;
+
+        $ranking = $users->sortByDesc('stars');
+        $rank = 1;
+
+        foreach ($ranking as $rankedUser) {
+            if ($rankedUser->id === $this->id) {
+                return $rank;
+            }
+
+            $rank++;
+        }
+
+        return $rank;
     }
 
-    public function finishedTasks() {
+    public function finishedTasks()
+    {
         return $this->hasMany('App\FinishedTask');
     }
 

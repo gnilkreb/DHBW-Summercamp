@@ -19,12 +19,21 @@
 
                     @foreach($levels as $level)
                         <div class="col-xs-4 star-column">
-                            <a href="/level/{{ $level->id }}">
-                                <img src="/img/png/star_empty.png" class="img-responsive center-block star hvr-grow">
-                                <br/>
-                            </a>
+                            <div>
+                                <a href="/level/{{ $level->id }}" class="hvr-grow">
+                                    @if($level->stars() > 0)
+                                        <span class="star-text">{{ $level->stars() }}</span>
+                                    @endif
+                                    <img src="{{ $level->imageUrl() }}" class="img-responsive center-block star">
+                                </a>
+                            </div>
+                            <div>
+                                {{ $level->title }}
 
-                            {{ $level->title }}
+                                @if($level->hasTrophy())
+                                    <i class="fa fa-trophy" data-toggle="tooltip" title="Alle Aufgaben erledigt!"></i>
+                                @endif
+                            </div>
                         </div>
                     @endforeach
                 </div>
