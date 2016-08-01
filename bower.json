@@ -28,7 +28,8 @@
     "notie": "^3.2.0",
     "c3": "^0.4.11",
     "d3": "^4.1.0",
-    "sweetalert2": "latest"
+    "sweetalert2": "latest",
+    "core.js": "^2.4.1"
   },
   "resolutions": {
     "d3": "~3.5.0"
