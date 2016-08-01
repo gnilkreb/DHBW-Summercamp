@@ -39,28 +39,21 @@ class Task extends Model
         return $difficultyNames[$this->difficulty];
     }
 
-    public function difficultyColor()
-    {
-        $difficultyColors = [
-            1 => 'bronze',
-            2 => 'silver',
-            3 => 'gold'
-        ];
-
-        return $difficultyColors[$this->difficulty];
-    }
-
     public function imageUrl()
     {
-        $color = $this->difficultyColor();
-        $finished = $this->finished();
+        if ($this->finished()) {
+            return '/img/png/star.png';
+        }
 
-        return '/img/png/btn_' . $color . ($finished ? '_checked' : '') . '.png';
+        return '/img/png/star_empty.png';
     }
 
-    public function finished()
+    public function finished($user = null)
     {
-        $user = Auth::user();
+        if ($user === null) {
+            $user = Auth::user();
+        }
+
         $result = FinishedTask::where([
             ['user_id', $user->id],
             ['task_id', $this->id]

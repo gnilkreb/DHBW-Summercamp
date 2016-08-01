@@ -25,7 +25,7 @@ $(document).ready(function () {
         alert('Hello');
     });
 
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip();
 
     $('[data-clipboard-text]').each((index, element) => {
         const clipboard = new Clipboard(element);

@@ -12,7 +12,7 @@ class LevelController extends BaseController
     public function show($id)
     {
         $level = Level::findOrFail($id);
-        $tasks = $level->tasks;
+        $tasks = $level->tasks->sortBy('difficulty');
         $category = $level->category;
 
         return view('level', [

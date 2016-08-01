@@ -1,5 +1,7 @@
 # DHBW Summercamp
 
+[![forthebadge](http://forthebadge.com/images/badges/gluten-free.svg)](http://forthebadge.com)
+
 ## Dependencies
 - [NodeJS](https://nodejs.org/en/)
 - MySQL Server
