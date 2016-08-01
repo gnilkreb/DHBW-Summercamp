@@ -1,3 +1,5 @@
+<script src="/components/core.js/client/core.min.js"></script>
+
 @if(env('BUGSNAG_API_KEY_JS'))
     <script src="/components/bugsnag/src/bugsnag.js" data-apikey="{{ env('BUGSNAG_API_KEY_JS') }}"></script>
 @endif
