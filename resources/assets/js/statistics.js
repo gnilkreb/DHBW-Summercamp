@@ -4,15 +4,15 @@ const FEMALE_COLOR = '#c0392b';
 $(() => {
     if ($('#statistics-container').length === 1) {
         const users = $('#users').data('users-array');
-        const tasks = $('#tasks').data('tasks-array');
+        const finishedTasks = $('#finished-tasks').data('finished-tasks-array');
 
-        initCharts(users, tasks);
+        initCharts(users, finishedTasks);
     }
 });
 
-function initCharts(users, tasks) {
+function initCharts(users, finishedTasks) {
     initGenderChart(users);
-    initDifficultyChart(tasks);
+    initDifficultyChart(finishedTasks);
     initAgeChart(users);
     initSchoolChart(users);
     initGradeChart(users);
@@ -47,14 +47,16 @@ function initGenderChart(users) {
     });
 }
 
-function initDifficultyChart(tasks) {
+function initDifficultyChart(finishedTasks) {
     const data = {
         '1': 0,
         '2': 0,
         '3': 0
     };
 
-    tasks.forEach(task => {
+    finishedTasks.forEach(finishedTask => {
+        const task = finishedTask.task;
+
         data[task.difficulty]++;
     });
 
@@ -62,14 +64,14 @@ function initDifficultyChart(tasks) {
         bindto: '#piechart-difficulty',
         data: {
             columns: [
-                ['Bronze', data['1']],
-                ['Silber', data['2']],
-                ['Gold', data['3']]
+                ['Leicht', data['1']],
+                ['Mittel', data['2']],
+                ['Schwer', data['3']]
             ],
             colors: {
-                Bronze: '#CD7F32',
-                Silber: 'silver',
-                Gold: 'gold'
+                Leicht: '#27ae60',
+                Mittel: '#f1c40f',
+                Schwer: '#c0392b'
             },
             type: 'donut'
         },

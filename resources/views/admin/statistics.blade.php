@@ -4,7 +4,7 @@
 
 @section('content')
     <div id="users" data-users-array="{{ $users }}"></div>
-    <div id="tasks" data-tasks-array="{{ $tasks }}"></div>
+    <div id="finished-tasks" data-finished-tasks-array="{{ $finishedTasks }}"></div>
     <div id="statistics-container" class="container">
         <div class="col-md-3">
             <div id="piechart-gendero"></div>
