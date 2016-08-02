@@ -7,6 +7,9 @@ Route::get('/', 'HomeController@index');
 Route::get('/categories', 'CategoryController@index');
 Route::get('/category/{id}', 'CategoryController@levels');
 
+/* Ranking */
+Route::get('/ranking', 'RankingController@index');
+
 /* Level */
 Route::get('/level/{id}', 'LevelController@show');
 

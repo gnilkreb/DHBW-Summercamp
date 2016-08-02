@@ -17,7 +17,8 @@
                 <div class="col-xs-12 content">
                     @include('includes.breadcrumbs')
 
-                    <h3>Hey {{ Auth::user()->first_name }}, du bist auf Platz {{ Auth::user()->getRank() }}! <br/>Weiter so!</h3>
+                    <h2 style="font-size: 1.8rem;">Hey {{ Auth::user()->first_name }}, du bist auf Platz {{ Auth::user()->getRank() }}!</h2>
+                    <a href="/ranking" class="btn btn-default btn-lg hvr-pulse-grow" style="margin-bottom: 15px;"><i class="fa fa-bar-chart-o"></i> | Rangliste</a>
                 </div>
             </div>
             <div class="row">

@@ -36,6 +36,29 @@ class User extends Model implements Authenticatable
         'remember_token'
     ];
 
+    public $randomNames = [
+        'Kitty',
+        'Lakita',
+        'Harriette',
+        'Nena',
+        'Cecilia',
+        'Milly',
+        'Bobbie',
+        'Deandra',
+        'Levi',
+        'Jami',
+        'Kelvin',
+        'Kristal',
+        'Lourdes',
+        'Reita',
+        'Alfonso',
+        'Johnathan',
+        'Drew',
+        'Jacquie',
+        'Suzanne',
+        'Lizeth'
+        ];
+
     protected $dates = ['login_at'];
 
     public function name()
@@ -83,20 +106,14 @@ class User extends Model implements Authenticatable
 
     public function getRank()
     {
-        $levels = Level::all();
         $users = User::where('role', 'user')->get();
 
         foreach ($users as $user) {
-            $user->stars = 0;
-        }
-
-        foreach ($levels as $level) {
-            foreach ($users as $user) {
-                $user->stars += $level->stars($user);
-            }
+            $user->stars = $user->getStars();
         }
 
         $ranking = $users->sortByDesc('stars');
+
         $rank = 1;
 
         foreach ($ranking as $rankedUser) {
@@ -108,6 +125,17 @@ class User extends Model implements Authenticatable
         }
 
         return $rank;
+    }
+
+    public function getStars() {
+        $levels = Level::all();
+        $this->stars = 0;
+
+        foreach ($levels as $level) {
+            $this->stars += $level->stars($this);
+        }
+
+        return $this->stars;
     }
 
     public function finishedTasks()
@@ -174,6 +202,10 @@ class User extends Model implements Authenticatable
     public function getRememberTokenName()
     {
         return 'remember_token';
+    }
+
+    public function getRandomName() {
+        return $this->randomNames[rand(0, count($this->randomNames)-1)];
     }
 
 }
