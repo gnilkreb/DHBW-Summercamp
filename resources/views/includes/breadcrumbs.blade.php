@@ -1,12 +1,4 @@
 <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
-    <li>
-        <a href="/">Start</a>
-    </li>
-
-    <li>
-        <a href="/login">Anmelden</a>
-    </li>
-
     @include('includes.breadcrumb', ['href' => '/categories', 'label' => 'Kategorien', 'active' => !isset($category)])
 
     @if(isset($category))
