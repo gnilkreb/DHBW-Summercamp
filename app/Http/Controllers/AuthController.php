@@ -29,8 +29,9 @@ class AuthController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
+        $alwaysRemember = true;
 
-        Auth::login($user);
+        Auth::login($user, $alwaysRemember);
 
         return redirect('/categories');
     }
