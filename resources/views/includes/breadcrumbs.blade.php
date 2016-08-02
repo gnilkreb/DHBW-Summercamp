@@ -12,4 +12,8 @@
     @if(isset($task))
         @include('includes.breadcrumb', ['href' => '/task/' . $task->id, 'label' => $task->difficultyName(), 'active' => true])
     @endif
+
+    <li class="pull-right">
+        <a href="/logout" class="text-muted">Abmelden</a>
+    </li>
 </ol>
