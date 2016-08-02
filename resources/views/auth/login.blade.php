@@ -9,7 +9,7 @@
 
     <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
         <li><a href="/">Start</a></li>
-        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Registrieren</a></li>
     </ol>
 
     <form style="margin: 25px;" method="POST" action="login">

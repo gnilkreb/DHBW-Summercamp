@@ -3,6 +3,11 @@
 @section('title', 'Registrieren')
 
 @section('auth-content')
+    <ol class="breadcrumb" style="width: 80%; margin-left: 10%;">
+        <li><a href="/">Start</a></li>
+        <li><a href="/login">Anmelden</a></li>
+    </ol>
+
     <form style="margin: 25px;" method="POST" action="register">
         {{ csrf_field() }}
 
