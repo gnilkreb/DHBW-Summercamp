@@ -32,7 +32,8 @@ class User extends Model implements Authenticatable
         'password',
         'role',
         'school',
-        'grade'
+        'grade',
+        'remember_token'
     ];
 
     protected $dates = ['login_at'];
@@ -151,7 +152,7 @@ class User extends Model implements Authenticatable
      */
     public function getRememberToken()
     {
-        // TODO: Implement getRememberToken() method.
+        return $this->remember_token;
     }
 
     /**
@@ -162,7 +163,7 @@ class User extends Model implements Authenticatable
      */
     public function setRememberToken($value)
     {
-        // TODO: Implement setRememberToken() method.
+        $this->remember_token = $value;
     }
 
     /**
@@ -172,7 +173,7 @@ class User extends Model implements Authenticatable
      */
     public function getRememberTokenName()
     {
-        // TODO: Implement getRememberTokenName() method.
+        return 'remember_token';
     }
 
 }
