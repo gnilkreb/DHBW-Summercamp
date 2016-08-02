@@ -39,8 +39,9 @@ class AuthController extends Controller
     {
         $userId = $request->user_id;
         $password = $request->password;
+        $alwaysRemember = true;
 
-        if (Auth::guard('web')->attempt(['id' => $userId, 'password' => $password])) {
+        if (Auth::guard('web')->attempt(['id' => $userId, 'password' => $password], $alwaysRemember)) {
             $user = User::findOrFail($userId);
             $user->login_at = Carbon::now();
 
