@@ -19,6 +19,7 @@ Route::get('/register', 'AuthController@showRegister');
 Route::get('/login', 'AuthController@showLogin');
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
+Route::get('/logout', 'AuthController@logout');
 
 /* File Upload retrieval */
 Route::get('/uploads/{name}', 'Admin\FileController@show');
