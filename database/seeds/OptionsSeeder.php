@@ -17,5 +17,12 @@ class OptionsSeeder extends Seeder
             'type' => 'boolean',
             'label' => 'Registrierung'
         ]);
+
+        DB::table('options')->insert([
+            'key' => 'linear_progression',
+            'value' => '0',
+            'type' => 'boolean',
+            'label' => 'Linearer Levelfortschritt'
+        ]);
     }
 }
