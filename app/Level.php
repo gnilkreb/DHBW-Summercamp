@@ -14,6 +14,8 @@ class Level extends Model
         'order'
     ];
 
+    public $locked = false;
+
     public function category()
     {
         return $this->belongsTo('App\Category');

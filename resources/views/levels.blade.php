@@ -20,15 +20,24 @@
                     @foreach($levels as $level)
                         <div class="col-xs-4 star-column">
                             <div>
-                                <a href="/level/{{ $level->id }}" class="hvr-grow">
-                                    @if($level->stars() > 0)
-                                        <span class="star-text">{{ $level->stars() }}</span>
-                                    @endif
-                                    <img src="{{ $level->imageUrl() }}" class="img-responsive center-block star">
-                                </a>
+                                @if($level->locked)
+                                    <div class="hvr-wobble-horizontal">
+                                        <span class="star-text">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                        <img src="{{ $level->imageUrl() }}" class="img-responsive center-block star">
+                                    </div>
+                                @else
+                                    <a href="/level/{{ $level->id }}" class="hvr-grow">
+                                        @if($level->stars() > 0)
+                                            <span class="star-text">{{ $level->stars() }}</span>
+                                        @endif
+                                        <img src="{{ $level->imageUrl() }}" class="img-responsive center-block star">
+                                    </a>
+                                @endif
                             </div>
                             <div>
-                                {{ $level->title }}
+                                <span class="{{ $level->locked ? 'text-muted' : '' }}">{{ $level->title }}</span>
 
                                 @if($level->hasTrophy())
                                     <i class="fa fa-trophy" data-toggle="tooltip" title="Alle Aufgaben erledigt!"></i>
