@@ -64,7 +64,6 @@ class TaskController extends BaseController
     private function self(Task $task, User $user, Request $request)
     {
         $this->finishTask($task, $user);
-        $request->session()->flash('status', true);
 
         return redirect('/level/' . $task->level->id);
     }
