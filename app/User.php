@@ -57,7 +57,7 @@ class User extends Model implements Authenticatable
         'Jacquie',
         'Suzanne',
         'Lizeth'
-        ];
+    ];
 
     protected $dates = ['login_at'];
 
@@ -127,7 +127,8 @@ class User extends Model implements Authenticatable
         return $rank;
     }
 
-    public function getStars() {
+    public function getStars()
+    {
         $levels = Level::all();
         $this->stars = 0;
 
@@ -141,6 +142,21 @@ class User extends Model implements Authenticatable
     public function finishedTasks()
     {
         return $this->hasMany('App\FinishedTask');
+    }
+
+    public function progress()
+    {
+        $finishedTasks = $this->finishedTasks()->count();
+        $allTasks = Task::all()->count();
+        $progress = round($finishedTasks / $allTasks * 100, 0);
+
+        if ($progress < 0) {
+            $progress = 0;
+        } else if ($progress > 100) {
+            $progress = 100;
+        }
+
+        return $progress;
     }
 
     /**
@@ -204,8 +220,9 @@ class User extends Model implements Authenticatable
         return 'remember_token';
     }
 
-    public function getRandomName() {
-        return $this->randomNames[rand(0, count($this->randomNames)-1)];
+    public function getRandomName()
+    {
+        return $this->randomNames[rand(0, count($this->randomNames) - 1)];
     }
 
 }
