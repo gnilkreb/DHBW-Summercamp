@@ -72,6 +72,7 @@ Route::group([
     Route::get('task/{id?}', 'TaskController@show');
     Route::post('task', 'TaskController@save');
     Route::delete('task/{id}', 'TaskController@delete');
+    Route::post('task/{id}/question', 'TaskController@saveQuestion');
 
     /* Answers */
     Route::post('answer', 'AnswerController@save');

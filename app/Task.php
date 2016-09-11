@@ -16,7 +16,8 @@ class Task extends Model
         'content',
         'youtube_url',
         'pdf_url',
-        'finish_type'
+        'finish_type',
+        'question'
     ];
 
     protected $casts = [

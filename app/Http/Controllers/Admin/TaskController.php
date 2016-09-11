@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\SaveTaskQuestionRequest;
 use App\Http\Requests\SaveTaskRequest;
 use App\Level;
 use App\Task;
@@ -42,6 +43,16 @@ class TaskController extends BaseController
         Task::destroy($id);
 
         return response()->json(true);
+    }
+
+    public function saveQuestion($id, SaveTaskQuestionRequest $request)
+    {
+        $task = Task::findOrFail($id);
+        $task->question = $request->get('question');
+
+        $task->save();
+
+        return redirect()->back();
     }
 
 }

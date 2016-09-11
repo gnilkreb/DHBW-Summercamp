@@ -151,6 +151,25 @@
 
                 <hr>
 
+                <form method="POST" action="/admin/task/{{ $task->id }}/question">
+                    {{ csrf_field() }}
+
+                    <div class="form-group {{ $errors->has('question') ? 'has-error' : '' }}">
+                        <label for="question" class="control-label">Frage</label>
+                        <div class="input-group">
+                            <input id="question" type="text" name="question" class="form-control" placeholder="Frage" value="{{ $task->question }}" required>
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit" data-toggle="tooltip" title="Frage speichern">
+                                <i class="fa fa-floppy-o"></i>
+                            </button>
+                        </span>
+                        </div>
+                        <span class="help-block">{{ $errors->first('question') }}</span>
+                    </div>
+                </form>
+
+                <hr>
+
                 <form method="POST" action="/admin/answer">
                     {{ csrf_field() }}
 
