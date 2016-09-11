@@ -5,10 +5,14 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Benutzer Übersicht</h3>
+            <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapse">
+                <h3 class="panel-title">Benutzer Übersicht</h3>
+            </button>
         </div>
-        <div id="dashboard" class="panel-body">
-            @include('partials.user-overview')
+        <div id="collapse" class="panel-collapse collapse">
+            <div id="dashboard" class="panel-body">
+                @include('partials.user-overview')
+            </div>
         </div>
     </div>
 
