@@ -14,15 +14,8 @@ class HomeController extends Controller
             return redirect('/categories');
         }
 
-        $register = true;
-        $option = Option::where('key', 'register')->first();
-
-        if ($option) {
-            $register = $option->value === '1';
-        }
-
         return view('home', [
-            'register' => $register
+            'register' => Option::register()
         ]);
     }
 
