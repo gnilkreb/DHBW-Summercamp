@@ -84,4 +84,13 @@ class Task extends Model
         return $this->finish_type === FinishType::MULTIPLE_CHOICE;
     }
 
+    public function finishButtonLabel()
+    {
+        if ($this->finish_type === FinishType::SELF) {
+            return 'Ab zur nächsten Aufgabe!';
+        }
+
+        return 'Aufgabe lösen';
+    }
+
 }
