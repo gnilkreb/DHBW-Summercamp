@@ -1,6 +1,6 @@
 @if(!$task->finished() && $task->isMultipleChoice())
     <div id="modal" class="modal fade">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog">
             <form method="POST" action="/task/{{ $task->id }}/finish" class="modal-content">
                 {{ csrf_field() }}
 
@@ -9,7 +9,11 @@
                     <h4 class="modal-title">Aufgabe lösen</h4>
                 </div>
 
-                <div style="padding: 5px">
+                <div class="modal-body">
+                    <blockquote>
+                        <p>{{ $task->question }}</p>
+                    </blockquote>
+
                     @foreach($task->answers as $answer)
                         <div class="radio">
                             <label>
