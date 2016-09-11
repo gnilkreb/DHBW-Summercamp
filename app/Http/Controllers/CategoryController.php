@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use App\Category;
 use App\Option;
 
@@ -25,6 +26,8 @@ class CategoryController extends BaseController
         if (Option::linearProgression()) {
             $this->lockLevels($levels);
         }
+
+        Activity::log($category);
 
         return view('levels', [
             'levels' => $levels,

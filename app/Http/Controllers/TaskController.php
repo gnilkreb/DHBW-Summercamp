@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use App\Answer;
-use App\Category;
 use App\Domain\Tasks\FinishType;
 use App\FinishedTask;
 use App\Http\Controllers\Admin\RequestsController;
-use App\Level;
 use App\Task;
 use App\TaskRequest;
 use App\Team;
@@ -36,6 +35,8 @@ class TaskController extends BaseController
         $task = Task::findOrFail($id);
         $level = $task->level;
         $category = $level->category;
+
+        Activity::log($category, $level, $task);
 
         return view('task', [
             'task' => $task,

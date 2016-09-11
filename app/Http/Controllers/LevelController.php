@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Requests;
+use App\Activity;
 use App\Level;
 
 class LevelController extends BaseController
@@ -14,6 +13,8 @@ class LevelController extends BaseController
         $level = Level::findOrFail($id);
         $tasks = $level->tasks->sortBy('difficulty');
         $category = $level->category;
+
+        Activity::log($category, $level);
 
         return view('level', [
             'level' => $level,

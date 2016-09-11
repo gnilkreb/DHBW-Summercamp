@@ -6,6 +6,7 @@ import './files';
 import './options';
 import './requests';
 import './statistics';
+import './dashboard';
 
 Pusher.logToConsole = true;
 

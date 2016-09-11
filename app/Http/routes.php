@@ -43,6 +43,7 @@ Route::group([
 
     /* Dashboard */
     Route::get('dashboard', 'DashboardController@index');
+    Route::get('dashboard/partial', 'DashboardController@partial');
     Route::post('option/{id}', 'DashboardController@option');
 
     /* Requests */

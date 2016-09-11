@@ -159,6 +159,11 @@ class User extends Model implements Authenticatable
         return $progress;
     }
 
+    public function latestActivity()
+    {
+        return Activity::orderBy('created_at', 'desc')->first();
+    }
+
     /**
      * Get the name of the unique identifier for the user.
      *

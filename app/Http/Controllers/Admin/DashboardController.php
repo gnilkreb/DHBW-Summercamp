@@ -9,14 +9,45 @@ use Illuminate\Http\Request;
 class DashboardController extends BaseController
 {
 
-    public function index()
+    public static function userOverviewPayload()
+    {
+        $users = DashboardController::usersWithActivity();
+
+        $html = view('partials.user-overview', [
+            'users' => $users
+        ])->render();
+
+        return $html;
+    }
+
+    private static function usersWithActivity()
     {
         $users = User::where('role', 'user')->get();
+
+        foreach ($users as $user) {
+            $user->activity = $user->latestActivity();
+        }
+
+        return $users;
+    }
+
+    public function index()
+    {
+        $users = DashboardController::usersWithActivity();
         $options = Option::all();
 
         return $this->adminView('dashboard', [
             'users' => $users,
             'options' => $options
+        ]);
+    }
+
+    public function partial()
+    {
+        $html = DashboardController::userOverviewPayload();
+
+        return response()->json([
+            'data' => $html
         ]);
     }
 
