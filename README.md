@@ -11,7 +11,7 @@
     - build-essential
     - git
     - php7.0 & friends
-    - `sudo apt-get install nginx mysql-server build-essential git php7.0 php7.0-cli php7.0-fpm php7.0-mcrypt php7.0-mysql php7.0-mbstring php7.0-curl`
+    - `sudo apt-get install nginx mysql-server build-essential git php7.0 php7.0-cli php7.0-fpm php7.0-mcrypt php7.0-mysql php7.0-mbstring php7.0-curl php7.0-dom`
 
 ## Setup
 1. `cp .env.example .env`
