@@ -42,3 +42,6 @@
 3. `chmod +x /usr/local/bin/dep`
 4. `cp servers.example.yml servers.yml`
 5. Zugangsdaten in `servers.yml` eintragen
+
+## Docker
+[Wiki](https://github.com/marc1404/DHBW-Summercamp/wiki/Docker)
