@@ -22,8 +22,9 @@
 4. `bower install` (als root: `--allow-root`!)
 5. `npm install` (unter Windows: `--no-bin-links`!)
 6. `php artisan key:generate`
-7. `php artisan db:seed`
-8. `gulp`
+7. `php artisan migrate`
+8. `php artisan db:seed`
+9. `gulp`
 
 ## Scripts
 - `npm run dev` - Development Build
