@@ -41,7 +41,8 @@
                                         style="background-color: white;"
                                         src="{{ $task->youtube_url }}"
                                         frameborder="0"
-                                        scrolling="no"></iframe>
+                                        scrolling="no"
+                                        allowfullscreen></iframe>
                             </div>
                         </div>
                         @endif
